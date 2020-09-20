@@ -450,7 +450,7 @@ template,
   font: 24px/28px Roboto-Bold, Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  max-width: 380px;
+  max-width: 385px;
   margin-bottom: 20px;
 }
 
@@ -509,6 +509,11 @@ template,
 
 .button-main_center {
   margin: 0 auto;
+}
+
+.button-main_checkmark {
+  width: 65px;
+  height: 45px;
 }
 
 .button-main:hover {
@@ -652,6 +657,58 @@ template,
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+
+.sign__wrapper {
+  padding-top: 200px;
+  padding-bottom: 220px;
+}
+
+.sign__title {
+  margin: 0 auto 30px;
+  padding-left: 60px;
+}
+
+.email-form {
+  text-align: center;
+}
+
+.input-group {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.input-group__input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  width: 315px;
+  margin-left: 55px;
+  border: 0;
+  font: 14px/19.6px Roboto-Regular, Arial, Helvetica, sans-serif;
+  padding: 13px 0 13px 24px;
+}
+
+.input-group__input:focus {
+  outline: 0;
+}
+
+.input-group__input:-ms-input-placeholder {
+  color: #373737;
+  opacity: .5;
+}
+
+.input-group__input::-ms-input-placeholder {
+  color: #373737;
+  opacity: .5;
+}
+
+.input-group__input::placeholder,
+.input-group__input:-ms-input-placeholder,
+.input-group__input::-ms-input-placeholder {
+  color: #373737;
+  opacity: .5;
 }
 
 .webp .section_your-life{ background-image: url(./assets/images/your-bg.webp); }
