@@ -446,16 +446,20 @@ template,
   background-image: url("./assets/images/subscribe-bg.jpg");
 }
 
-.section_bg-grey {
-  background-color: #F5F6F7;
-}
-
 .section__title {
   font: 24px/28px Roboto-Bold, Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   max-width: 380px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+}
+
+.section__title_color-grey {
+  color: #373737;
+}
+
+.section__title_color-white {
+  color: #fff;
 }
 
 .section__subtitle {
@@ -465,12 +469,28 @@ template,
   margin-bottom: 30px;
 }
 
+.section_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 120px 0 135px 135px;
+}
+
+.section__left-column {
+  padding-top: 155px;
+  margin-right: 250px;
+}
+
+.section__right-column {
+  padding-top: 180px;
+  margin-left: 140px;
+}
+
 .container {
   max-width: 1280px;
   /*первоначальный 1060 и накинули по 15пикс с двух сторон, чтобы не прилипал*/
   width: 100%;
   margin: 0 auto;
-  padding: 0 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -590,16 +610,48 @@ template,
   transition: .5s;
 }
 
-.rappresent_wrapper {
+.community {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 120px 0 135px 65px;
+  background-color: #F5F6F7;
 }
 
-.rappresent__left-column {
-  padding-top: 155px;
-  margin-right: 250px;
+.community__content-block {
+  padding-bottom: 295px;
+}
+
+.community__icon {
+  border-radius: 50%;
+  text-align: center;
+}
+
+.community__title {
+  color: #373737;
+  font: 16px/20px Roboto-Medium, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+  text-align: center;
+}
+
+.community__subtitle {
+  text-align: center;
+  max-width: 300px;
+}
+
+.slider__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.slider__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .webp .section_your-life{ background-image: url(./assets/images/your-bg.webp); }
