@@ -505,6 +505,8 @@ template,
   font: 14px/16px Roboto-Bold, Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   cursor: pointer;
+  border: 0;
+  outline: 0;
 }
 
 .button-main_center {
@@ -514,6 +516,33 @@ template,
 .button-main_checkmark {
   width: 65px;
   height: 45px;
+}
+
+.button-main_apple,
+.button-main_android {
+  position: relative;
+  padding-right: 60px;
+}
+
+.button-main_apple:before,
+.button-main_android:before {
+  content: '';
+  width: 60px;
+  height: 45px;
+  background-color: #009CC2;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.button-main_apple:before {
+  background-image: url("./assets/images/fa-apple.svg");
+}
+
+.button-main_android:before {
+  background-image: url("./assets/images/fa-android.svg");
 }
 
 .button-main:hover {
@@ -660,8 +689,7 @@ template,
 }
 
 .sign__wrapper {
-  padding-top: 200px;
-  padding-bottom: 220px;
+  padding: 200px 0 220px;
 }
 
 .sign__title {
@@ -709,6 +737,31 @@ template,
 .input-group__input::-ms-input-placeholder {
   color: #373737;
   opacity: .5;
+}
+
+.download__wrapper {
+  padding: 125px 0 180px 55px;
+  text-align: center;
+}
+
+.download__title {
+  margin: 0 auto 20px;
+}
+
+.download__subtitle {
+  font: 14px/19.6px Roboto-Regular, Arial, Helvetica, sans-serif;
+  color: #4E4E4E;
+  width: 480px;
+  margin: 0 auto 30px;
+}
+
+.download__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+  width: 400px;
 }
 
 .webp .section_your-life{ background-image: url(./assets/images/your-bg.webp); }
