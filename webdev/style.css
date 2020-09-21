@@ -564,7 +564,7 @@ template,
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  max-width: 725px;
+  max-width: 770px;
   margin: 0 auto;
 }
 
@@ -602,6 +602,10 @@ template,
   padding: 23px 0;
 }
 
+.welcome__wrapper {
+  padding-left: 55px;
+}
+
 .welcome-title {
   color: #fff;
   font: 64px/75px Roboto-Bold, Arial, Helvetica, sans-serif;
@@ -626,7 +630,7 @@ template,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  max-width: 130px;
+  max-width: 170px;
   margin: 185px auto 0;
   padding: 0 0 85px;
 }
@@ -762,6 +766,66 @@ template,
   gap: 30px;
   margin: 0 auto;
   width: 400px;
+}
+
+.footer {
+  background-color: #000;
+}
+
+.footer__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 60px 0 80px;
+  position: relative;
+}
+
+.footer__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px 0 0 25px;
+  width: 240px;
+}
+
+.footer__list {
+  display: block;
+}
+
+.footer__link {
+  color: #fff;
+  font: 14px/19px Roboto-Regular, Arial, Helvetica, sans-serif;
+}
+
+.footer__link:hover {
+  font-weight: bold;
+  -webkit-transition: .7s;
+  -o-transition: .7s;
+  transition: .7s;
+}
+
+.footer__splitter {
+  background-color: #4E4E4E;
+  width: 1px;
+  height: 8px;
+  display: block;
+  margin: 6px 20px 0 20px;
+}
+
+.footer__logo-box {
+  position: absolute;
+  right: calc(50% - 50px);
+}
+
+.footer__coperite {
+  color: #fff;
+  font: 14px/19px Roboto-Regular, Arial, Helvetica, sans-serif;
 }
 
 .webp .section_your-life{ background-image: url(./assets/images/your-bg.webp); }
