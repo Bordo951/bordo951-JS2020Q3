@@ -475,7 +475,7 @@ template,
   margin-bottom: 30px;
 }
 
-.section_wrapper {
+.section__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -617,7 +617,7 @@ template,
   transition: .7s;
 }
 
-.welcome__wrapper {
+.welcome-wrapper {
   padding-left: 55px;
 }
 
@@ -900,7 +900,7 @@ template,
   transition: .7s;
 }
 
-.footer__coperite {
+.footer__copywrite {
   color: #fff;
   font: 14px/19px Roboto-Regular, Arial, Helvetica, sans-serif;
 }
