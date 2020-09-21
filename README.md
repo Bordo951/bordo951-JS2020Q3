@@ -11,4 +11,4 @@ Private repository for @bordo951
 
 * A screenshot of the final work with the PixelPerfect overlay:
 
-<img src="#" title="PP-Screenshot" alt="PP-Screenshot">
+<img src="https://rolling-scopes-school.github.io/bordo951-JS2020Q3/webdev/assets/images/webdev-screenshot.jpg" title="PP-Screenshot" alt="PP-Screenshot">
