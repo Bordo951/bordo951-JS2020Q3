@@ -672,7 +672,7 @@ template,
 }
 
 .community__content-block {
-  padding: 155px 0 145px 140px;
+  padding: 155px 0 145px 135px;
   width: 300px;
 }
 
@@ -736,12 +736,12 @@ template,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 30px;
 }
 
 .slider__image {
   width: 100%;
   height: 100%;
+  margin-right: 30px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -819,7 +819,9 @@ template,
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 30px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 0 auto;
   width: 400px;
 }
