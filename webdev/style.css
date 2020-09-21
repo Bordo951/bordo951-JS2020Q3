@@ -437,6 +437,12 @@ template,
   font-style: normal;
 }
 
+.section_bg-image {
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .section_your-life {
   background-image: url("./assets/images/your-bg.jpg");
   padding-top: 230px;
@@ -653,10 +659,12 @@ template,
   display: -ms-flexbox;
   display: flex;
   background-color: #F5F6F7;
+  position: relative;
 }
 
 .community__content-block {
-  padding-bottom: 295px;
+  padding: 155px 0 145px 140px;
+  width: 300px;
 }
 
 .community__icon {
@@ -674,13 +682,52 @@ template,
 
 .community__subtitle {
   text-align: center;
-  max-width: 300px;
+}
+
+.slider__wrapper {
+  position: absolute;
+  right: 0;
+  top: 80px;
+  width: 53%;
+  overflow: hidden;
+}
+
+.slider__control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 85px;
+  margin: 0 auto 20px;
+  padding-left: 90px;
+  font: 18px Roboto-Regular, Arial, Helvetica, sans-serif;
+}
+
+.slider__arrows {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.slider__arrows_left {
+  background-image: url("./assets/images/left.svg");
+  margin-right: 5px;
+}
+
+.slider__arrows_right {
+  background-image: url("./assets/images/right.svg");
+  margin-left: 5px;
+}
+
+.slider__arrows:hover {
+  opacity: .5;
 }
 
 .slider__row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 30px;
 }
 
 .slider__image {
