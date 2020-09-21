@@ -11,5 +11,4 @@ Private repository for @bordo951
 
 * A screenshot of the final work with the PixelPerfect overlay:
 
-<img src="https://lh6.googleusercontent.com/9OzWZRAGwRyosSqh7YRGObCBOIUquQAj9CUFrH1jbq-mSjJjqJzJmj9dubs7NbFhyxkiIuBjxvNthChucChw=w1920-h902-rw" class="ndfHFb-c4YZDc-HiaYvf-RJLb9c" title="PP-Screenshot" alt="PP-Screenshot">
-
+<img src="#" title="PP-Screenshot" alt="PP-Screenshot">
