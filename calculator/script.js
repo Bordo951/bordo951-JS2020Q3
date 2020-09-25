@@ -4,6 +4,9 @@ let numbers = document.querySelectorAll('.number'),
     resultBtn = document.getElementById('result'),
     clearBtns = document.querySelectorAll('.clear-btn'),
     display = document.getElementById('display'),
+    squareRootBtn = document.getElementById('squareRoot'),
+    lockedBtn = document.querySelectorAll('.locked'),
+    exponentiationBtn = document.getElementById('exponentiation')
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
     MemoryPendingOperation = '';
@@ -32,7 +35,17 @@ for (let i=0; i < clearBtns.length; i++) {
 
 decimalBtn.addEventListener('click', decimal);
 
+squareRootBtn.addEventListener('click', squareRoot);
+
+exponentiationBtn.addEventListener('click', function () {
+    operation('^');
+});
+
 function numberPress(number) {
+    if (display.value === 'Invalid input') {
+        unlockCalc();
+    }
+
     if (MemoryNewNumber) {
         display.value = number;
         MemoryNewNumber = false;
@@ -60,6 +73,8 @@ function operation(sumbolOper) {
             MemoryCurrentNumber *= parseFloat(localOperationMemory);
         } else if (MemoryPendingOperation === '÷') {
             MemoryCurrentNumber /= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === '^') {
+            MemoryCurrentNumber = Math.pow(MemoryCurrentNumber, parseFloat(localOperationMemory));
         } else {
             MemoryCurrentNumber = parseFloat(localOperationMemory);
         }
@@ -87,10 +102,45 @@ function clear(id) {
         display.value = '0';
         MemoryNewNumber = true;
     } else if (id === 'del') {
-        display.value = '0';
-        MemoryNewNumber = true;
-        MemoryCurrentNumber = 0;
-        MemoryPendingOperation = '';
+        unlockCalc();
     }
 }
+
+function squareRoot() {
+    let localSquareMemory = display.value;
+
+    if (localSquareMemory >= 0) {
+        MemoryCurrentNumber = Math.sqrt(parseFloat(localSquareMemory));
+        display.value = MemoryCurrentNumber;
+    } else {
+        disableCalc();
+        display.value = 'Invalid input';
+    }
+
+}
+
+function disableCalc() {
+    for (let i=0; i < lockedBtn.length; i++) {
+        let locked = lockedBtn[i];
+        locked.disabled = true;
+    }
+}
+
+function enableCalc() {
+    for (let i=0; i < lockedBtn.length; i++) {
+        let locked = lockedBtn[i];
+        locked.disabled = false;
+    }
+}
+
+function unlockCalc() {
+    display.value = '0';
+    MemoryNewNumber = true;
+    MemoryCurrentNumber = 0;
+    MemoryPendingOperation = '';
+    enableCalc();
+}
+
+
+
 
