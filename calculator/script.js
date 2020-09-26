@@ -1,3 +1,6 @@
+const MAX_INPUT_LENGTH = 10,
+      INVALID_INPUT_MESSAGE = 'Invalid input';
+
 let numbers = document.querySelectorAll('.number'),
     operations = document.querySelectorAll('.operation'),
     decimalBtn = document.getElementById('decimal'),
@@ -6,7 +9,7 @@ let numbers = document.querySelectorAll('.number'),
     display = document.getElementById('display'),
     squareRootBtn = document.getElementById('squareRoot'),
     lockedBtn = document.querySelectorAll('.locked'),
-    exponentiationBtn = document.getElementById('exponentiation')
+    exponentiationBtn = document.getElementById('exponentiation'),
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
     MemoryPendingOperation = '';
@@ -42,7 +45,7 @@ exponentiationBtn.addEventListener('click', function () {
 });
 
 function numberPress(number) {
-    if (display.value === 'Invalid input') {
+    if (display.value === INVALID_INPUT_MESSAGE) {
         unlockCalc();
     }
 
@@ -55,6 +58,9 @@ function numberPress(number) {
         } else {
             display.value += number;
         }
+    }
+    if (display.value.length > MAX_INPUT_LENGTH) {
+        lockCalc();
     }
 }
 
@@ -78,7 +84,7 @@ function operation(sumbolOper) {
         } else {
             MemoryCurrentNumber = parseFloat(localOperationMemory);
         }
-        display.value = MemoryCurrentNumber;
+        display.value = MemoryCurrentNumber.toFixed(9) * 1000000000 / 1000000000;
         MemoryPendingOperation = sumbolOper;
     }
 }
@@ -113,8 +119,7 @@ function squareRoot() {
         MemoryCurrentNumber = Math.sqrt(parseFloat(localSquareMemory));
         display.value = MemoryCurrentNumber;
     } else {
-        disableCalc();
-        display.value = 'Invalid input';
+        lockCalc();
     }
 
 }
@@ -124,6 +129,11 @@ function disableCalc() {
         let locked = lockedBtn[i];
         locked.disabled = true;
     }
+}
+
+function lockCalc() {
+    display.value = INVALID_INPUT_MESSAGE;
+    disableCalc();
 }
 
 function enableCalc() {
