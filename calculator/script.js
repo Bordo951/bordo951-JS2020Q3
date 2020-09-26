@@ -10,6 +10,7 @@ let numbers = document.querySelectorAll('.number'),
     squareRootBtn = document.getElementById('squareRoot'),
     lockedBtn = document.querySelectorAll('.locked'),
     exponentiationBtn = document.getElementById('exponentiation'),
+    changeSignBtn = document.getElementById('changeSign'),
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
     MemoryPendingOperation = '';
@@ -43,6 +44,8 @@ squareRootBtn.addEventListener('click', squareRoot);
 exponentiationBtn.addEventListener('click', function () {
     operation('^');
 });
+
+changeSignBtn.addEventListener('click', changeSign);
 
 function numberPress(number) {
     if (display.value === INVALID_INPUT_MESSAGE) {
@@ -123,6 +126,20 @@ function squareRoot() {
     }
 
 }
+
+function changeSign() {
+    let localSignMemory = display.value,
+        lastIndex = localSignMemory.length;
+
+    if (localSignMemory > 0) {
+        localSignMemory = '-' + localSignMemory;
+    } else if (localSignMemory !== '0') {
+            localSignMemory = localSignMemory.substring(1, lastIndex);
+        }
+    display.value = localSignMemory;
+}
+
+
 
 function disableCalc() {
     for (let i=0; i < lockedBtn.length; i++) {
