@@ -1,9 +1,16 @@
+const MAX_INPUT_LENGTH = 10,
+      INVALID_INPUT_MESSAGE = 'Invalid input';
+
 let numbers = document.querySelectorAll('.number'),
     operations = document.querySelectorAll('.operation'),
     decimalBtn = document.getElementById('decimal'),
     resultBtn = document.getElementById('result'),
     clearBtns = document.querySelectorAll('.clear-btn'),
     display = document.getElementById('display'),
+    squareRootBtn = document.getElementById('squareRoot'),
+    lockedBtn = document.querySelectorAll('.locked'),
+    exponentiationBtn = document.getElementById('exponentiation'),
+    changeSignBtn = document.getElementById('changeSign'),
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
     MemoryPendingOperation = '';
@@ -32,7 +39,19 @@ for (let i=0; i < clearBtns.length; i++) {
 
 decimalBtn.addEventListener('click', decimal);
 
+squareRootBtn.addEventListener('click', squareRoot);
+
+exponentiationBtn.addEventListener('click', function () {
+    operation('^');
+});
+
+changeSignBtn.addEventListener('click', changeSign);
+
 function numberPress(number) {
+    if (display.value === INVALID_INPUT_MESSAGE) {
+        unlockCalc();
+    }
+
     if (MemoryNewNumber) {
         display.value = number;
         MemoryNewNumber = false;
@@ -42,6 +61,9 @@ function numberPress(number) {
         } else {
             display.value += number;
         }
+    }
+    if (display.value.length > MAX_INPUT_LENGTH) {
+        lockCalc();
     }
 }
 
@@ -60,10 +82,12 @@ function operation(sumbolOper) {
             MemoryCurrentNumber *= parseFloat(localOperationMemory);
         } else if (MemoryPendingOperation === '÷') {
             MemoryCurrentNumber /= parseFloat(localOperationMemory);
+        } else if (MemoryPendingOperation === '^') {
+            MemoryCurrentNumber = Math.pow(MemoryCurrentNumber, parseFloat(localOperationMemory));
         } else {
             MemoryCurrentNumber = parseFloat(localOperationMemory);
         }
-        display.value = MemoryCurrentNumber;
+        display.value = MemoryCurrentNumber.toFixed(9) * 1000000000 / 1000000000;
         MemoryPendingOperation = sumbolOper;
     }
 }
@@ -87,10 +111,63 @@ function clear(id) {
         display.value = '0';
         MemoryNewNumber = true;
     } else if (id === 'del') {
-        display.value = '0';
-        MemoryNewNumber = true;
-        MemoryCurrentNumber = 0;
-        MemoryPendingOperation = '';
+        unlockCalc();
     }
 }
+
+function squareRoot() {
+    let localSquareMemory = display.value;
+
+    if (localSquareMemory >= 0) {
+        MemoryCurrentNumber = Math.sqrt(parseFloat(localSquareMemory));
+        display.value = MemoryCurrentNumber;
+    } else {
+        lockCalc();
+    }
+
+}
+
+function changeSign() {
+    let localSignMemory = display.value,
+        lastIndex = localSignMemory.length;
+
+    if (localSignMemory > 0) {
+        localSignMemory = '-' + localSignMemory;
+    } else if (localSignMemory !== '0') {
+            localSignMemory = localSignMemory.substring(1, lastIndex);
+        }
+    display.value = localSignMemory;
+}
+
+
+
+function disableCalc() {
+    for (let i=0; i < lockedBtn.length; i++) {
+        let locked = lockedBtn[i];
+        locked.disabled = true;
+    }
+}
+
+function lockCalc() {
+    display.value = INVALID_INPUT_MESSAGE;
+    disableCalc();
+}
+
+function enableCalc() {
+    for (let i=0; i < lockedBtn.length; i++) {
+        let locked = lockedBtn[i];
+        locked.disabled = false;
+    }
+}
+
+function unlockCalc() {
+    display.value = '0';
+    MemoryNewNumber = true;
+    MemoryCurrentNumber = 0;
+    MemoryPendingOperation = '';
+    enableCalc();
+}
+
+
+
 
