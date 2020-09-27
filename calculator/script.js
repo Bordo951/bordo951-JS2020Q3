@@ -121,6 +121,7 @@ function clear(id) {
     if (id === 'ac') {
         display.value = '0';
         MemoryNewNumber = true;
+        MemoryStorageOperation.innerHTML = '';
     } else if (id === 'del') {
         unlockCalc();
     }
@@ -161,6 +162,7 @@ function disableCalc() {
 
 function lockCalc() {
     display.value = INVALID_INPUT_MESSAGE;
+    MemoryStorageOperation.innerHTML = '';
     disableCalc();
 }
 
@@ -176,6 +178,7 @@ function unlockCalc() {
     MemoryNewNumber = true;
     MemoryCurrentNumber = 0;
     MemoryPendingOperation = '';
+    MemoryStorageOperation.innerHTML = '';
     enableCalc();
 }
 
