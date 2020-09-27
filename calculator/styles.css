@@ -38,7 +38,7 @@ body {
   cursor: auto;
 }
 
-span {
+.number-degree {
   position: absolute;
   font-size: 15px;
   top: 15px;
@@ -59,6 +59,7 @@ span {
   padding: 10px;
   word-wrap: break-word;
   word-break: break-all;
+  position: relative;
 }
 
 .calc-display-input {
@@ -67,5 +68,14 @@ span {
   height: 100%;
   font-size: 3rem;
   background-color: rgba(255, 255, 255, .75);
+  padding-top: 25px;
 }
 
+#storageOperation {
+  position: absolute;
+  z-index: 5;
+  top: 20px;
+  right: 20px;
+  color: gray;
+  font-size: 25px;
+}

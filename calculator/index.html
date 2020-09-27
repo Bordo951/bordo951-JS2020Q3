@@ -11,13 +11,14 @@
 <body>
   <div class="calculator-grid">
     <div class="output">
+      <span id="storageOperation"></span>
       <input disabled type="text" id="display" value="0" name="" class="calc-display-input">
     </div>
     <button class="span-two clear-btn locked" id="ac">AC</button>
     <button id="del" class="span-two clear-btn">DEL</button>
     <button id="changeSign" class="locked">&plusmn;</button>
     <button id="squareRoot" class="locked">&radic;</button>
-    <button id="exponentiation" class="locked">x <span>y</span></button>
+    <button id="exponentiation" class="locked">x <span class="number-degree">y</span></button>
     <button class="operation locked">÷</button>
     <button class="number">1</button>
     <button class="number">2</button>
