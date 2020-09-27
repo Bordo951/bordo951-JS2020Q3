@@ -11,6 +11,7 @@ let numbers = document.querySelectorAll('.number'),
     lockedBtn = document.querySelectorAll('.locked'),
     exponentiationBtn = document.getElementById('exponentiation'),
     changeSignBtn = document.getElementById('changeSign'),
+    MemoryStorageOperation = document.getElementById('storageOperation'),
     MemoryCurrentNumber = 0,
     MemoryNewNumber = false,
     MemoryPendingOperation = '';
@@ -52,6 +53,11 @@ function numberPress(number) {
         unlockCalc();
     }
 
+    if (MemoryPendingOperation === '=') {
+        MemoryPendingOperation = '';
+        MemoryStorageOperation.innerHTML = MemoryPendingOperation;
+    }
+
     if (MemoryNewNumber) {
         display.value = number;
         MemoryNewNumber = false;
@@ -72,6 +78,10 @@ function operation(sumbolOper) {
 
     if (MemoryNewNumber && MemoryPendingOperation !== '=') {
         display.value = MemoryCurrentNumber;
+        if (MemoryPendingOperation !== sumbolOper) {
+            MemoryStorageOperation.innerHTML = sumbolOper;
+            MemoryPendingOperation = sumbolOper;
+        }
     } else {
         MemoryNewNumber = true;
         if (MemoryPendingOperation === '+') {
@@ -89,6 +99,7 @@ function operation(sumbolOper) {
         }
         display.value = MemoryCurrentNumber.toFixed(9) * 1000000000 / 1000000000;
         MemoryPendingOperation = sumbolOper;
+        MemoryStorageOperation.innerHTML = MemoryPendingOperation;
     }
 }
 
@@ -110,6 +121,7 @@ function clear(id) {
     if (id === 'ac') {
         display.value = '0';
         MemoryNewNumber = true;
+        MemoryStorageOperation.innerHTML = '';
     } else if (id === 'del') {
         unlockCalc();
     }
@@ -120,11 +132,11 @@ function squareRoot() {
 
     if (localSquareMemory >= 0) {
         MemoryCurrentNumber = Math.sqrt(parseFloat(localSquareMemory));
-        display.value = MemoryCurrentNumber;
+        display.value = MemoryCurrentNumber.toFixed(9) * 1000000000 / 1000000000;
+        MemoryStorageOperation.innerHTML = '&radic;';
     } else {
         lockCalc();
     }
-
 }
 
 function changeSign() {
@@ -150,6 +162,7 @@ function disableCalc() {
 
 function lockCalc() {
     display.value = INVALID_INPUT_MESSAGE;
+    MemoryStorageOperation.innerHTML = '';
     disableCalc();
 }
 
@@ -165,6 +178,7 @@ function unlockCalc() {
     MemoryNewNumber = true;
     MemoryCurrentNumber = 0;
     MemoryPendingOperation = '';
+    MemoryStorageOperation.innerHTML = '';
     enableCalc();
 }
 
