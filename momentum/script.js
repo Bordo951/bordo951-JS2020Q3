@@ -1,9 +1,18 @@
+// Date.prototype.addHours = function(h) {
+//     this.setTime(this.getTime() + (h*60*60*1000));
+//     return this;
+// }
+
+
 // DOM Elements
 const time = document.getElementById('time'),
     date = document.getElementById('date'),
     greeting = document.getElementById('greeting'),
     name = document.getElementById('name'),
-    focus = document.getElementById('focus');
+    focus = document.getElementById('focus'),
+    leftArrow = document.getElementById('left-arrow'),
+    rightArrow = document.getElementById('right-arrow');
+let deltaHours = 0;
 
 // Show Date
 function showDate() {
@@ -55,16 +64,30 @@ function getMonth(month) {
 
 // Show Time
 function showTime() {
-    let today = new Date(),
-        hour = today.getHours(),
+    let today = new Date();
+    // today.addHours(1);
+    let hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
 
     // Output Time
-    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    time.innerHTML = `${addZero(hour)}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+
+    setBgByHours(getDeltaHours(hour));
+    setGreetingsByHours(hour);
 
     setTimeout(showTime, 1000);
-    setBgByHours(hour);
+}
+
+// Gets delta hours
+function getDeltaHours(hour) {
+    let hours = (hour + deltaHours) % 23;
+
+    if(hours < 0) {
+        hours = 24 + hours;
+    }
+
+    return hours;
 }
 
 //Add Zeros
@@ -72,11 +95,18 @@ function addZero(n) {
    return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
 
-// Set Background
+// Set Background by hours
 function setBgByHours (hour) {
+    let dayTime = getDayTime(hour),
+        src = "./assets/images/" + dayTime + "/"+ addZero(Math.abs(hour)) +".jpg";
+
+    document.body.style.backgroundImage = `url(${src})`;
+}
+
+// Set Greeting by hours
+function setGreetingsByHours (hour) {
     let dayTime = getDayTime(hour);
 
-    document.body.style.backgroundImage = "url('./assets/images/" + dayTime + "/01.jpg')";
     greeting.textContent = "Good " + dayTime + ', ';
 }
 
@@ -159,16 +189,21 @@ function onBlurFocus(e) {
     }
 }
 
+function changeHoursDelta() {
+    deltaHours += parseInt(this.dataset.value);
+}
+
 name.addEventListener('keypress', onKeypressName);
 name.addEventListener('blur', onBlurName);
 name.addEventListener('focus', onFocusName);
 focus.addEventListener('keypress', onKeypressFocus);
 focus.addEventListener('blur', onBlurFocus);
 focus.addEventListener('focus', onFocusName);
+leftArrow.addEventListener('click', changeHoursDelta);
+rightArrow.addEventListener('click', changeHoursDelta);
 
 //Run
 showDate();
 showTime();
 getName();
 getFocus();
-
