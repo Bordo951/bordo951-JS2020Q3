@@ -1,9 +1,3 @@
-// Date.prototype.addHours = function(h) {
-//     this.setTime(this.getTime() + (h*60*60*1000));
-//     return this;
-// }
-
-
 // DOM Elements
 const time = document.getElementById('time'),
     date = document.getElementById('date'),
@@ -122,9 +116,8 @@ function getMonth(month) {
 
 // Show Time
 function showTime() {
-    let today = new Date();
-    // today.addHours(1);
-    let hour = today.getHours(),
+    let today = new Date(),
+        hour = today.getHours(),
         min = today.getMinutes(),
         sec = today.getSeconds();
 
@@ -230,7 +223,7 @@ function onBlurName(e) {
 }
 
 // On Focus Name
-function onFocusName(e) {
+function onFocusName() {
     this.textContent = '';
 
 }
@@ -343,14 +336,6 @@ function getStorageCityName() {
     return cityName;
 }
 
-// // Change Weather with City
-// function setCity(event) {
-//     if (event.code === 'Enter') {
-//         getWeather();
-//         city.blur();
-//     }
-// }
-
 // On Keypress City
 function onKeypressCity(e) {
     if (e.type === 'keypress') {
@@ -384,9 +369,9 @@ rightArrow.addEventListener('click', changeHoursDelta);
 document.addEventListener('DOMContentLoaded', setQuote);
 changeQuote.addEventListener('click', setQuote);
 document.addEventListener('DOMContentLoaded', getWeather);
-// city.addEventListener('keypress', setCity);
 city.addEventListener('keypress', onKeypressCity);
 city.addEventListener('blur', onBlurCity);
+city.addEventListener('focus', onFocusName);
 
 // Run
 showDate();
