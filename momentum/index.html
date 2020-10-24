@@ -4,17 +4,42 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/owfont-regular.css">
     <link rel="stylesheet" href="style.css" />
     <title>Momentum</title>
   </head>
-  <body>
-    <time class="time"></time>
-    <h1>
-      <span class="greeting"></span>
-      <span class="name" contenteditable="true"></span>
-    </h1>
-    <h2>What Is Your Focus For Today?</h2>
-    <h2 class="focus" contenteditable="true"></h2>
+  <body class="noselect">
+    <div class="overlay">
+      <div class="wrapper-weather">
+        <div class="weather-row">
+          <i class="weather-icon owf"></i>
+          <div class="temperature"></div>
+        </div>
+        <div class="weather-description"></div>
+        <div class="wind-speed"></div>
+        <div class="relative-humidity"></div>
+        <div class="city" contenteditable="true"></div>
+      </div>
+      <time id="date"></time>
+      <time id="time"></time>
+      <h1>
+        <span id="greeting"></span>
+        <span id="name" contenteditable="true"></span>
+      </h1>
+      <h2>What Is Your Main Focus For Today?</h2>
+      <h2 id="focus" contenteditable="true"></h2>
+      <div class="container-quote">
+        <figure class="quote">
+          <blockquote></blockquote>
+          <figcaption></figcaption>
+        </figure>
+        <button class="change-quote">One more</button>
+      </div>
+      <div class="arrow">
+        <button id="left-arrow" data-value="-1">&lt;</button>
+        <button id="right-arrow" data-value="1">&gt;</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

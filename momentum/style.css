@@ -4,24 +4,78 @@
   padding: 0;
 }
 
+html {
+  height: 110%;
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
+  height: 100%;
+  background-size: cover;
+  color: #fff;
+  transition: background-image 2s ease-in-out;
+}
+
+.overlay {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100vh;
-  background-size: cover;
-  color: #000000;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(52,51,51,0.29485297536983546) 25%, rgba(52,51,51,0.31726193895526966) 50%, rgba(33,33,33,0.9279061966583508) 100%);
 }
 
-.time {
+#date {
+  font-size: 2rem;
+}
+
+#time {
   font-size: 8rem;
 }
 
 h1 {
-  margin-bottom: 3rem;
+  height: 1.5em;
+  margin-bottom: 1.5rem;
+  display: flex;
+  z-index: 1;
+}
+
+#name,
+#focus, .city {
+  display: block;
+  min-width: 100px;
+  border: 1px solid transparent;
+  text-align: left;
+  margin-left: 5px;
+}
+
+.city {
+  text-align: center;
+}
+
+#focus {
+  margin-bottom: 2rem;
+}
+
+#name:focus {
+  border: 1px solid white;
+  padding: 5px;
+  font-size: 1.52rem;
+}
+
+#focus:focus {
+  border: 1px solid white;
+  padding: 5.2px;
+  font-size: 1rem;
+}
+
+.city:focus {
+  border: 1px solid white;
+  padding: 0;
+  font-size: 1rem;
 }
 
 h2 {
@@ -29,8 +83,159 @@ h2 {
   opacity: 0.8;
 }
 
-@media (max-width: 700px) {
-  .time {
-    font-size: 6rem;
+.arrow {
+  position: absolute;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+#left-arrow,
+#right-arrow {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: rgba(227,227,227, .2);
+  border: 2px solid rgba(255, 255, 255, .7);
+  color: rgba(255, 255, 255, .7);
+  font-size: larger;
+  cursor: pointer;
+}
+
+#left-arrow:focus,
+#right-arrow:focus {
+  outline: 0;
+}
+
+#left-arrow:hover,
+#right-arrow:hover {
+  transform: scale(1.1);
+  transition: .5s;
+}
+
+.container-quote {
+  position: relative;
+  width: 80%;
+}
+
+.quote {
+  width: 100%;
+  font: 1.2rem Georgia, serif;
+  margin: 0;
+  background: rgba(255, 255, 255, .1);
+  padding: .5em;
+  border-radius: 1em;
+}
+
+.quote blockquote {
+  height: 2rem;
+  margin: 1em 0;
+  font-style: italic;
+}
+
+.quote blockquote:after {
+  content: '»';
+  color: white;
+}
+
+.quote blockquote:before {
+  content: '«';
+  color: white;
+}
+
+.quote figcaption {
+  text-align: right;
+  margin-bottom: 2rem;
+}
+
+.change-quote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 25px;
+  font: .8rem Georgia, serif;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .2);
+  margin: 10px;
+}
+
+.change-quote:active,
+.change-quote:focus {
+  outline: 0;
+}
+
+.change-quote:hover {
+  transform: scale(1.05);
+  transition: .5s;
+  cursor: pointer;
+}
+
+.wrapper-weather {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.weather-row {
+  display: flex;
+}
+
+.weather-icon {
+  margin-right: 5px;
+  padding-top: 3px;
+}
+
+
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media all and (min-width: 320px) and (max-width: 768px) {
+  body {
+    height: 100%;
+  }
+
+  .wrapper-weather {
+    width: 100%;
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  #date {
+    font-size: 1.3rem;
+  }
+
+  #time {
+    font-size: 4rem;
+  }
+
+  h1 {
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+
+  .quote {
+    font: 1rem Georgia, serif;
+  }
+
+  .quote blockquote {
+    height: 7rem;
+    margin-bottom: 1em;
+  }
+
+  .arrow {
+    top: 70px;
+    width: 90%;
   }
 }
