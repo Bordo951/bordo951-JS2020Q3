@@ -64,7 +64,8 @@ const time = document.getElementById('time'),
 
 let deltaHours = 0,
     imgSet = generateImageSet(),
-    currentQuoteId = getRandomInt(10);
+    currentQuoteId = getRandomInt(10),
+    loadedImages = [];
 
 // Show Date
 function showDate() {
@@ -147,11 +148,40 @@ function addZero(n) {
 }
 
 // Set Background by hours
-function setBgByHours (hour) {
+function setBgByHours(hour) {
     let dayTime = getDayTime(hour),
-        src = "./assets/images/" + dayTime + "/" + imgSet + "/" + addZero(Math.abs(hour)) +".jpg";
+        src = "./assets/images/" + dayTime + "/" + imgSet + "/" + addZero(Math.abs(hour)) + ".jpg";
 
-    document.body.style.backgroundImage = `url(${src})`;
+    if (loadedImages.indexOf(src) === -1) {
+        getImage(src)
+            .then(function (url) {
+                loadedImages.push(url);
+                document.body.style.backgroundImage = `url(${url})`;
+            })
+            .catch(function (error) {
+                console.log('Error while loading an image by path ', src);
+                console.log(error);
+            })
+    } else {
+        document.body.style.backgroundImage = `url(${src})`;
+    }
+}
+
+// Loads the image by creating an Image object.
+function getImage(url) {
+    return new Promise(function (resolve, reject) {
+        let img = new Image();
+
+        img.src = url;
+
+        img.onload = function () {
+            resolve(url);
+        }
+
+        img.onerror = function () {
+            reject(url);
+        }
+    })
 }
 
 // Generate Image Set
