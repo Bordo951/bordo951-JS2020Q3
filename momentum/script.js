@@ -12,7 +12,26 @@ const time = document.getElementById('time'),
     focus = document.getElementById('focus'),
     leftArrow = document.getElementById('left-arrow'),
     rightArrow = document.getElementById('right-arrow');
-let deltaHours = 0;
+let deltaHours = 0,
+    imgSet = generateImageSet();
+
+// Generate Image Set
+function generateImageSet() {
+    let imageSetLocalStorage = parseInt(localStorage.getItem('imgSet')),
+        currentRandomInt = getRandomInt(3);
+
+    if (imageSetLocalStorage === null) {
+        localStorage.setItem('imgSet', 0);
+        return 0;
+    } else {
+        while (imageSetLocalStorage === currentRandomInt) {
+            currentRandomInt = getRandomInt(3);
+        }
+        localStorage.setItem('imgSet', currentRandomInt);
+    }
+
+    return currentRandomInt;
+}
 
 // Show Date
 function showDate() {
@@ -98,7 +117,7 @@ function addZero(n) {
 // Set Background by hours
 function setBgByHours (hour) {
     let dayTime = getDayTime(hour),
-        src = "./assets/images/" + dayTime + "/"+ addZero(Math.abs(hour)) +".jpg";
+        src = "./assets/images/" + dayTime + "/" + imgSet + "/" + addZero(Math.abs(hour)) +".jpg";
 
     document.body.style.backgroundImage = `url(${src})`;
 }
@@ -207,3 +226,74 @@ showDate();
 showTime();
 getName();
 getFocus();
+
+const blockquote = document.querySelector('blockquote');
+const figcaption = document.querySelector('figcaption');
+const changeQuote = document.querySelector('.change-quote');
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+const quotes = {
+    0: {
+        'text': 'Liberty, taking the word in its concrete sense, consists in the ability to choose',
+        'author': 'Simone Weil'
+    },
+    1: {
+        'text': 'Be less curious about people and more curious about ideas',
+        'author': 'Marie Curie'
+    },
+    2: {
+        'text': 'Aim for success, not perfection. Never give up your right to be wrong, because then you will lose the ability to learn new things and move forward with your life',
+        'author': 'Dr. David M. Burns'
+    },
+    3: {
+        'text': 'Myths which are believed in tend to become true',
+        'author': 'George Orwell'
+    },
+    4: {
+        'text': 'Be kind whenever possible. It is always possible',
+        'author': 'Dalai Lama'
+    },
+    5: {
+        'text': 'I am a part of all that I have met',
+        'author': 'Alfred Tennyson'
+    },
+    6: {
+        'text': 'However many holy words you read, however many you speak, what good will they do you if you do not act on upon them?',
+        'author': 'Buddha'
+    },
+    7: {
+        'text': 'In the end we retain from our studies only that which we practically apply',
+        'author': 'Johann Wolfgang von Goethe'
+    },
+    8: {
+        'text': 'Everything is perfect in the universe — even your desire to improve it',
+        'author': 'Wayne Dyer'
+    },
+    9: {
+        'text': 'The pain passes, but the beauty remains',
+        'author': 'Pierre Auguste Renoir'
+    },
+    10: {
+        'text': 'Problems are only opportunities with thorns on them',
+        'author': 'Hugh Miller'
+    }
+};
+
+let currentQuoteId = getRandomInt(10);
+function setQuote() {
+    let newQuoteId = currentQuoteId;
+
+    while(currentQuoteId === newQuoteId){
+        newQuoteId = getRandomInt(10);
+    }
+
+    currentQuoteId = newQuoteId;
+
+    blockquote.textContent = quotes[currentQuoteId].text;
+    figcaption.textContent = quotes[currentQuoteId].author;
+}
+document.addEventListener('DOMContentLoaded', setQuote);
+changeQuote.addEventListener('click', setQuote);
