@@ -2,29 +2,31 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Shelter: main page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../assets/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+        <title>Shelter</title>
         <link rel="stylesheet" href="pets.css">
     </head>
     <body>
         <header class="header">
             <div class="container">
-                <div class="header-logo">
+                <div class="header-logo linkPets" data-link="../../pages/main/main.html">
                     <h1 class="header-logo__title">Cozy House</h1>
                     <p class="header-logo__subtitle">Shelter for pets in Boston</p>
                 </div>
                 <nav class="header-menu">
                     <ul class="header-menu__list">
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_disabled" href="../../pages/main/main.html" target="_self">About the shelter</a>
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="../../pages/main/main.html">About the shelter</a>
                         </li>
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_active" href="#" target="">Our pets</a>
+                            <a class="header-menu__list-link header-menu__list-link_active" href="../../pages/pets/pets.html">Our pets</a>
                         </li>
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_disabled" href="#" target="">Help the shelter</a>
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="javascript:void(0);">Help the shelter</a>
                         </li>
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_disabled" href="#" target="">Contacts</a>
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="javascript:void(0);">Contacts</a>
                         </li>
                     </ul>
                 </nav>
@@ -35,16 +37,16 @@
                     </label>
                     <ul class="header-burger-menu__box">
                         <li>
-                            <a class="header-burger-menu__item" href="../../pages/main/main.html" target="">About the shelter</a>
+                            <a class="header-burger-menu__item header-burger-menu__item_active" href="../../pages/main/main.html">About the shelter</a>
                         </li>
                         <li>
-                            <a class="header-burger-menu__item" href="#" target="">Our pets</a>
+                            <a class="header-burger-menu__item" href="../../pages/pets/pets.html">Our pets</a>
                         </li>
                         <li>
-                            <a class="header-burger-menu__item" href="#" target="">Help the shelter</a>
+                            <a class="header-burger-menu__item" href="javascript:void(0);">Help the shelter</a>
                         </li>
                         <li>
-                            <a class="header-burger-menu__item" href="#" target="">Contacts</a>
+                            <a class="header-burger-menu__item" href="javascript:void(0);">Contacts</a>
                         </li>
                     </ul>
                 </div>
@@ -62,56 +64,56 @@
                             <picture><source srcset="../../assets/images/pets-katrine.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-katrine.png" alt="Pets Katrine"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Katrine</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Katrine">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card">
                             <picture><source srcset="../../assets/images/pets-jennifer.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-jennifer.png" alt="Pets Jennifer"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Jennifer</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Jennifer">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card">
                             <picture><source srcset="../../assets/images/pets-woody.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-woody.png" alt="Pets Woody"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Woody</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Woody">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card hidden-on-mobile">
                             <picture><source srcset="../../assets/images/pets-sophia.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-sophia.png" alt="Pets Sophia"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Sophia</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Sophia">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card hidden-on-mobile">
                             <picture><source srcset="../../assets/images/pets-timmy.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-timmy.png" alt="Pets Timmy"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Timmy</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Timmy">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card hidden-on-mobile">
                             <picture><source srcset="../../assets/images/pets-charly.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-charly.png" alt="Pets Charly"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Charly</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Charly">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card hidden-on-tablet">
-                            <picture><source srcset="../../assets/images/pets-scarlet.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-scarlet.png" alt="Pets Scarlet"></picture>
+                            <picture><source srcset="../../assets/images/pets-scarlett.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-scarlett.png" alt="Pets Scarlett"></picture>
                             <div class="our-friends-card__content">
-                                <p class="our-friends-card__title">Scarlet</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <p class="our-friends-card__title">Scarlett</p>
+                                <button class="our-friends-card__button" data-pet-name="Scarlett">Learn more</button>
                             </div>
                         </div>
                         <div class="our-friends-card hidden-on-tablet">
                             <picture><source srcset="../../assets/images/pets-freddie.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-freddie.png" alt="Pets Freddie"></picture>
                             <div class="our-friends-card__content">
                                 <p class="our-friends-card__title">Freddie</p>
-                                <button class="our-friends-card__button">Learn more</button>
+                                <button class="our-friends-card__button" data-pet-name="Freddie">Learn more</button>
                             </div>
                         </div>
                     </div>
@@ -156,6 +158,7 @@
                 </div>
             </div>
         </footer>
+        <script src="../../assets/pets.json.js"></script>
         <script src="pets.js"></script>
     </body>
 </html>

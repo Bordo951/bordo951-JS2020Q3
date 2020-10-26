@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Shelter: main page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shelter</title>
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
@@ -15,16 +16,16 @@
                 <nav class="header-menu">
                     <ul class="header-menu__list">
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_active" href="#" target="">About the shelter</a>
+                            <a class="header-menu__list-link header-menu__list-link_active" href="../../pages/main/main.html">About the shelter</a>
                         </li>
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_disabled" href="../../pages/pets/pets.html" target="_self">Our pets</a>
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="../../pages/pets/pets.html">Our pets</a>
                         </li>
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_disabled" href="#" target="">Help the shelter</a>
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="javascript:void(0);">Help the shelter</a>
                         </li>
                         <li class="header-menu__list-item">
-                            <a class="header-menu__list-link header-menu__list-link_disabled" href="#" target="">Contacts</a>
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="javascript:void(0);">Contacts</a>
                         </li>
                     </ul>
                 </nav>
@@ -35,16 +36,16 @@
                     </label>
                     <ul class="header-burger-menu__box">
                         <li>
-                            <a class="header-burger-menu__item" href="#" target="">About the shelter</a>
+                            <a class="header-burger-menu__item header-burger-menu__item_active" href="../../pages/main/main.html">About the shelter</a>
                         </li>
                         <li>
-                            <a class="header-burger-menu__item" href="../../pages/pets/pets.html" target="">Our pets</a>
+                            <a class="header-burger-menu__item" href="../../pages/pets/pets.html">Our pets</a>
                         </li>
                         <li>
-                            <a class="header-burger-menu__item" href="#" target="">Help the shelter</a>
+                            <a class="header-burger-menu__item" href="javascript:void(0);">Help the shelter</a>
                         </li>
                         <li>
-                            <a class="header-burger-menu__item" href="#" target="">Contacts</a>
+                            <a class="header-burger-menu__item" href="javascript:void(0);">Contacts</a>
                         </li>
                     </ul>
                 </div>
@@ -57,7 +58,7 @@
                         <div class="not-only__content">
                             <h2 class="not-only__content-title">Not only people need a house</h2>
                             <p class="not-only__content-subtitle">We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!</p>
-                            <button class="not-only__content-button" type="button">Make a friend</button>
+                            <button class="not-only__content-button linkPets" data-link="../../pages/pets/pets.html" type="button">Make a friend</button>
                         </div>
                         <div class="not-only__image-wrapper">
                             <picture><source srcset="../../assets/images/start-screen-puppy.webp" type="image/webp"><img class="not-only__image" src="../../assets/images/start-screen-puppy.webp" alt="Screen-puppy"></picture>
@@ -95,21 +96,21 @@
                                     <picture><source srcset="../../assets/images/pets-katrine.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-katrine.png" alt="Pets Katrine"></picture>
                                     <div class="our-friends-card__content">
                                         <p class="our-friends-card__title">Katrine</p>
-                                        <button class="our-friends-card__button">Learn more</button>
+                                        <button class="our-friends-card__button" data-pet-name="Katrine">Learn more</button>
                                     </div>
                                 </div>
                                 <div class="our-friends-card hidden-on-mobile">
                                     <picture><source srcset="../../assets/images/pets-jennifer.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-jennifer.png" alt="Pets Jennifer"></picture>
                                     <div class="our-friends-card__content">
                                         <p class="our-friends-card__title">Jennifer</p>
-                                        <button class="our-friends-card__button">Learn more</button>
+                                        <button class="our-friends-card__button" data-pet-name="Jennifer">Learn more</button>
                                     </div>
                                 </div>
                                 <div class="our-friends-card hidden-on-tablet">
                                     <picture><source srcset="../../assets/images/pets-woody.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-woody.png" alt="Pets Woody"></picture>
                                     <div class="our-friends-card__content">
                                         <p class="our-friends-card__title">Woody</p>
-                                        <button class="our-friends-card__button">Learn more</button>
+                                        <button class="our-friends-card__button" data-pet-name="Woody">Learn more</button>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +118,7 @@
                                 <picture><source srcset="../../assets/icons/arrow.svg" type="image/webp"><img src="../../assets/media/icons/arrow.svg" alt="Right arrow"></picture>
                             </button>
                         </div>
-                        <button type="button" class="our-friends__button">Get to know the rest</button>
+                        <button type="button" class="our-friends__button linkPets" data-link="../../pages/pets/pets.html">Get to know the rest</button>
                     </div>
                 </div>
             </section>
@@ -221,6 +222,7 @@
                 </div>
             </div>
         </footer>
+        <script src="../../assets/pets.json.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
