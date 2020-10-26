@@ -498,9 +498,6 @@
   .header-menu__list-link_disabled:hover {
     color: #FAFAFA;
     border-bottom: solid 3px #F1CDB3;
-    -webkit-transition: .5s;
-    -o-transition: .5s;
-    transition: .5s;
   }
   
   .header-burger-menu {
