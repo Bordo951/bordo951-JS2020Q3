@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../assets/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+        <title>Shelter</title>
+        <link rel="stylesheet" href="pets.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-logo linkPets" data-link="../../pages/main/main.html">
+                    <h1 class="header-logo__title">Cozy House</h1>
+                    <p class="header-logo__subtitle">Shelter for pets in Boston</p>
+                </div>
+                <nav class="header-menu">
+                    <ul class="header-menu__list">
+                        <li class="header-menu__list-item">
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="../../pages/main/main.html">About the shelter</a>
+                        </li>
+                        <li class="header-menu__list-item">
+                            <a class="header-menu__list-link header-menu__list-link_active" href="../../pages/pets/pets.html">Our pets</a>
+                        </li>
+                        <li class="header-menu__list-item">
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="javascript:void(0);">Help the shelter</a>
+                        </li>
+                        <li class="header-menu__list-item">
+                            <a class="header-menu__list-link header-menu__list-link_disabled" href="javascript:void(0);">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-burger-menu">
+                    <input class="header-burger-menu__toggle" id="header-burger-menu__toggle" type="checkbox" />
+                    <label class="header-burger-menu__button" for="header-burger-menu__toggle">
+                        <span></span>
+                    </label>
+                    <ul class="header-burger-menu__box">
+                        <li>
+                            <a class="header-burger-menu__item header-burger-menu__item_active" href="../../pages/main/main.html">About the shelter</a>
+                        </li>
+                        <li>
+                            <a class="header-burger-menu__item" href="../../pages/pets/pets.html">Our pets</a>
+                        </li>
+                        <li>
+                            <a class="header-burger-menu__item" href="javascript:void(0);">Help the shelter</a>
+                        </li>
+                        <li>
+                            <a class="header-burger-menu__item" href="javascript:void(0);">Contacts</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <main class="our-friends">
+            <div class="container">
+                <div class="our-friends__wrapper">
+                    <h3 class="our-friends__title">
+                        <span>Our friends who</span>
+                        <span>are looking for a house</span>
+                    </h3>
+                    <div class="our-friends-cards">
+                        <div class="our-friends-card">
+                            <picture><source srcset="../../assets/images/pets-katrine.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-katrine.png" alt="Pets Katrine"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Katrine</p>
+                                <button class="our-friends-card__button" data-pet-name="Katrine">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card">
+                            <picture><source srcset="../../assets/images/pets-jennifer.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-jennifer.png" alt="Pets Jennifer"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Jennifer</p>
+                                <button class="our-friends-card__button" data-pet-name="Jennifer">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card">
+                            <picture><source srcset="../../assets/images/pets-woody.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-woody.png" alt="Pets Woody"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Woody</p>
+                                <button class="our-friends-card__button" data-pet-name="Woody">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card hidden-on-mobile">
+                            <picture><source srcset="../../assets/images/pets-sophia.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-sophia.png" alt="Pets Sophia"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Sophia</p>
+                                <button class="our-friends-card__button" data-pet-name="Sophia">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card hidden-on-mobile">
+                            <picture><source srcset="../../assets/images/pets-timmy.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-timmy.png" alt="Pets Timmy"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Timmy</p>
+                                <button class="our-friends-card__button" data-pet-name="Timmy">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card hidden-on-mobile">
+                            <picture><source srcset="../../assets/images/pets-charly.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-charly.png" alt="Pets Charly"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Charly</p>
+                                <button class="our-friends-card__button" data-pet-name="Charly">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card hidden-on-tablet">
+                            <picture><source srcset="../../assets/images/pets-scarlett.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-scarlett.png" alt="Pets Scarlett"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Scarlett</p>
+                                <button class="our-friends-card__button" data-pet-name="Scarlett">Learn more</button>
+                            </div>
+                        </div>
+                        <div class="our-friends-card hidden-on-tablet">
+                            <picture><source srcset="../../assets/images/pets-freddie.webp" type="image/webp"><img class="our-friends-card__image" src="../../assets/images/pets-freddie.png" alt="Pets Freddie"></picture>
+                            <div class="our-friends-card__content">
+                                <p class="our-friends-card__title">Freddie</p>
+                                <button class="our-friends-card__button" data-pet-name="Freddie">Learn more</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="our-friends__puginator">
+                        <button disabled class="our-friends__puginator-button our-friends__puginator-button_inactive">&lt;&lt;</button>
+                        <button disabled class="our-friends__puginator-button our-friends__puginator-button_inactive">&lt;</button>
+                        <button class="our-friends__puginator-button our-friends__puginator-button_active">1</button>
+                        <button class="our-friends__puginator-button">&gt;</button>
+                        <button class="our-friends__puginator-button">&gt;&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-wrapper">
+                    <div class="footer-wrapper__contacts">
+                        <h3 class="footer-wrapper__title">For questions and suggestions</h3>
+                        <a class="footer-wrapper__contacts-link" href="mailto:email@shelter.com">
+                            <picture><source srcset="../../assets/icons/icon-email.svg" type="image/webp"><img class="footer-wrapper__contacts-link-image" src="../../assets/icons/icon-email.svg" alt="Mail"></picture>
+                            <p class="footer-wrapper__contacts-link-context">email@shelter.com</p>
+                        </a>
+                        <a class="footer-wrapper__contacts-link" href="tel:+13 674 567 75 54">
+                            <picture><source srcset="../../assets/icons/icon-phone.svg" type="image/webp"><img class="footer-wrapper__contacts-link-image" src="../../assets/icons/icon-phone.svg" alt="Phone"></picture>
+                            <p class="footer-wrapper__contacts-link-context">+13 674 567 75 54</p>
+                        </a>
+                    </div>
+                    <div class="footer-wrapper__location">
+                        <h3 class="footer-wrapper__title">We are waiting for your visit</h3>
+                        <a class="footer-wrapper__location-link" href="https://goo.gl/maps/ZCn8dZpXmArmnUhXA" target="_blank">
+                            <picture><source srcset="../../assets/icons/icon-marker.svg" type="image/webp"><img class="footer-wrapper__location-link-image" src="../../assets/icons/icon-marker.svg" alt="Marker"></picture>
+                            1 Central Street, Boston (entrance from the store)
+                        </a>
+                        <a class="footer-wrapper__location-link" href="https://goo.gl/maps/frg8D4vjpuCE5mWr8" target="_blank">
+                            <picture><source srcset="../../assets/icons/icon-marker.svg" type="image/webp"><img class="footer-wrapper__location-link-image" src="../../assets/icons/icon-marker.svg" alt="Marker"></picture>
+                            18 South Park, London
+                        </a>
+                    </div>
+                    <div class="footer-wrapper__wrapper">
+                        <picture><source srcset="../../assets/images/footer-puppy.webp" type="image/webp"><img class="footer-wrapper__wrapper-image" src="../../assets/images/footer-puppy.png" alt="footer-puppy"></picture>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="../../assets/pets.json.js"></script>
+        <script src="pets.js"></script>
+    </body>
+</html>
