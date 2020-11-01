@@ -8,6 +8,10 @@
   min-height: 300px;
 }
 
+.use-keyboard-input:focus {
+  outline: 0;
+}
+
 .keyboard {
   position: fixed;
   left: 0;
