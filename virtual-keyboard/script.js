@@ -13,6 +13,7 @@ const Keyboard = {
     properties: {
         value: "",
         capsLock: false,
+        shift: false,
         language: 'en'
     },
 
@@ -22,20 +23,37 @@ const Keyboard = {
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ",
             "caps", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "enter",
             "done", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".",
-            "ru", "space"
+            "ru", "space", "shift"
+        ],
+        ru_shift: [
+            "!", "\"", "№", ";", "%", ":", "?", "*", "(", ")", "backspace",
+            "Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ",
+            "caps", "Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Э", "enter",
+            "done", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ",",
+            "ru", "space", "shift"
         ],
         en: [
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
             "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]",
             "caps", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "enter",
             "done", "z", "x", "c", "v", "b", "n", "m", ",", ".", "?",
-            "en", "space"
+            "en", "space", "shift"
+        ],
+
+        en_shift: [
+            "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "backspace",
+            "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}",
+            "caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "\"", "enter",
+            "done", "Z", "X", "C", "V", "B", "N", "M", "<", ">", "/",
+            "en", "space", "shift"
         ]
     },
 
     lineBreaks: {
         ru: ["backspace", "ъ", "enter", "."],
-        en: ["backspace", "]", "enter", "?"]
+        ru_shift: ["backspace", "Ъ", "enter", ","],
+        en: ["backspace", "]", "enter", "?"],
+        en_shift: ["backspace", "}", "enter", "/"]
     },
 
     init() {
@@ -74,8 +92,11 @@ const Keyboard = {
         let keyLayout = this.keyLayouts[this.properties.language];
 
         // Creates HTML for an icon
-        const createIconHTML = (icon_name) => {
-            return `<i class="material-icons">${icon_name}</i>`;
+        const createIconHTML = function (icon_name, icon_caption) {
+            if (icon_caption === undefined) {
+                icon_caption = "";
+            }
+            return `<i class="material-icons">${icon_name}</i>${icon_caption}`;
         };
 
         keyLayout.forEach(key => {
@@ -100,12 +121,16 @@ const Keyboard = {
 
                 case "caps":
                     keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
-                    keyElement.innerHTML = createIconHTML("keyboard_capslock");
+                    keyElement.innerHTML = createIconHTML("keyboard_capslock", "caps lock");
 
                     keyElement.addEventListener("click", () => {
                         this._toggleCapsLock();
                         keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
                     });
+
+                    if (this.properties.capsLock) {
+                        keyElement.classList.add("keyboard__key--active");
+                    }
 
                     break;
 
@@ -158,11 +183,37 @@ const Keyboard = {
 
                     break;
 
-                default:
-                    keyElement.textContent = key.toLowerCase();
+                case "shift":
+                    keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
+                    keyElement.innerHTML = createIconHTML("publish", "shift");
 
                     keyElement.addEventListener("click", () => {
-                        this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
+                        this._toggleShift();
+                        keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
+                    });
+
+                    if (this.properties.shift) {
+                        keyElement.classList.add("keyboard__key--active");
+                    }
+
+                    break;
+
+                default:
+                    // keyElement.textContent = key.toLowerCase();
+                    keyElement.textContent = key;
+
+                    keyElement.addEventListener("click", () => {
+                        let addedValue;
+
+                        if (this.properties.shift) {
+                            addedValue = this.properties.capsLock ? key.toLowerCase() : key.toUpperCase();
+                        } else {
+                            addedValue = this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
+                        }
+
+                        this.properties.value += addedValue;
+
+                        // this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
                         this._triggerEvent("oninput");
                     });
 
@@ -190,20 +241,62 @@ const Keyboard = {
 
         for (const key of this.elements.keys) {
             if (key.childElementCount === 0) {
-                key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+                if (this.properties.shift) {
+                    key.textContent = this.properties.capsLock ? key.textContent.toLowerCase() : key.textContent.toUpperCase();
+                } else {
+                    key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+                }
             }
+
         }
     },
 
-    changeLanguage(language) {
-        let currentKeyboard = document.querySelectorAll('[data-lang='+this.properties.language+']'),
-            targetKeyboard;
+    _toggleShift() {
+        this.properties.shift = !this.properties.shift;
+        let keyboards = document.getElementsByClassName('keyboard');
 
-        currentKeyboard[0].classList.add('keyboard--hidden');
-        this.properties.language = language;
+        for (const keyboard of keyboards) {
+            keyboard.remove();
+        }
+
+        if (this.properties.shift) {
+            this.properties.language += '_shift';
+        } else {
+            this.properties.language = this.properties.language.replace('_shift', '');
+        }
         this.init();
+        //!this.properties.language
+        //if (language === "en") {add keyboard en shift} else {add keyboard ru shift}
 
-        targetKeyboard = document.querySelectorAll('[data-lang='+language+']');
+        // to lowwercase
+        for (const key of this.elements.keys) {
+            if (key.childElementCount === 0) {
+                if (this.properties.capsLock) {
+                    key.textContent = this.properties.shift ? key.textContent.toLowerCase() : key.textContent.toUpperCase();
+                } else {
+                    key.textContent = this.properties.shift ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
+                }
+            }
+
+        }
+
+        this.viewCurrentLanguageKeyboard();
+    },
+
+    changeLanguage(language) {
+        let currentKeyboard = document.querySelectorAll('[data-lang='+this.properties.language+']');
+
+        //currentKeyboard[0].classList.add('keyboard--hidden');
+        currentKeyboard[0].remove();
+        this.properties.language = language;
+        this.properties.capsLock = false;
+        this.properties.shift = false;
+        this.init();
+        this.viewCurrentLanguageKeyboard();
+    },
+
+    viewCurrentLanguageKeyboard() {
+        let targetKeyboard = document.querySelectorAll('[data-lang='+this.properties.language+']');
         targetKeyboard[0].classList.remove('keyboard--hidden');
         targetKeyboard[0].classList.remove('keyboard--trans');
     },
