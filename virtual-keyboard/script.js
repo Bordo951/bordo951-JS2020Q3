@@ -3,6 +3,7 @@ const Keyboard = {
     elements: {
         main: null,
         keysContainer: null,
+        audioContainer: null,
         keys: []
     },
 
@@ -15,6 +16,7 @@ const Keyboard = {
         value: "",
         capsLock: false,
         shift: false,
+        sound: false,
         language: 'en'
     },
 
@@ -24,21 +26,21 @@ const Keyboard = {
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ",
             "caps", "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э", "enter",
             "done", "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ".",
-            "ru", "space", "shift"
+            "sound", "ru", "space", "shift"
         ],
         ru_shift: [
             "!", "\"", "№", ";", "%", ":", "?", "*", "(", ")", "backspace",
             "Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ",
             "caps", "Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Э", "enter",
             "done", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ",",
-            "ru", "space", "shift"
+            "sound", "ru", "space", "shift"
         ],
         en: [
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
             "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]",
             "caps", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "enter",
             "done", "z", "x", "c", "v", "b", "n", "m", ",", ".", "?",
-            "en", "space", "shift"
+            "sound", "en", "space", "shift"
         ],
 
         en_shift: [
@@ -46,7 +48,7 @@ const Keyboard = {
             "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}",
             "caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "\"", "enter",
             "done", "Z", "X", "C", "V", "B", "N", "M", "<", ">", "/",
-            "en", "space", "shift"
+            "sound", "en", "space", "shift"
         ]
     },
 
@@ -73,7 +75,15 @@ const Keyboard = {
 
             this.elements.keys = this.elements.keysContainer.querySelectorAll(".keyboard__key");
 
-            // Add to DOM
+            // Add audio to DOM
+            if(document.querySelectorAll(".audio-list").length < 1) {
+                this.elements.audioContainer = document.createElement("div");
+                this.elements.audioContainer.classList.add("audio-list");
+                this.elements.audioContainer.innerHTML = this._createAudio();
+                document.body.appendChild(this.elements.audioContainer);
+            }
+
+            // Add keyboard to DOM
             this.elements.main.appendChild(this.elements.keysContainer);
             document.body.appendChild(this.elements.main);
 
@@ -86,6 +96,26 @@ const Keyboard = {
                 });
             });
         }
+    },
+
+    _createAudio() {
+        let audioHtml = '';
+
+        // Creates HTML for an audio
+        const createAudioHTML = function (key, src) {
+            return `<audio data-key="${key}" src="${src}"></audio>`;
+        };
+
+        ["en", "ru"].forEach(function (lang) {
+            ["backspace", "capslock", "default", "enter", "shift", "sound"].forEach(function (button) {
+                let src = `./assets/sounds/${lang}/${button}.mp3`,
+                    key = `${lang}_${button}`;
+
+                audioHtml += createAudioHTML(key, src);
+            });
+        });
+
+        return audioHtml;
     },
 
     _createKeys() {
@@ -117,6 +147,7 @@ const Keyboard = {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
                         this._triggerEvent("oninput");
                         input.focus();
+                        this._playLanguageSoundByKey("backspace");
                     });
 
                     break;
@@ -129,6 +160,7 @@ const Keyboard = {
                         this._toggleCapsLock();
                         keyElement.classList.toggle("keyboard__key--active", this.properties.capsLock);
                         input.focus();
+                        this._playLanguageSoundByKey("capslock");
                     });
 
                     if (this.properties.capsLock) {
@@ -145,6 +177,7 @@ const Keyboard = {
                         this.properties.value += "\n";
                         this._triggerEvent("oninput");
                         input.focus();
+                        this._playLanguageSoundByKey("enter");
                     });
 
                     break;
@@ -157,6 +190,7 @@ const Keyboard = {
                         this.properties.value += " ";
                         this._triggerEvent("oninput");
                         input.focus();
+                        this._playLanguageSoundByKey("default");
                     });
 
                     break;
@@ -168,7 +202,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.close();
                         this._triggerEvent("onclose");
-                        input.focus();
+                        this._playLanguageSoundByKey("default");
                     });
 
                     break;
@@ -178,6 +212,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.changeLanguage("ru");
                         input.focus();
+                        this._playLanguageSoundByKey("default");
                     });
 
                     break;
@@ -187,6 +222,7 @@ const Keyboard = {
                     keyElement.addEventListener("click", () => {
                         this.changeLanguage("en");
                         input.focus();
+                        this._playLanguageSoundByKey("default");
                     });
 
                     break;
@@ -199,9 +235,27 @@ const Keyboard = {
                         this._toggleShift();
                         keyElement.classList.toggle("keyboard__key--active", this.properties.shift);
                         input.focus();
+                        this._playLanguageSoundByKey("shift");
                     });
 
                     if (this.properties.shift) {
+                        keyElement.classList.add("keyboard__key--active");
+                    }
+
+                    break;
+
+                case "sound":
+                    keyElement.classList.add("keyboard__key--wide", "keyboard__key--activatable");
+                    keyElement.innerHTML = createIconHTML("volume_up");
+
+                    keyElement.addEventListener("click", () => {
+                        this._toggleSound();
+                        keyElement.classList.toggle("keyboard__key--active", this.properties.sound);
+                        input.focus();
+                        this._playLanguageSoundByKey("sound");
+                    });
+
+                    if (this.properties.sound) {
                         keyElement.classList.add("keyboard__key--active");
                     }
 
@@ -225,6 +279,7 @@ const Keyboard = {
                         // this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
                         this._triggerEvent("oninput");
                         input.focus();
+                        this._playLanguageSoundByKey("default");
                     });
 
                     break;
@@ -291,6 +346,21 @@ const Keyboard = {
         }
 
         this.viewCurrentLanguageKeyboard();
+    },
+
+    _toggleSound() {
+        this.properties.sound = !this.properties.sound;
+    },
+
+    _playLanguageSoundByKey(key) {
+        if (this.properties.sound) {
+            let currentLanguage = this.properties.language.replace('_shift', ''),
+                currentKey = `${currentLanguage}_${key}`,
+                currentAudio = document.querySelector('audio[data-key=' + currentKey + ']');
+
+            currentAudio.currentTime = 0;
+            currentAudio.play();
+        }
     },
 
     changeLanguage(language) {
