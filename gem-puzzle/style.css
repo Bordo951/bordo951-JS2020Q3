@@ -22,7 +22,7 @@ span {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+    position: relative;
 }
 
 .pauseGame {
@@ -32,6 +32,8 @@ span {
     font-weight: bold;
     color: rgba(255, 255, 255, 1);
     border: none;
+    position: absolute;
+    right: 0;
 }
 
 .pauseGame:disabled {
@@ -40,7 +42,7 @@ span {
 
 .pauseGame:hover:enabled {
     cursor: pointer;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+    text-shadow: 4px 4px 8px rgba(255, 255, 255, .8);
     text-decoration: underline;
     transition: 1s;
 }
@@ -53,10 +55,30 @@ span {
     font-family: Arial, sans-serif;
     font-size: 16px;
     color: rgba(255, 255, 255, 1);
+    position: absolute;
+    left: 160px;
 }
 
 .description {
-    padding-right: 5px;
+    margin-right: 10px;
+}
+
+.boxTime {
+    position: absolute;
+    left: 10px;
+}
+
+.descriptionTime {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 1);
+    margin-right: 5px;
+}
+
+#time {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 1);
 }
 
 .field {
@@ -97,7 +119,7 @@ span {
     cursor: pointer;
     font-size: 24px;
     color: rgba(255, 255, 255, 1);
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+    text-shadow: 4px 4px 5px rgba(255, 255, 255, .8);
     text-decoration: underline;
     transition: 1s;
 }

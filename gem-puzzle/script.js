@@ -1,20 +1,47 @@
-const field = document.createElement('div');
-const overlay = document.createElement('div');
-const newGame = document.createElement('button');
-const board = document.createElement('div')
-const moves = document.createElement('div');
-const pauseGameHTML = document.createElement('button');
-const cellSize = 100;
-let empty = {};
-let cells = [];
-let numbers = [... Array(15).keys()];
-let counterHtml = document.getElementsByClassName('counter');
-let counter = 0;
-let audioContainer = document.createElement('div');
-let sound = true;
+const field = document.createElement('div'),
+    overlay = document.createElement('div'),
+    newGame = document.createElement('button'),
+    board = document.createElement('div'),
+    moves = document.createElement('div'),
+    pauseGameHTML = document.createElement('button'),
+    boxTime = document.createElement('div'),
+    cellSize = 100,
+    time = document.createElement('time');
+let empty = {},
+    cells = [],
+    numbers = [... Array(15).keys()],
+    counterHtml = document.getElementsByClassName('counter'),
+    counter = 0,
+    audioContainer = document.createElement('div'),
+    sound = true,
+    today = new Date(0, 0, 0, 0, 0, 0),
+    timeCounter,
+    isTimeCounting = false;
+
 
 newGame.addEventListener('click', startGame);
 pauseGameHTML.addEventListener('click', pauseGame);
+
+
+function showTime() {
+    let min = today.getMinutes(),
+        sec = today.getSeconds();
+
+    // Output Time
+    time.innerHTML = `${addZero(min)}<span>:</span>${addZero(sec)}`;
+    updateTime();
+    timeCounter = setTimeout(showTime, 500);
+}
+
+function addZero(n) {
+    return (parseInt(n, 10) < 10 ? '0' : '') + n;
+}
+
+function updateTime() {
+    if(isTimeCounting) {
+        today.setMilliseconds(today.getMilliseconds() + 500);
+    }
+}
 
 function playSoundByKey(key) {
     let currentAudio;
@@ -49,14 +76,17 @@ function createAudio() {
 
 function resumeGame() {
     pauseGameHTML.innerHTML = 'Pause Game';
+    isTimeCounting = true;
     pauseGameHTML.removeEventListener('click', resumeGame, false);
     pauseGameHTML.addEventListener('click', pauseGame);
     overlay.remove();
 }
 
 function pauseGame() {
+    isTimeCounting = false;
     addOverlay();
     pauseGameHTML.innerHTML = 'Resume Game';
+
     pauseGameHTML.removeEventListener('click', pauseGame, false);
     pauseGameHTML.addEventListener('click', resumeGame);
 }
@@ -69,8 +99,14 @@ function startGame() {
     pauseGameHTML.disabled = false;
     counter = 0;
     counterHtml[0].innerHTML = 0;
+
     removeCells();
     createCells();
+
+    isTimeCounting = true;
+    today = new Date(0, 0, 0, 0, 0, 0);
+    clearTimeout(timeCounter);
+    showTime();
 }
 
 function increaseCounterHtml() {
@@ -94,6 +130,13 @@ function createGameHTML() {
     document.body.append(board);
 
     addOverlay();
+
+    boxTime.className = 'boxTime';
+    boxTime.innerHTML = '<span class="descriptionTime">Time</span>'
+    board.append(boxTime);
+    time.id = 'time';
+    time.innerHTML = '00:00';
+    boxTime.append(time);
 
     moves.className = 'moves';
     board.append(moves);
