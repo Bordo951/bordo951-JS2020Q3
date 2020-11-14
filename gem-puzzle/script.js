@@ -10,9 +10,42 @@ let cells = [];
 let numbers = [... Array(15).keys()];
 let counterHtml = document.getElementsByClassName('counter');
 let counter = 0;
+let audioContainer = document.createElement('div');
+let sound = true;
 
 newGame.addEventListener('click', startGame);
 pauseGameHTML.addEventListener('click', pauseGame);
+
+function playSoundByKey(key) {
+    let currentAudio;
+
+    if (sound) {
+        currentAudio = document.querySelector('audio[data-key=' + key + ']');
+        currentAudio.currentTime = 0;
+        currentAudio.play();
+    }
+}
+
+function createAudio() {
+    let audioHtml = '';
+
+    // Creates HTML for an audio
+    const createAudioHTML = function (key, src) {
+        return `<audio data-key="${key}" src="${src}"></audio>`;
+    };
+
+
+        ['click-cell'].forEach(function (sound) {
+            let src = `./media/sound/${sound}.mp3`,
+                key = `${sound}`;
+
+            audioHtml += createAudioHTML(key, src);
+        });
+
+    return audioHtml;
+}
+
+
 
 function resumeGame() {
     pauseGameHTML.innerHTML = 'Pause Game';
@@ -54,6 +87,9 @@ function addOverlay() {
 }
 
 function createGameHTML() {
+    audioContainer.innerHTML = createAudio();
+    document.body.append(audioContainer);
+
     board.className = 'board';
     document.body.append(board);
 
@@ -67,7 +103,7 @@ function createGameHTML() {
     pauseGameHTML.innerHTML = 'Pause Game';
     board.append(pauseGameHTML);
 
-    moves.innerHTML = '<span class = "description">Moves </span><span class="counter"></span>';
+    moves.innerHTML = '<span class="description">Moves</span><span class="counter"></span>';
     counterHtml[0].innerHTML = 0;
 
     field.className = 'field';
@@ -94,6 +130,7 @@ function move(index) {
     cell.top = emptyTop;
 
     increaseCounterHtml();
+    playSoundByKey('click-cell');
 
     const isFinished = cells.every(cell => {
         if(cell.value > 0) {

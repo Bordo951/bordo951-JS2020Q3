@@ -8,7 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    background-image: url('./media/wood.jpg');
 }
 
 span {
@@ -17,22 +17,25 @@ span {
 
 .board {
     width: 400px;
+    height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .pauseGame {
     background: transparent;
+    font-family: Arial, sans-serif;
     font-size: 18px;
     font-weight: bold;
-    color: rgba(0, 0, 0, .8);
+    color: rgba(255, 255, 255, 1);
     border: none;
 }
 
 .pauseGame:disabled {
-    color: rgba(0, 0, 0, .3);
+    color: rgba(255, 255, 255, .3);
 }
 
 .pauseGame:hover:enabled {
@@ -46,6 +49,16 @@ span {
     outline: 0;
 }
 
+.moves {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.description {
+    padding-right: 5px;
+}
+
 .field {
     width: 400px;
     height: 400px;
@@ -53,6 +66,7 @@ span {
     border-radius: 10px;
     position: relative;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, .6);
 }
 
 .overlay {
@@ -96,7 +110,7 @@ span {
     box-sizing: border-box;
     width: 100px;
     height: 100px;
-    border: 3px solid blue;
+    border: 3px solid rgba(255, 255, 255, .6);
     border-radius: 10px;
     position: absolute;
     display: flex;
@@ -107,4 +121,5 @@ span {
     font-family: 'ArchitectsDaughter', Arial, sans-serif;
     font-weight: 500;
     font-size: 45px;
+    background-image: url('./media/pattern-3371709_640.jpg');
 }
