@@ -145,3 +145,66 @@ span {
     font-size: 45px;
     background-image: url('./media/pattern-3371709_640.jpg');
 }
+
+.sound {
+    cursor: pointer;
+    margin-top: 30px;
+    padding: 0;
+    display: block;
+    float: left;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 3px;
+}
+
+.sound:before,
+.sound:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    height: 38px;
+    width: 39px;
+    bottom: -3px;
+    border-radius: 3px;
+    border: 1px solid #535353;
+    border-bottom: 1px solid #343434;
+}
+
+.sound:before {
+    height: 38px;
+    bottom: -4px;
+    border-top: 0;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 1px 1px 0 #bfbfbf;
+}
+
+.sound:after {
+    border: 1px solid #5a5a5a;
+}
+
+.sound,
+.sound:hover,
+.sound:visited {
+    color: #fff;
+    border-bottom: 4px solid #414141;
+    text-shadow: 0 1px 0 #2f2f2f;
+    background: #656565;
+    background: -webkit-gradient(linear, left top, left bottom, from(#656565), to(#444));
+    background: -moz-linear-gradient(top,  #656565,  #444);
+    box-shadow: inset 1px 1px 0 #939393;
+}
+
+.sound:hover {
+    background: #444;
+    background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#656565));
+    background: -moz-linear-gradient(top,  #444,  #656565);
+}
+
+.sound:focus {
+    outline: 0;
+}
+
+.material-icons {
+    margin: 5px;
+}

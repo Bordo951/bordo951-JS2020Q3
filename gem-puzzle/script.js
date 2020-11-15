@@ -6,7 +6,9 @@ const field = document.createElement('div'),
     pauseGameHTML = document.createElement('button'),
     boxTime = document.createElement('div'),
     cellSize = 100,
-    time = document.createElement('time');
+    time = document.createElement('time'),
+    soundHTML = document.createElement('button'),
+    sounds = ['click-cell', 'sound-press'];
 let empty = {},
     cells = [],
     numbers = [... Array(15).keys()],
@@ -22,6 +24,34 @@ let empty = {},
 newGame.addEventListener('click', startGame);
 pauseGameHTML.addEventListener('click', pauseGame);
 
+soundHTML.addEventListener('click', turnOffSound);
+
+const createIconHTML = function (icon_name, icon_caption) {
+    if (icon_caption === undefined) {
+        icon_caption = "";
+    }
+    return `<i class="material-icons">${icon_name}</i>${icon_caption}`;
+};
+
+function turnOffSound () {
+    playSoundByKey('sound-press');
+
+    soundHTML.innerHTML = createIconHTML("volume_off");
+    sound = false;
+
+    soundHTML.removeEventListener('click', turnOffSound, false);
+    soundHTML.addEventListener('click', turnOnSound);
+}
+
+function turnOnSound() {
+    sound = true;
+    soundHTML.innerHTML = createIconHTML("volume_up");
+
+    soundHTML.removeEventListener('click', turnOnSound, false);
+    soundHTML.addEventListener('click', turnOffSound);
+
+    playSoundByKey('sound-press');
+}
 
 function showTime() {
     let min = today.getMinutes(),
@@ -62,7 +92,7 @@ function createAudio() {
     };
 
 
-        ['click-cell'].forEach(function (sound) {
+        sounds.forEach(function (sound) {
             let src = `./media/sound/${sound}.mp3`,
                 key = `${sound}`;
 
@@ -151,6 +181,10 @@ function createGameHTML() {
 
     field.className = 'field';
     document.body.append(field);
+
+    soundHTML.className = 'sound';
+    soundHTML.innerHTML = createIconHTML("volume_up");
+    document.body.append(soundHTML);
 }
 
 function move(index) {
