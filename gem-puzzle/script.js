@@ -254,7 +254,14 @@ function move(index) {
     });
 
     if(isFinished) {
-        alert('You won!');
+        let min = gameTime.getMinutes(),
+            sec = gameTime.getSeconds(),
+            finishedTime = `${addZero(min)}:${addZero(sec)}`,
+            finishedMoves = gameMoves;
+
+        isGameTimeCounting = false;
+
+        alert(`Hurrah! You solved the puzzle in ${finishedTime} and ${finishedMoves} moves.`);
     }
 }
 
