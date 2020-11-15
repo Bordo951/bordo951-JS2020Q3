@@ -130,8 +130,6 @@ span {
 
 .cell {
     box-sizing: border-box;
-    width: 100px;
-    height: 100px;
     border: 3px solid rgba(255, 255, 255, .6);
     border-radius: 10px;
     position: absolute;
@@ -142,7 +140,8 @@ span {
     cursor: pointer;
     font-family: 'ArchitectsDaughter', Arial, sans-serif;
     font-weight: 500;
-    font-size: 45px;
+    font-size: 35px;
+    letter-spacing: 0;
     background-image: url('./media/pattern-3371709_640.jpg');
 }
 

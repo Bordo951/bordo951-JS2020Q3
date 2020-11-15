@@ -1,30 +1,32 @@
-const field = document.createElement('div'),
-    overlay = document.createElement('div'),
-    newGame = document.createElement('button'),
-    board = document.createElement('div'),
-    moves = document.createElement('div'),
+const fieldHTML = document.createElement('div'),
+    overlayHTML = document.createElement('div'),
+    newGameMenuHTML = document.createElement('button'),
+    boardHTML = document.createElement('div'),
+    movesHTML = document.createElement('div'),
     pauseGameHTML = document.createElement('button'),
-    boxTime = document.createElement('div'),
-    cellSize = 100,
-    time = document.createElement('time'),
-    soundHTML = document.createElement('button'),
-    sounds = ['click-cell', 'sound-press'];
-let empty = {},
-    cells = [],
-    numbers = [... Array(15).keys()],
-    counterHtml = document.getElementsByClassName('counter'),
-    counter = 0,
+    boxTimeHTML = document.createElement('div'),
+    timeHTML = document.createElement('time'),
+    gameSoundHTML = document.createElement('button'),
+    gameSounds = ['click-cell', 'sound-press'];
+let cellEmpty = {},
+    fieldSize = 4,
+    cellSize = 400 / fieldSize,
+    fieldCells = [],
+    cellsNumbers = Math.pow(fieldSize, 2) - 1,
+    fieldNumbers = [... Array(cellsNumbers).keys()],
+    gameMovesHtml = document.getElementsByClassName('game-moves'),
+    gameMoves = 0,
     audioContainer = document.createElement('div'),
-    sound = true,
-    today = new Date(0, 0, 0, 0, 0, 0),
-    timeCounter,
-    isTimeCounting = false;
+    isGameSound = true,
+    gameTime = new Date(0, 0, 0, 0, 0, 0),
+    gameTimeCounter,
+    isGameTimeCounting = false;
 
 
-newGame.addEventListener('click', startGame);
+newGameMenuHTML.addEventListener('click', startGame);
 pauseGameHTML.addEventListener('click', pauseGame);
 
-soundHTML.addEventListener('click', turnOffSound);
+gameSoundHTML.addEventListener('click', turnOffSound);
 
 const createIconHTML = function (icon_name, icon_caption) {
     if (icon_caption === undefined) {
@@ -36,31 +38,31 @@ const createIconHTML = function (icon_name, icon_caption) {
 function turnOffSound () {
     playSoundByKey('sound-press');
 
-    soundHTML.innerHTML = createIconHTML("volume_off");
-    sound = false;
+    gameSoundHTML.innerHTML = createIconHTML("volume_off");
+    isGameSound = false;
 
-    soundHTML.removeEventListener('click', turnOffSound, false);
-    soundHTML.addEventListener('click', turnOnSound);
+    gameSoundHTML.removeEventListener('click', turnOffSound, false);
+    gameSoundHTML.addEventListener('click', turnOnSound);
 }
 
 function turnOnSound() {
-    sound = true;
-    soundHTML.innerHTML = createIconHTML("volume_up");
+    isGameSound = true;
+    gameSoundHTML.innerHTML = createIconHTML("volume_up");
 
-    soundHTML.removeEventListener('click', turnOnSound, false);
-    soundHTML.addEventListener('click', turnOffSound);
+    gameSoundHTML.removeEventListener('click', turnOnSound, false);
+    gameSoundHTML.addEventListener('click', turnOffSound);
 
     playSoundByKey('sound-press');
 }
 
 function showTime() {
-    let min = today.getMinutes(),
-        sec = today.getSeconds();
+    let min = gameTime.getMinutes(),
+        sec = gameTime.getSeconds();
 
     // Output Time
-    time.innerHTML = `${addZero(min)}<span>:</span>${addZero(sec)}`;
+    timeHTML.innerHTML = `${addZero(min)}<span>:</span>${addZero(sec)}`;
     updateTime();
-    timeCounter = setTimeout(showTime, 500);
+    gameTimeCounter = setTimeout(showTime, 500);
 }
 
 function addZero(n) {
@@ -68,15 +70,15 @@ function addZero(n) {
 }
 
 function updateTime() {
-    if(isTimeCounting) {
-        today.setMilliseconds(today.getMilliseconds() + 500);
+    if(isGameTimeCounting) {
+        gameTime.setMilliseconds(gameTime.getMilliseconds() + 500);
     }
 }
 
 function playSoundByKey(key) {
     let currentAudio;
 
-    if (sound) {
+    if (isGameSound) {
         currentAudio = document.querySelector('audio[data-key=' + key + ']');
         currentAudio.currentTime = 0;
         currentAudio.play();
@@ -92,12 +94,12 @@ function createAudio() {
     };
 
 
-        sounds.forEach(function (sound) {
-            let src = `./media/sound/${sound}.mp3`,
-                key = `${sound}`;
+    gameSounds.forEach(function (sound) {
+        let src = `./media/sound/${sound}.mp3`,
+            key = `${sound}`;
 
-            audioHtml += createAudioHTML(key, src);
-        });
+        audioHtml += createAudioHTML(key, src);
+    });
 
     return audioHtml;
 }
@@ -106,14 +108,14 @@ function createAudio() {
 
 function resumeGame() {
     pauseGameHTML.innerHTML = 'Pause Game';
-    isTimeCounting = true;
+    isGameTimeCounting = true;
     pauseGameHTML.removeEventListener('click', resumeGame, false);
     pauseGameHTML.addEventListener('click', pauseGame);
-    overlay.remove();
+    overlayHTML.remove();
 }
 
 function pauseGame() {
-    isTimeCounting = false;
+    isGameTimeCounting = false;
     addOverlay();
     pauseGameHTML.innerHTML = 'Resume Game';
 
@@ -123,95 +125,95 @@ function pauseGame() {
 
 function startGame() {
     resumeGame();
-    cells = [];
-    numbers = [... Array(15).keys()]
+    fieldCells = [];
+    fieldNumbers = [... Array(cellsNumbers).keys()]
         .sort(() => Math.random() - 0.5);
     pauseGameHTML.disabled = false;
-    counter = 0;
-    counterHtml[0].innerHTML = 0;
+    gameMoves = 0;
+    gameMovesHtml[0].innerHTML = 0;
 
     removeCells();
     createCells();
 
-    isTimeCounting = true;
-    today = new Date(0, 0, 0, 0, 0, 0);
-    clearTimeout(timeCounter);
+    isGameTimeCounting = true;
+    gameTime = new Date(0, 0, 0, 0, 0, 0);
+    clearTimeout(gameTimeCounter);
     showTime();
 }
 
-function increaseCounterHtml() {
-    counterHtml[0].innerHTML = ++counter;
+function increaseGameMovesHtml() {
+    gameMovesHtml[0].innerHTML = ++gameMoves;
 }
 
 function addOverlay() {
-    newGame.className = 'menu-item';
-    newGame.innerHTML = 'New Game';
-    overlay.append(newGame);
+    newGameMenuHTML.className = 'menu-item';
+    newGameMenuHTML.innerHTML = 'New Game';
+    overlayHTML.append(newGameMenuHTML);
 
-    overlay.className = 'overlay';
-    field.append(overlay);
+    overlayHTML.className = 'overlay';
+    fieldHTML.append(overlayHTML);
 }
 
 function createGameHTML() {
     audioContainer.innerHTML = createAudio();
     document.body.append(audioContainer);
 
-    board.className = 'board';
-    document.body.append(board);
+    boardHTML.className = 'board';
+    document.body.append(boardHTML);
 
     addOverlay();
 
-    boxTime.className = 'boxTime';
-    boxTime.innerHTML = '<span class="descriptionTime">Time</span>'
-    board.append(boxTime);
-    time.id = 'time';
-    time.innerHTML = '00:00';
-    boxTime.append(time);
+    boxTimeHTML.className = 'boxTime';
+    boxTimeHTML.innerHTML = '<span class="descriptionTime">Time</span>'
+    boardHTML.append(boxTimeHTML);
+    timeHTML.id = 'time';
+    timeHTML.innerHTML = '00:00';
+    boxTimeHTML.append(timeHTML);
 
-    moves.className = 'moves';
-    board.append(moves);
+    movesHTML.className = 'moves';
+    boardHTML.append(movesHTML);
 
     pauseGameHTML.disabled = true;
     pauseGameHTML.className = 'pauseGame';
     pauseGameHTML.innerHTML = 'Pause Game';
-    board.append(pauseGameHTML);
+    boardHTML.append(pauseGameHTML);
 
-    moves.innerHTML = '<span class="description">Moves</span><span class="counter"></span>';
-    counterHtml[0].innerHTML = 0;
+    movesHTML.innerHTML = '<span class="description">Moves</span><span class="game-moves"></span>';
+    gameMovesHtml[0].innerHTML = 0;
 
-    field.className = 'field';
-    document.body.append(field);
+    fieldHTML.className = 'field';
+    document.body.append(fieldHTML);
 
-    soundHTML.className = 'sound';
-    soundHTML.innerHTML = createIconHTML("volume_up");
-    document.body.append(soundHTML);
+    gameSoundHTML.className = 'sound';
+    gameSoundHTML.innerHTML = createIconHTML("volume_up");
+    document.body.append(gameSoundHTML);
 }
 
 function move(index) {
-    const cell = cells[index];
-    const leftDiff = Math.abs(empty.left - cell.left);
-    const topDiff = Math.abs(empty.top - cell.top);
+    const cell = fieldCells[index];
+    const leftDiff = Math.abs(cellEmpty.left - cell.left);
+    const topDiff = Math.abs(cellEmpty.top - cell.top);
 
     if (leftDiff+topDiff > 1) {
         return;
     }
 
-    cell.element.style.left = `${empty.left * cellSize}px`;
-    cell.element.style.top = `${empty.top * cellSize}px`;
+    cell.element.style.left = `${cellEmpty.left * cellSize}px`;
+    cell.element.style.top = `${cellEmpty.top * cellSize}px`;
 
-    const emptyLeft = empty.left;
-    const emptyTop = empty.top;
-    empty.left = cell.left;
-    empty.top = cell.top;
-    cell.left = emptyLeft;
-    cell.top = emptyTop;
+    const cellEmptyLeft = cellEmpty.left;
+    const cellEmptyTop = cellEmpty.top;
+    cellEmpty.left = cell.left;
+    cellEmpty.top = cell.top;
+    cell.left = cellEmptyLeft;
+    cell.top = cellEmptyTop;
 
-    increaseCounterHtml();
+    increaseGameMovesHtml();
     playSoundByKey('click-cell');
 
-    const isFinished = cells.every(cell => {
+    const isFinished = fieldCells.every(cell => {
         if(cell.value > 0) {
-            return cell.value - 1 === cell.top * 4 + cell.left;
+            return cell.value - 1 === cell.top * fieldSize + cell.left;
         } else {
             return true;
         }
@@ -223,16 +225,18 @@ function move(index) {
 }
 
 function createCells() {
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < cellsNumbers; i++) {
         const cell = document.createElement('div');
-        const value = numbers[i] + 1;
+        const value = fieldNumbers[i] + 1;
         cell.className = 'cell';
         cell.innerHTML = value;
+        cell.style.height = `${cellSize}px`;
+        cell.style.width = `${cellSize}px`;
 
-        const left = i % 4;
-        const top = (i - left) / 4;
+        const left = i % fieldSize;
+        const top = (i - left) / fieldSize;
 
-        cells.push({
+        fieldCells.push({
             value: value,
             left: left,
             top: top,
@@ -242,24 +246,24 @@ function createCells() {
         cell.style.left = `${left * cellSize}px`;
         cell.style.top = `${top * cellSize}px`;
 
-        field.append(cell);
+        fieldHTML.append(cell);
 
         cell.addEventListener('click', () => {
             move(i);
         })
     }
 
-    empty = {
+    cellEmpty = {
         value: 0,
-        top: 3,
-        left: 3
+        top: fieldSize - 1,
+        left: fieldSize - 1
     };
 
-    cells.push(empty);
+    fieldCells.push(cellEmpty);
 }
 
 function removeCells() {
-    field.innerHTML = '';
+    fieldHTML.innerHTML = '';
 }
 
 function createGame() {
