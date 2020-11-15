@@ -113,6 +113,7 @@ span {
     background: transparent;
     border: none;
     transition: color 1s ease-out;
+    margin-bottom: 10px;
 }
 
 .menu-item:hover {
@@ -126,6 +127,43 @@ span {
 
 .menu-item:focus {
     outline: 0;
+}
+
+.field-size {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.field-size-name {
+    margin-right: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: rgba(255, 255, 255, .8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+    background: transparent;
+    border: none;
+    transition: color 1s ease-out;
+}
+
+.field-size-select {
+    display: inline-block;
+    background: rgba(255, 255, 255, .3);
+    border: 2px solid rgba(0, 0, 0, 1);
+    border-radius: 8px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, .8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+.field-size-select:focus {
+    outline: 0;
+}
+
+option {
+    color: black;
 }
 
 .cell {

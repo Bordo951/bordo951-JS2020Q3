@@ -7,7 +7,10 @@ const fieldHTML = document.createElement('div'),
     boxTimeHTML = document.createElement('div'),
     timeHTML = document.createElement('time'),
     gameSoundHTML = document.createElement('button'),
-    gameSounds = ['click-cell', 'sound-press'];
+    gameSounds = ['click-cell', 'sound-press'],
+    boxFieldSizeHTML = document.createElement('div'),
+    fieldSizeHTML = document.createElement('select'),
+    fieldSizes = [3, 4, 5, 6, 7, 8];
 let cellEmpty = {},
     fieldSize = 4,
     cellSize = 400 / fieldSize,
@@ -25,8 +28,16 @@ let cellEmpty = {},
 
 newGameMenuHTML.addEventListener('click', startGame);
 pauseGameHTML.addEventListener('click', pauseGame);
-
 gameSoundHTML.addEventListener('click', turnOffSound);
+fieldSizeHTML.addEventListener('change', handleFieldSizeChange);
+
+function handleFieldSizeChange() {
+    fieldSize = parseInt(this.value);
+    cellSize = 400 / fieldSize;
+    cellsNumbers = Math.pow(fieldSize, 2) - 1;
+    fieldNumbers = [... Array(cellsNumbers).keys()]
+        .sort(() => Math.random() - 0.5);
+}
 
 const createIconHTML = function (icon_name, icon_caption) {
     if (icon_caption === undefined) {
@@ -104,8 +115,6 @@ function createAudio() {
     return audioHtml;
 }
 
-
-
 function resumeGame() {
     pauseGameHTML.innerHTML = 'Pause Game';
     isGameTimeCounting = true;
@@ -145,10 +154,35 @@ function increaseGameMovesHtml() {
     gameMovesHtml[0].innerHTML = ++gameMoves;
 }
 
+function getOptionsHTML() {
+    let optionsHTML = '';
+    const createOptionHTML = function (field_size) {
+        let selectedAttribute = '';
+
+        if(field_size === fieldSize) {
+            selectedAttribute = 'selected="selected" ';
+        }
+
+        return `<option ${selectedAttribute}value="${field_size}">${field_size}x${field_size}</option>`;
+    };
+    fieldSizes.forEach(function (field_size) {
+        optionsHTML += createOptionHTML(field_size);
+    });
+
+    return optionsHTML;
+}
+
 function addOverlay() {
     newGameMenuHTML.className = 'menu-item';
     newGameMenuHTML.innerHTML = 'New Game';
     overlayHTML.append(newGameMenuHTML);
+
+    boxFieldSizeHTML.className = 'field-size';
+    boxFieldSizeHTML.innerHTML = '<span class="field-size-name">Field size</span>';
+    overlayHTML.append(boxFieldSizeHTML);
+    fieldSizeHTML.className = 'field-size-select';
+    fieldSizeHTML.innerHTML = getOptionsHTML();
+    boxFieldSizeHTML.append(fieldSizeHTML);
 
     overlayHTML.className = 'overlay';
     fieldHTML.append(overlayHTML);
