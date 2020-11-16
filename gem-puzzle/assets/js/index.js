@@ -70,6 +70,54 @@ function handleClickOnBackButton() {
     overlayHTML.classList.remove('hidden');
 }
 
+function getSavedGameByStateId(stateId) {
+    let savedGames = JSON.parse(localStorage.getItem('savedGames')),
+        result = null;
+
+    savedGames.forEach(function (savedGame) {
+        if(savedGame.stateId === stateId) {
+            result = savedGame;
+        }
+    });
+
+    return result;
+}
+
+function handleClickOnSavedGame() {
+    let savedGame = getSavedGameByStateId(this.dataset.stateId);
+
+    resumeGame();
+    fieldCells = savedGame.fieldCells;
+    fieldNumbers = savedGame.fieldNumbers;
+
+    pauseGameHTML.disabled = false;
+
+    gameMoves = savedGame.gameMoves;
+    gameMovesHtml[0].innerHTML = savedGame.gameMoves;
+
+    fieldSize = savedGame.fieldSize;
+    cellSize = 400 / fieldSize;
+    fieldCells = [];
+    cellsNumbers = Math.pow(fieldSize, 2) - 1;
+
+    removeCells();
+    createCells();
+
+    isGameTimeCounting = true;
+    gameTime = new Date(0, 0, 0, 0, 0, 0);
+    gameTime.setMinutes(savedGame.gameTime.min);
+    gameTime.setSeconds(savedGame.gameTime.sec);
+
+    clearTimeout(gameTimeCounter);
+    showTime();
+
+    overlaySavedGamesHTML.remove();
+    overlayHTML.remove();
+
+    removeCells();
+    createCells();
+}
+
 function handleClickOnSavedGames() {
     overlayHTML.classList.add('hidden');
 
@@ -79,6 +127,12 @@ function handleClickOnSavedGames() {
     savedGamesContainerHTML.className = 'saved-games-container';
     savedGamesContainerHTML.innerHTML = getSavedGamesHTML();
     overlaySavedGamesHTML.append(savedGamesContainerHTML);
+
+    let loadGamesElements = document.getElementsByClassName('load-game');
+
+    for (let loadGamesElement of loadGamesElements) {
+        loadGamesElement.addEventListener('click', handleClickOnSavedGame);
+    }
 
     backButtonHTML.classList.add('menu-item');
     backButtonHTML.classList.add('back-button');
@@ -128,6 +182,8 @@ function getParamsForSaveGame() {
         },
         gameMoves: gameMoves,
         fieldSize: fieldSizeForSave,
+        fieldNumbers: fieldNumbers,
+        fieldCells: fieldCells,
         savedAt: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
     };
 }
@@ -150,10 +206,6 @@ function saveParamsToStorage(params) {
         savedGames.push(params);
         localStorage.setItem('savedGames', JSON.stringify(savedGames));
     }
-}
-
-function loadParamsFromStorage() {
-
 }
 
 function handleFieldSizeChange() {

@@ -3,7 +3,7 @@ import {helper} from "./helper";
 let component = {
     createSavedGameHTML: function (savedGame) {
         let innerSavedGameText = this.buildInnerSavedGameText(savedGame);
-        return `<button data-stateId="${savedGame.stateId}" class="load-game">${innerSavedGameText}</button>`;
+        return `<button data-state-id="${savedGame.stateId}" class="load-game">${innerSavedGameText}</button>`;
     },
 
     buildInnerSavedGameText: function(savedGame) {
