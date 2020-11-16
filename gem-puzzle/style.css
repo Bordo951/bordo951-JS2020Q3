@@ -188,14 +188,14 @@ span {
     outline: 0;
 }
 
-.field-size {
+.field-option {
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.field-size-name {
+.field-option-title {
     margin-right: 15px;
     font-family: Arial, sans-serif;
     font-size: 24px;
@@ -206,7 +206,7 @@ span {
     transition: color 1s ease-out;
 }
 
-.field-size-select {
+.field-option-select {
     display: inline-block;
     background: rgba(255, 255, 255, .3);
     border: 2px solid rgba(0, 0, 0, 1);
@@ -218,7 +218,7 @@ span {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
 }
 
-.field-size-select:focus {
+.field-option-select:focus {
     outline: 0;
 }
 
@@ -256,6 +256,13 @@ option {
     font-size: 35px;
     letter-spacing: 0;
     background-image: url('./media/pattern-3371709_640.jpg');
+}
+
+.cell-image {
+    background-size: 400px;
+    border-radius: 0;
+    border: none;
+    color: transparent;
 }
 
 .sound {

@@ -12,11 +12,14 @@ const fieldHTML = document.createElement('div'),
     boxFieldSizeHTML = document.createElement('div'),
     fieldSizeHTML = document.createElement('select'),
     fieldSizes = [3, 4, 5, 6, 7, 8],
+    gameFields = ['numbers', 'image'],
     saveGameHTML = document.createElement('button'),
     savedGamesHTML = document.createElement('button'),
     savedGamesContainerHTML = document.createElement('div'),
     backButtonHTML = document.createElement('button'),
-    postscriptHTML = document.createElement('p');
+    postscriptHTML = document.createElement('p'),
+    boxGameImageHTML = document.createElement('div'),
+    gameImageHTML = document.createElement('select');
 let cellEmpty = {},
     fieldSizeForSave = 0,
     fieldSize = 4,
@@ -31,7 +34,9 @@ let cellEmpty = {},
     stateId = null,
     gameTime = new Date(0, 0, 0, 0, 0, 0),
     gameTimeCounter,
-    isGameTimeCounting = false;
+    isGameTimeCounting = false,
+    gameField = 'numbers',
+    gameFieldImageId = null;
 
 
 newGameMenuHTML.addEventListener('click', startGame);
@@ -41,6 +46,28 @@ fieldSizeHTML.addEventListener('change', handleFieldSizeChange);
 saveGameHTML.addEventListener('click', saveGame);
 savedGamesHTML.addEventListener('click', handleClickOnSavedGames);
 backButtonHTML.addEventListener('click', handleClickOnBackButton);
+gameImageHTML.addEventListener('change', handleGameFieldChange);
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function setRandomGameFieldImage() {
+    let newGameFieldImageId = gameFieldImageId;
+
+    while(gameFieldImageId === newGameFieldImageId){
+        newGameFieldImageId = getRandomInt(150);
+    }
+
+    gameFieldImageId = newGameFieldImageId;
+}
+
+function handleGameFieldChange() {
+    console.log(this.value);
+
+    gameField = this.value;
+    setRandomGameFieldImage();
+}
 
 function handleClickOnBackButton() {
     overlaySavedGamesHTML.remove();
@@ -255,6 +282,10 @@ function startGame() {
     gameMoves = 0;
     gameMovesHtml[0].innerHTML = 0;
 
+    if (isGameImage()) {
+        setRandomGameFieldImage();
+    }
+
     removeCells();
     createCells();
 
@@ -286,6 +317,28 @@ function getOptionsHTML() {
     return optionsHTML;
 }
 
+function getGameFieldOptionsHTML() {
+    let gameFieldHTML = '';
+    const createOptionHTML = function (field) {
+        let selectedField = '';
+
+        if(field === gameField) {
+            selectedField = 'selected="selected" ';
+        }
+
+        return `<option ${selectedField}value="${field}">${field}</option>`;
+    };
+    gameFields.forEach(function (field) {
+        gameFieldHTML += createOptionHTML(field);
+    });
+
+    return gameFieldHTML;
+}
+
+function isGameImage() {
+    return gameField === 'image';
+}
+
 function addOverlay() {
     saveGameHTML.disabled = true;
     saveGameHTML.classList.add('menu-item');
@@ -297,12 +350,20 @@ function addOverlay() {
     newGameMenuHTML.innerHTML = 'New Game';
     overlayHTML.append(newGameMenuHTML);
 
-    boxFieldSizeHTML.className = 'field-size';
-    boxFieldSizeHTML.innerHTML = '<span class="field-size-name">Field size</span>';
+    boxFieldSizeHTML.className = 'field-option';
+    boxFieldSizeHTML.innerHTML = '<span class="field-option-title">Field size</span>';
     overlayHTML.append(boxFieldSizeHTML);
-    fieldSizeHTML.className = 'field-size-select';
+    fieldSizeHTML.className = 'field-option-select';
     fieldSizeHTML.innerHTML = getOptionsHTML();
     boxFieldSizeHTML.append(fieldSizeHTML);
+
+    boxGameImageHTML.className = 'field-option';
+    boxGameImageHTML.innerHTML = '<span class="field-option-title">Game field</span>';
+    overlayHTML.append(boxGameImageHTML);
+    gameImageHTML.className = 'field-option-select';
+    gameImageHTML.innerHTML = getGameFieldOptionsHTML();
+    boxGameImageHTML.append(gameImageHTML);
+
 
     savedGamesHTML.className = 'menu-item';
     savedGamesHTML.innerHTML = createIconHTML('history', 'Saved games');
@@ -397,13 +458,24 @@ function createCells() {
     for (let i = 0; i < cellsNumbers; i++) {
         const cell = document.createElement('div');
         const value = fieldNumbers[i] + 1;
-        cell.className = 'cell';
+        cell.classList.add('cell');
         cell.innerHTML = value;
         cell.style.height = `${cellSize}px`;
         cell.style.width = `${cellSize}px`;
 
         const left = i % fieldSize;
         const top = (i - left) / fieldSize;
+
+        if(isGameImage()) {
+            cell.classList.add('cell-image');
+            cell.style.backgroundImage = `url('./media/fields/${gameFieldImageId}.jpg')`;
+
+            const leftValue = fieldNumbers[i] % fieldSize;
+            const topValue = Math.trunc(fieldNumbers[i] / fieldSize);
+
+            cell.style.backgroundPositionX = `${-leftValue * cellSize}px`;
+            cell.style.backgroundPositionY = `${-topValue * cellSize}px`;
+        }
 
         fieldCells.push({
             value: value,
