@@ -1,5 +1,6 @@
 const fieldHTML = document.createElement('div'),
     overlayHTML = document.createElement('div'),
+    overlaySavedGamesHTML = document.createElement('div'),
     newGameMenuHTML = document.createElement('button'),
     boardHTML = document.createElement('div'),
     movesHTML = document.createElement('div'),
@@ -10,8 +11,14 @@ const fieldHTML = document.createElement('div'),
     gameSounds = ['click-cell', 'sound-press'],
     boxFieldSizeHTML = document.createElement('div'),
     fieldSizeHTML = document.createElement('select'),
-    fieldSizes = [3, 4, 5, 6, 7, 8];
+    fieldSizes = [3, 4, 5, 6, 7, 8],
+    saveGameHTML = document.createElement('button'),
+    savedGamesHTML = document.createElement('button'),
+    savedGamesContainerHTML = document.createElement('div'),
+    backButtonHTML = document.createElement('button'),
+    postscriptHTML = document.createElement('p');
 let cellEmpty = {},
+    fieldSizeForSave = 0,
     fieldSize = 4,
     cellSize = 400 / fieldSize,
     fieldCells = [],
@@ -21,6 +28,7 @@ let cellEmpty = {},
     gameMoves = 0,
     audioContainer = document.createElement('div'),
     isGameSound = true,
+    stateId = null,
     gameTime = new Date(0, 0, 0, 0, 0, 0),
     gameTimeCounter,
     isGameTimeCounting = false;
@@ -30,6 +38,110 @@ newGameMenuHTML.addEventListener('click', startGame);
 pauseGameHTML.addEventListener('click', pauseGame);
 gameSoundHTML.addEventListener('click', turnOffSound);
 fieldSizeHTML.addEventListener('change', handleFieldSizeChange);
+saveGameHTML.addEventListener('click', saveGame);
+savedGamesHTML.addEventListener('click', handleClickOnSavedGames);
+backButtonHTML.addEventListener('click', handleClickOnBackButton);
+
+function handleClickOnBackButton() {
+    overlaySavedGamesHTML.remove();
+    overlayHTML.classList.remove('hidden');
+}
+
+function handleClickOnSavedGames() {
+    overlayHTML.classList.add('hidden');
+
+    overlaySavedGamesHTML.className = 'overlay';
+    fieldHTML.append(overlaySavedGamesHTML);
+
+    savedGamesContainerHTML.className = 'saved-games-container';
+    savedGamesContainerHTML.innerHTML = getSavedGamesHTML();
+    overlaySavedGamesHTML.append(savedGamesContainerHTML);
+
+    backButtonHTML.classList.add('menu-item');
+    backButtonHTML.classList.add('back-button');
+    backButtonHTML.innerHTML = createIconHTML('arrow_back', 'Back');
+    overlaySavedGamesHTML.append(backButtonHTML);
+}
+
+function getSavedGamesHTML() {
+    let savedGamesHTML = '',
+        savedGames = JSON.parse(localStorage.getItem('savedGames')) ?? [];
+
+    const createSavedGameHTML = function (savedGame) {
+        let innerSavedGameText = buildInnerSavedGameText(savedGame);
+        return `<button data-stateId="${savedGame.stateId}" class="load-game">${innerSavedGameText}</button>`;
+    };
+
+    savedGames.forEach(function (savedGame) {
+        savedGamesHTML += createSavedGameHTML(savedGame);
+    });
+
+    if(savedGames.length === 0) {
+        savedGamesHTML = '<p class="plain-text">No saved games</p>'
+    }
+
+    return savedGamesHTML;
+}
+
+function buildInnerSavedGameText(savedGame) {
+    let savedAtText = savedGame.savedAt,
+        fieldSizeText = savedGame.fieldSize,
+        gameTimeText = `${addZero(savedGame.gameTime.min)}:${addZero(savedGame.gameTime.sec)}`,
+        gameMovesText = savedGame.gameMoves;
+
+    return `${savedAtText}: ${fieldSizeText}x${fieldSizeText}, time:${gameTimeText}, moves:${gameMovesText}`;
+}
+
+function prepareGameForSave() {
+    saveGameHTML.disabled = false;
+    stateId = getRandomStateGameId();
+    fieldSizeForSave = fieldSize;
+}
+
+function saveGame() {
+    saveGameHTML.innerHTML = createIconHTML('check_circle_outline', 'Game is saved!');
+    let currentParamsGame = getParamsForSaveGame();
+    saveParamsToStorage(currentParamsGame);
+    setTimeout(() => {  saveGameHTML.disabled = true; }, 1500);
+
+}
+
+function getParamsForSaveGame() {
+    return {
+        stateId: stateId,
+        gameTime: {
+            min: gameTime.getMinutes(),
+            sec: gameTime.getSeconds()
+        },
+        gameMoves: gameMoves,
+        fieldSize: fieldSizeForSave,
+        savedAt: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
+    };
+}
+
+function saveParamsToStorage(params) {
+    let savedGames = JSON.parse(localStorage.getItem('savedGames')) ?? [],
+        isReadyForSave = true;
+
+    savedGames.forEach(function (saveGame) {
+        if (saveGame.stateId === stateId) {
+            isReadyForSave = false;
+        }
+    });
+
+    if (isReadyForSave) {
+        savedGames.push(params);
+        localStorage.setItem('savedGames', JSON.stringify(savedGames));
+    }
+}
+
+function loadParamsFromStorage() {
+
+}
+
+function getRandomStateGameId() {
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
 
 function handleFieldSizeChange() {
     fieldSize = parseInt(this.value);
@@ -116,7 +228,7 @@ function createAudio() {
 }
 
 function resumeGame() {
-    pauseGameHTML.innerHTML = 'Pause Game';
+    pauseGameHTML.innerHTML = createIconHTML('pause_circle_outline', 'Pause Game');
     isGameTimeCounting = true;
     pauseGameHTML.removeEventListener('click', resumeGame, false);
     pauseGameHTML.addEventListener('click', pauseGame);
@@ -126,7 +238,9 @@ function resumeGame() {
 function pauseGame() {
     isGameTimeCounting = false;
     addOverlay();
-    pauseGameHTML.innerHTML = 'Resume Game';
+    pauseGameHTML.innerHTML = createIconHTML('play_circle_outline', 'Resume Game');
+
+    prepareGameForSave();
 
     pauseGameHTML.removeEventListener('click', pauseGame, false);
     pauseGameHTML.addEventListener('click', resumeGame);
@@ -173,6 +287,12 @@ function getOptionsHTML() {
 }
 
 function addOverlay() {
+    saveGameHTML.disabled = true;
+    saveGameHTML.classList.add('menu-item');
+    saveGameHTML.classList.add('save-game');
+    saveGameHTML.innerHTML = createIconHTML('save', 'Save this game');
+    overlayHTML.append(saveGameHTML);
+
     newGameMenuHTML.className = 'menu-item';
     newGameMenuHTML.innerHTML = 'New Game';
     overlayHTML.append(newGameMenuHTML);
@@ -183,6 +303,14 @@ function addOverlay() {
     fieldSizeHTML.className = 'field-size-select';
     fieldSizeHTML.innerHTML = getOptionsHTML();
     boxFieldSizeHTML.append(fieldSizeHTML);
+
+    savedGamesHTML.className = 'menu-item';
+    savedGamesHTML.innerHTML = createIconHTML('history', 'Saved games');
+    overlayHTML.append(savedGamesHTML);
+
+    postscriptHTML.className = 'postscript';
+    postscriptHTML.innerHTML = 'Attention: The minimum width for the correct display of the application design is 414px. Below this value, the application may behave incorrectly.';
+    overlayHTML.append(postscriptHTML);
 
     overlayHTML.className = 'overlay';
     fieldHTML.append(overlayHTML);
@@ -209,7 +337,7 @@ function createGameHTML() {
 
     pauseGameHTML.disabled = true;
     pauseGameHTML.className = 'pauseGame';
-    pauseGameHTML.innerHTML = 'Pause Game';
+    pauseGameHTML.innerHTML = createIconHTML('pause_circle_outline', 'Pause Game');
     boardHTML.append(pauseGameHTML);
 
     movesHTML.innerHTML = '<span class="description">Moves</span><span class="game-moves"></span>';

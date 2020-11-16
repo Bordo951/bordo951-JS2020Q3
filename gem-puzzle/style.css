@@ -4,6 +4,7 @@
 }
 
 body {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,6 +14,10 @@ body {
 
 span {
     display: inline-block;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .board {
@@ -26,14 +31,18 @@ span {
 }
 
 .pauseGame {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background: transparent;
     font-family: Arial, sans-serif;
     font-size: 18px;
     font-weight: bold;
     color: rgba(255, 255, 255, 1);
-    border: none;
+    border: 3px solid transparent;
     position: absolute;
     right: 0;
+    padding-left: 0;
 }
 
 .pauseGame:disabled {
@@ -43,8 +52,8 @@ span {
 .pauseGame:hover:enabled {
     cursor: pointer;
     text-shadow: 4px 4px 8px rgba(255, 255, 255, .8);
-    text-decoration: underline;
     transition: 1s;
+    border-bottom: 3px solid rgba(255, 255, 255, .8);
 }
 
 .pauseGame:focus {
@@ -92,8 +101,8 @@ span {
 }
 
 .overlay {
+    position: relative;
     box-sizing: border-box;
-    position: absolute;
     left: 0;
     top: 0;
     z-index: 5;
@@ -129,7 +138,58 @@ span {
     outline: 0;
 }
 
+.save-game {
+    position: absolute;
+    top: 50px;
+    font-size: 26px;
+    color: rgba(93, 255, 52, .8);
+}
+
+.save-game:disabled {
+    visibility: hidden;
+}
+
+.save-game:hover {
+    font-size: 26px;
+    color: rgba(93, 255, 52, 1);
+    text-shadow: 4px 4px 5px rgba(93, 255, 52, .8);
+}
+
+.saved-games-container {
+    height: 330px;
+    width: 350px;
+    overflow-y: auto;
+    top: 10px;
+    position: absolute;
+}
+
+.load-game {
+    cursor: pointer;
+    margin: 10px 5px;
+    border-radius: 10px;
+    border: 0;
+    padding: 10px 5px;
+    width: 320px;
+}
+
+.plain-text {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}
+
+.load-game:hover {
+    background-color: green;
+    color: white;
+}
+
+.load-game:focus {
+    outline: 0;
+}
+
 .field-size {
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -162,8 +222,23 @@ span {
     outline: 0;
 }
 
+.back-button {
+    position: absolute;
+    bottom: 15px;
+}
+
 option {
     color: black;
+}
+
+.postscript {
+    max-width: 360px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, .9);
 }
 
 .cell {
