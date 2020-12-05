@@ -1,4 +1,5 @@
 import './../styles/index.scss';
+import './components/button-results'
 
 import CardsRepository from './entity/cards-repository';
 import CategoriesRepository from './entity/categories-repository';

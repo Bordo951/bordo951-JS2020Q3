@@ -1,0 +1,34 @@
+button {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.ear-left-outer, .ear-right-outer {fill:#919191;}
+.ear-left-inner, .ear-right-inner {fill:#6D6D6D;}
+.eye-right-outer, .eye-left-outer, .nostril-right-outer, .nostril-left-outer, .body {fill:#AAAAAA;}
+.eye-right-inner, .eye-left-inner {fill:#FFFFFF;}
+.nostril-right-inner, .nostril-left-inner{fill:#8C8C8C;}
+.freckle {fill:#7C7C7C;}
+.tongue {fill:#FF4848;}
+.tooth-left, .tooth-right {fill:#FFFFE1;}
+
+.link {
+    width: 147px;
+    height: 40px;
+    position: absolute;
+    top: 18px;
+    left: 0;
+    font-family: 'NerkoOne', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    color: #ffffe3;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+

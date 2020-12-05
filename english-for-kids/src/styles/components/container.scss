@@ -1,9 +1,48 @@
 .container {
-    position: relative;
     display: flex;
+    flex-wrap: wrap;
     margin: 0 auto;
     max-width: 75rem;
     justify-content: space-between;
     height: 100%;
     align-items: center;
+
+    &_header {
+        position: relative;
+    }
+
+    &_bar {
+        position: fixed;
+        overflow-y: scroll;
+        top: 185px;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        padding: 0 8px;
+        height: 455px;
+
+        &::-webkit-scrollbar-track
+        {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: .75rem;
+            background-color: #01262f;
+        }
+
+        &::-webkit-scrollbar
+        {
+            border-radius: .75rem;
+            width: .75rem;
+            background-color: #01262f;
+        }
+
+        &::-webkit-scrollbar-thumb
+        {
+            border-radius: .75rem;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: #fff200;
+        }
+    }
 }
+
+
+
