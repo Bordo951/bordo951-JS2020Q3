@@ -92,6 +92,10 @@ input.hamburger {
                 @include transition;
                 a {
                     padding-right: 15px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
                 }
             }
         }
@@ -159,6 +163,7 @@ label.hamburger {
 }
 
 .menu-img {
+    display: block;
     width: 3rem;
     margin-right: 1rem;
 }
