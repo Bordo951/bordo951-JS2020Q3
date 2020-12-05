@@ -1,6 +1,6 @@
 import cards from "../data/cards";
 
-export default class cardsRepository {
+export default class CardsRepository {
     /**
      * Gets card by id
      * @param {Number} cardId

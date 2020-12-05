@@ -1,10 +1,12 @@
-import cardsRepository from './entity/cards-repository';
-import categoriesRepository from './entity/categories-repository';
+import './../styles/index.scss';
 
-let cardsRepositoryObject = new cardsRepository();
-let categoriesRepository = new categoriesRepository();
+import CardsRepository from './entity/cards-repository';
+import CategoriesRepository from './entity/categories-repository';
+
+let cardsRepositoryObject = new CardsRepository();
+let categoriesRepositoryObject = new CategoriesRepository();
 
 console.log(cardsRepositoryObject.getCardById(12));
 console.log(cardsRepositoryObject.getCardsByCategoryId(5));
-console.log(categoriesRepository.getCategoryByID(3));
-console.log(categoriesRepository.getCategoryByUrlKey('emotions'));
+console.log(categoriesRepositoryObject.getCategoryByID(3));
+console.log(categoriesRepositoryObject.getCategoryByUrlKey('emotions'));
