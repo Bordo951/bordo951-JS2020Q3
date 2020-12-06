@@ -1,4 +1,4 @@
-.category {
+.card {
     position: relative;
     width: 250px;
     display: flex;
@@ -53,14 +53,19 @@
     }
 
     &__content-wrapper {
+        width: 100%;
         display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 5px 0;
     }
 
     &__title {
-        font-family: 'NerkoOne', Arial, sans-serif;
+        font-family: 'NerkoOne', 'BalsamiqSans', Arial, sans-serif;
         font-size: 30px;
         letter-spacing: 2px;
         color: #ffffe3;
         margin: 5px;
+        text-transform: uppercase;
     }
 }

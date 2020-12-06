@@ -5,11 +5,12 @@
     background-color: rgba(0, 0, 0, .5);
 
     &__list {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-around;
         align-self: center;
-        padding: 5px 0;
+        padding: 10px 0;
     }
 
     &__item {
@@ -40,5 +41,12 @@
                 }
             }
         }
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 479px) {
+    .footer__list {
+        flex-direction: column;
+        padding: 0;
     }
 }
