@@ -5,6 +5,8 @@ let mainMenu = new MainMenu();
 function handleOpenMainMenu() {
     if (this.checked) {
         mainMenu.openMainMenu();
+    } else {
+        mainMenu.closeMainMenu();
     }
 }
 

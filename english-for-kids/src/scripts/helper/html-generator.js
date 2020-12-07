@@ -63,4 +63,9 @@ export default class HtmlGenerator {
 
         return html;
     }
+
+    getStatisticsHtml() {
+        let html = '<img src="./assets/images/statistics/hippo.png" style="max-width: 100%" alt="Hyppo" />';
+        return html;
+    }
 }
