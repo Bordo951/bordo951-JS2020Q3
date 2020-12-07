@@ -1,7 +1,7 @@
 .toggleWrapper {
     position: absolute;
     top: 15%;
-    right: 0%;
+    right: 0;
     padding: 0 15px;
 
     input {
@@ -40,11 +40,38 @@
     transform: rotate(-45deg);
 }
 
+.toggle__action {
+    position: absolute;
+    top: 10px;
+    font-family: 'NerkoOne', Arial, sans-serif;
+    color: #3d2526;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.toggle__play {
+    left: 10px;
+    display: none;
+}
+
+.toggle__train {
+    right: 10px;
+    letter-spacing: -1px;
+}
+
 input:checked {
     + .toggle {
 
         &:after {
             color: #ffffff;
+        }
+
+        .toggle__train {
+            display: none;
+        }
+
+        .toggle__play {
+            display: block;
         }
 
         .toggle__handler {

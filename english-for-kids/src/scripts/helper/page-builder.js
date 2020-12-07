@@ -1,31 +1,60 @@
 import HtmlGenerator from './../helper/html-generator';
+import UrlChecker from "../checkers/url-checker";
 
 export default class PageBuilder {
 
     constructor() {
-        this.htmlGeneratorObject = new HtmlGenerator();
+        this.htmlGenerator = new HtmlGenerator();
+        this.urlChecker = new UrlChecker();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
     }
 
-    cleanMainPage() {
-        document.getElementById(this.contentMainId).innerHTML = '';
+    buildPageFromHash(hash) {
+        let pageKeyUrl = hash.substring(1);
+
+        if (this.urlChecker.isStaticPageUrl(pageKeyUrl)) {
+            this.buildStaticPage(pageKeyUrl);
+            return;
+        }
+
+        if (this.urlChecker.isCategoryUrl(pageKeyUrl)) {
+            this.buildCardsCategoryPage(pageKeyUrl);
+            return;
+        }
+
+        this.buildCategoryMainPage();
     }
 
-    buildCategoryMenu() {
-        let html = this.htmlGeneratorObject.getCategoriesMenuHtml();
+    updateContentWithHtml(html) {
+        document.getElementById(this.contentMainId).innerHTML = html;
+    }
+
+    updateMenuWithHtml(html) {
         document.getElementById(this.categoriesMenuId).innerHTML = html;
     }
 
+    buildCategoryMenu() {
+        let html = this.htmlGenerator.getCategoriesMenuHtml();
+
+        this.updateMenuWithHtml(html);
+    }
+
     buildCategoryMainPage() {
-        this.cleanMainPage();
-        let html = this.htmlGeneratorObject.getCategoriesMainHtml();
-        document.getElementById(this.contentMainId).innerHTML = html;
+        let html = this.htmlGenerator.getCategoriesMainHtml();
+
+        this.updateContentWithHtml(html);
     }
 
     buildCardsCategoryPage(categoryUrlKey) {
-        this.cleanMainPage();
-        let html = this.htmlGeneratorObject.getCardsMainHtml(categoryUrlKey);
-        document.getElementById(this.contentMainId).innerHTML = html;
+        let html = this.htmlGenerator.getCardsMainHtml(categoryUrlKey);
+
+        this.updateContentWithHtml(html);
+    }
+
+    buildStaticPage(pageKeyUrl) {
+        let html = pageKeyUrl;
+
+        this.updateContentWithHtml(html);
     }
 }
