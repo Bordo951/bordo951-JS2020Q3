@@ -9,11 +9,17 @@
 @import "components/container";
 @import "components/burger-menu";
 @import "components/toggle";
-@import "components/button-results";
+@import "components/button-statistics";
 @import "components/card";
+@import "components/card-flipped";
+@import "components/game-over";
+@import "components/button-start-game";
+@import "components/button-repeat";
+@import "components/overlay";
+@import "components/play-mode";
 
 //elements
 @import "elements/body";
 @import "elements/footer";
-@import "elements/cards";
+@import "elements/star-row";
 

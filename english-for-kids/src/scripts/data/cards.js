@@ -780,8 +780,8 @@ const cards = [
         cardId: 65,
         categoryId: 9,
         language: {
-            ru: 'Золушка',
-            en: 'Cinderella'
+            ru: 'золушка',
+            en: 'cinderella'
         },
         image: 'img/fairytale-characters/cinderella.jpg',
         audioLanguage: {
@@ -792,8 +792,8 @@ const cards = [
         cardId: 66,
         categoryId: 9,
         language: {
-            ru: 'Белоснежка',
-            en: 'Snow White'
+            ru: 'белоснежка',
+            en: 'snow white'
         },
         image: 'img/fairytale-characters/snow-white.jpg',
         audioLanguage: {
@@ -817,7 +817,7 @@ const cards = [
         categoryId: 9,
         language: {
             ru: 'Винни-Пух',
-            en: 'Pooh Bear'
+            en: 'pooh bear'
         },
         image: 'img/fairytale-characters/pooh-bear.jpg',
         audioLanguage: {
@@ -828,8 +828,8 @@ const cards = [
         cardId: 69,
         categoryId: 9,
         language: {
-            ru: 'Щелкунчик',
-            en: 'Nutcracker'
+            ru: 'щелкунчик',
+            en: 'nutcracker'
         },
         image: 'img/fairytale-characters/nutcracker.jpg',
         audioLanguage: {
@@ -840,8 +840,8 @@ const cards = [
         cardId: 70,
         categoryId: 9,
         language: {
-            ru: 'Дед Мороз',
-            en: 'Santa Claus'
+            ru: 'дед мороз',
+            en: 'santa claus'
         },
         image: 'img/fairytale-characters/santa-claus.jpg',
         audioLanguage: {
@@ -852,8 +852,8 @@ const cards = [
         cardId: 71,
         categoryId: 9,
         language: {
-            ru: 'Буратино',
-            en: 'Pinocchio'
+            ru: 'буратино',
+            en: 'pinocchio'
         },
         image: 'img/fairytale-characters/pinocchio.jpg',
         audioLanguage: {
@@ -864,8 +864,8 @@ const cards = [
         cardId: 72,
         categoryId: 9,
         language: {
-            ru: 'Король Лев',
-            en: 'The Lion King'
+            ru: 'король лев',
+            en: 'the lion king'
         },
         image: 'img/fairytale-characters/lion-king.jpg',
         audioLanguage: {
