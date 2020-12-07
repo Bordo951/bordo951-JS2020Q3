@@ -4,6 +4,7 @@
     height: 240px;
     position: relative;
     perspective: 1000px;
+    overflow: hidden;
 
     &-inner {
       position: relative;
