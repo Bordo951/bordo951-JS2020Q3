@@ -3,6 +3,7 @@ import UrlChecker from "../checkers/url-checker";
 import EventManager from "./event-manager";
 import SoundsPlayer from "./sounds-player";
 import PageNavigator from "./page-navigator";
+import MainMenu from "../components/main-menu";
 
 export default class PageBuilder {
 
@@ -12,6 +13,7 @@ export default class PageBuilder {
         this.eventManager = new EventManager();
         this.soundsPlayer = new SoundsPlayer();
         this.pageNavigator = new PageNavigator();
+        this.mainMenu = new MainMenu();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
         this.delayAfterSuccessGameOver = 3000;
@@ -20,6 +22,8 @@ export default class PageBuilder {
 
     buildPageFromHash(hash) {
         let pageKeyUrl = hash.substring(1);
+
+        this.mainMenu.closeMainMenu();
 
         if (this.urlChecker.isStaticPageUrl(pageKeyUrl)) {
             this.buildStaticPage(pageKeyUrl);
