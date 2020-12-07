@@ -82,6 +82,9 @@ export default class PageBuilder {
                 this.playMode.disable();
                 this.pageNavigator.openHomepage(this.delayAfterFailureGameOver);
             break;
+            case 'statistics':
+                html = this.htmlGenerator.getStatisticsHtml();
+            break;
             default:
                 html = pageKeyUrl;
             break;
