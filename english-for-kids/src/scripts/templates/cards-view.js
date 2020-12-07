@@ -12,7 +12,7 @@ export default class CardsView {
                                 <img class="card__image" src="./assets/images/${card.categoryId}/${originalTitle}.jpg" alt="${originalTitleCapitalized}" title="${originalTitleCapitalized}">
                             </div>
                             <div class="card__content-wrapper">
-                                <button class="card__flipped__button">
+                                <button class="card__flipped__button" data-action="play-sound" data-card-id="${card.cardId}">
                                     <img class="card__flipped__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">
                                 </button>
                                 <h3 class="card__title">${originalTitleCapitalized}</h3>
