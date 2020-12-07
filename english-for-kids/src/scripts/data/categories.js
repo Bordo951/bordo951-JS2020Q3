@@ -1,5 +1,17 @@
 const categories = [
     {
+        categoryId: -1, // уникальный номер карточки
+        language: {
+            ru: 'Главная',
+            en: 'Main'
+        },
+        urlKey: '',
+        image: {
+            menu: 'main',
+            main: '#'
+        }
+    },
+    {
         categoryId: 1, // уникальный номер карточки
         language: {
             ru: 'Действия',
@@ -7,7 +19,7 @@ const categories = [
         },
         urlKey: 'actions',
         image: {
-            menu: '#',
+            menu: 'actions',
             main: '#'
         }
     },
@@ -19,7 +31,7 @@ const categories = [
         },
         urlKey: 'emotions',
         image: {
-            menu: '#',
+            menu: 'emotions',
             main: '#'
         }
     },
@@ -31,7 +43,7 @@ const categories = [
         },
         urlKey: 'clothes',
         image: {
-            menu: '#',
+            menu: 'clothes',
             main: '#'
         }
     },
@@ -43,7 +55,7 @@ const categories = [
         },
         urlKey: 'pets',
         image: {
-            menu: '#',
+            menu: 'pets',
             main: '#'
         }
     },
@@ -55,7 +67,7 @@ const categories = [
         },
         urlKey: 'wild-animals',
         image: {
-            menu: '#',
+            menu: 'wild-animals',
             main: '#'
         }
     },
@@ -67,7 +79,7 @@ const categories = [
         },
         urlKey: 'space',
         image: {
-            menu: '#',
+            menu: 'space',
             main: '#'
         }
     },
@@ -79,7 +91,7 @@ const categories = [
         },
         urlKey: 'transport',
         image: {
-            menu: '#',
+            menu: 'transport',
             main: '#'
         }
     },
@@ -91,19 +103,19 @@ const categories = [
         },
         urlKey: 'body',
         image: {
-            menu: '#',
+            menu: 'body',
             main: '#'
         }
     },
     {
         categoryId: 9, // уникальный номер карточки
         language: {
-            ru: 'Сказочные персонажи',
-            en: 'Fairytale characters'
+            ru: 'Персонажи',
+            en: 'Characters'
         },
-        urlKey: 'fairytale-characters',
+        urlKey: 'characters',
         image: {
-            menu: '#',
+            menu: 'characters',
             main: '#'
         }
     },
@@ -115,7 +127,7 @@ const categories = [
         },
         urlKey: 'subjects',
         image: {
-            menu: '#',
+            menu: 'subjects',
             main: '#'
         }
     },
@@ -127,7 +139,7 @@ const categories = [
         },
         urlKey: 'food',
         image: {
-            menu: '#',
+            menu: 'food',
             main: '#'
         }
     },
@@ -139,10 +151,10 @@ const categories = [
         },
         urlKey: 'fruit',
         image: {
-            menu: '#',
+            menu: 'fruit',
             main: '#'
         }
-    },
+    }
 ]
 
 export default categories;

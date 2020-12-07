@@ -1,0 +1,46 @@
+import CardsRepository from './../entity/cards-repository';
+import CategoriesRepository from './../entity/categories-repository';
+
+import CategoriesView from './../templates/categories-view';
+import CardsView from "./../templates/cards-view";
+
+export default class HtmlGenerator {
+
+    constructor() {
+        this.categoriesRepository = new CategoriesRepository();
+        this.categoriesView = new CategoriesView();
+        this.cardsRepository = new CardsRepository();
+        this.cardsView = new CardsView();
+    }
+
+    getCategoriesMenuHtml() {
+        let categories = this.categoriesRepository.getAllCategories();
+        let html = '';
+        categories.forEach(function (category) {
+            html += this.categoriesView.getCategoryMenuItemHtml(category);
+        }.bind(this));
+
+        return html;
+    }
+
+    getCategoriesMainHtml() {
+        let categories = this.categoriesRepository.getMainCategories();
+        let html = '';
+        categories.forEach(function (category) {
+            html += this.categoriesView.getCategoryMainItemHtml(category);
+        }.bind(this));
+
+        return html;
+    }
+
+    getCardsMainHtml(categoryUrlKey) {
+        let category = this.categoriesRepository.getCategoryByUrlKey(categoryUrlKey);
+        let cards = this.cardsRepository.getCardsByCategoryId(category.categoryId);
+        let html = '';
+        cards.forEach(function (card) {
+            html += this.cardsView.getCardMainItemHtml(card);
+        }.bind(this));
+
+        return html;
+    }
+}
