@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>English for kids</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+        <link rel="manifest" href="assets/favicon/site.webmanifest">
+        <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.1/dist/gsap.min.js"></script>
+    </head>
+    <body class="noscroll">
+            <header class="header">
+                <div class="container container_header">
+                    <input id="hamburger" class="hamburger" type="checkbox"/>
+                    <label class="hamburger" for="hamburger">
+                        <i></i>
+                    </label>
+                    <section class="drawer-list">
+                        <ul>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/actions.svg" alt="Actions" title="Actions">Actions</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/body.svg" alt="Body" title="Body">Body</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/clothes.svg" alt="Clothes" title="Clothes">Clothes</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/emotions.svg" alt="Emotions" title="Emotions">Emotions</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/fairytale-characters.svg" alt="Characters" title="Characters">Characters</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/food.svg" alt="Food" title="Food">Food</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/fruit.svg" alt="Fruit" title="Fruit">Fruit</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/pets.svg" alt="Pets" title="Pets">Pets</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/space.svg" alt="Space" title="Space">Space</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/subjects.svg" alt="Subjects" title="Subjects">Subjects</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/transport.svg" alt="Transport" title="Transport">Transport</a></li>
+                            <li><a href="#"><img class="menu-img" src="./assets/images/categories/menu/wild-animals.svg" alt="Wild-animals" title="Wild-animals">Wild animals</a></li>
+                        </ul>
+                    </section>
+                    <h1 class="rainbow">English for kids</h1>
+                    <div class="toggleWrapper">
+                        <input type="checkbox" class="dn" id="dn"/>
+                        <label for="dn" class="toggle">
+                            <span class="toggle__handler"></span>
+                        </label>
+                        <div class="bear-body">
+                            <span class="eye left"></span>
+                            <span class="eye right"></span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <button class="button-results">
+                    <a href="#" class="link">Results</a>
+                    <svg viewBox="0 0 242 109" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g class="ears">
+                            <g class="ear-left">
+                                <ellipse class="ear-left-outer" transform="matrix(0.9391 -0.3436 0.3436 0.9391 -3.6062 17.8444)" cx="48.5" cy="19.1" rx="11.4" ry="13.8"/>
+                                <ellipse class="ear-left-inner" transform="matrix(0.9391 -0.3436 0.3436 0.9391 -3.8876 17.4659)" cx="47.3" cy="19.7" rx="7.3" ry="11.2"/>
+                            </g>
+                            <g class="ear-right">
+                                <ellipse class="ear-right-outer" transform="matrix(0.3436 -0.9391 0.9391 0.3436 106.5379 189.869)" cx="189.1" cy="18.7" rx="14.4" ry="11.9"/>
+                                <ellipse class="ear-right-inner" transform="matrix(0.3436 -0.9391 0.9391 0.3436 106.8522 191.5127)" cx="190.4" cy="19.3" rx="11.7" ry="7.7"/>
+                            </g>
+                        </g>
+                        <g class="eyes">
+                            <defs>
+                                <clipPath id="eyeRightClip">
+                                    <path d="M175,25c0-11-7.8-20-17.5-20S140,14,140,25c0,0.7,0,1.3,0.1,2h34.8 C175,26.3,175,25.7,175,25z"/>
+                                </clipPath>
+                            </defs>
+                            <g class="eye-right">
+                                <path class="eye-right-outer" d="M174.9,27H186c0-0.3,0-0.7,0-1c0-14.4-11.6-26-26-26c-14.4,0-26,11.6-26,26 c0,0.3,0,0.7,0,1h6.1H174.9z"/>
+                                <path class="eye-right-inner" d="M175,25c0-11-7.8-20-17.5-20S140,14,140,25c0,0.7,0,1.3,0.1,2h34.8 C175,26.3,175,25.7,175,25z"/>
+                                <g clip-path="url(#eyeRightClip)">
+                                    <circle class="eye-right-pupil" cx="158" cy="18" r="5"/>
+                                </g>
+                            </g>
+                            <defs>
+                                <clipPath id="eyeLeftClip">
+                                    <path d="M97,25c0-11-7.8-20-17.5-20S62,14,62,25c0,0.7,0,1.3,0.1,2h34.8C97,26.3,97,25.7,97,25z" />
+                                </clipPath>
+                            </defs>
+                            <g class="eye-left">
+                                <path class="eye-left-outer" d="M96.9,27h6.1c0-0.3,0-0.7,0-1c0-14.4-11.6-26-26-26C62.6,0,51,11.6,51,26 c0,0.3,0,0.7,0,1h11.1H96.9z"/>
+                                <path class="eye-left-inner" d="M97,25c0-11-7.8-20-17.5-20S62,14,62,25c0,0.7,0,1.3,0.1,2h34.8C97,26.3,97,25.7,97,25z" />
+                                <g clip-path="url(#eyeLeftClip)">
+                                    <circle class="eye-left-pupil" cx="80" cy="17.7" r="5"/>
+                                </g>
+                            </g>
+                        </g>
+                        <g class="nostrils">
+                            <g class="nostril-right">
+                                <ellipse class="nostril-right-outer" cx="130.5" cy="27.5" rx="6.5" ry="5.5"/>
+                                <circle class="nostril-right-inner" cx="130" cy="28" r="4"/>
+                            </g>
+                            <g class="nostril-left">
+                                <ellipse class="nostril-left-outer" cx="106.5" cy="27.5" rx="6.5" ry="5.5"/>
+                                <circle class="nostril-left-inner" cx="107" cy="28" r="4"/>
+                            </g>
+                        </g>
+                        <path class="body" d="M218,98H24C10.8,98,0,87.2,0,74V51c0-13.2,10.8-24,24-24h194c13.2,0,24,10.8,24,24v23 C242,87.2,231.2,98,218,98z"/>
+                        <g class="freckles">
+                            <circle class="freckle" cx="13.7" cy="41.4" r="1.6"/>
+                            <circle class="freckle" cx="20.1" cy="44.7" r="1.6"/>
+                            <circle class="freckle" cx="19.6" cy="37.8" r="1.6"/>
+                        </g>
+                        <defs>
+                            <clipPath id="mouthClip">
+                                <path d="M218,98H24C10.8,98,0,87.2,0,74V51c0-13.2,10.8-24,24-24h194c13.2,0,24,10.8,24,24v23 C242,87.2,231.2,98,218,98z"/>
+                            </clipPath>
+                        </defs>
+                        <g class="mouth" clip-path="url(#mouthClip)">
+                            <g class="mouth-pieces">
+                                <path class="mouth-back" d="M23.6,168.2l-3-56.1c0-7.8,6.4-14.1,14.1-14.1h172.4c7.8,0,14.1,6.4,14.1,14.1l-3,56.1"/>
+                                <path class="tongue" d="M174.9,168.2c-7.3-5-24.5-9.9-54.8-9.9s-48,5.1-54.8,9.9"/>
+                            </g>
+                        </g>
+                        <g class="teeth">
+                            <path class="tooth-left" d="M115,97.9v7.5c0,2-1.7,3.6-3.6,3.6H89.7c-2,0-3.6-1.7-3.6-3.6v-7.5H115z"/>
+                            <path class="tooth-right" d="M154,97.9v7.5c0,2-1.7,3.6-3.6,3.6h-21.7c-2,0-3.6-1.7-3.6-3.6v-7.5H154z"/>
+                        </g>
+                    </svg>
+                </button>
+                <div id="categories" class="container container_bar">
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/actions.jpg" alt="Actions" title="Actions">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Actions</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/body.jpg" alt="Body" title="Body">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Body</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/clothes.jpg" alt="Clothes" title="Clothes">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Clothes</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/emotions.jpg" alt="Emotions" title="Emotions">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Emotions</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/fairytale-characters.jpg" alt="Characters" title="Characters">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Сharacters</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/food.jpg" alt="Food" title="Food">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Food</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/fruit.jpg" alt="Fruit" title="Fruit">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Fruit</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/pets.jpg" alt="Pets" title="Pets">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Pets</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/space.jpg" alt="Space" title="Space">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Space</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/subjects.jpg" alt="Subjects" title="Subjects">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Subjects</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/transport.jpg" alt="Transport" title="Transport">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Transport</h3>
+                        </div>
+                    </button>
+                    <button class="card">
+                        <div class="card__image-wrapper">
+                            <img class="card__image" src="./assets/images/categories/main/wild-animals.jpg" alt="Animals" title="Animals">
+                        </div>
+                        <div class="card__content-wrapper">
+                            <h3 class="card__title">Animals</h3>
+                        </div>
+                    </button>
+                </div>
+<!--                <div id="cards" class="container container_bar">-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/cry.jpg" alt="Cry" title="Cry">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Cry</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/cry.jpg" alt="Cry" title="Cry">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Плакать</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/dance.jpg" alt="Dance" title="Dance">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Dance</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/dance.jpg" alt="Dance" title="Dance">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Танцевать</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/dive.jpg" alt="Dive" title="Dive">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Dive</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/dive.jpg" alt="Dive" title="Dive">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Нырять</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/draw.jpg" alt="Draw" title="Draw">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Draw</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/draw.jpg" alt="Draw" title="Draw">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Рисовать</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/fish.jpg" alt="Fish" title="Fish">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Fish</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/fish.jpg" alt="Fish" title="Fish">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Ловить рыбу</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/fly.jpg" alt="Fly" title="Fly">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Fly</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/fly.jpg" alt="Fly" title="Fly">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Летать</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/hug.jpg" alt="Hug" title="Hug">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Hug</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/hug.jpg" alt="Hug" title="Hug">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Обнимать</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cards">-->
+<!--                        <div class="card cards-front">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/jump.jpg" alt="Jump" title="Jump">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/sound.svg" alt="Sound" title="Sound">-->
+<!--                                </button>-->
+<!--                                <h3 class="card__title">Jump</h3>-->
+<!--                                <button class="cards__button">-->
+<!--                                    <img class="cards__button-img" src="./assets/images/cards-button/turn.svg" alt="Turn" title="Turn">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card cards-back">-->
+<!--                            <div class="card__image-wrapper">-->
+<!--                                <img class="card__image" src="./assets/images/actions/jump.jpg" alt="Jump" title="Jump">-->
+<!--                            </div>-->
+<!--                            <div class="card__content-wrapper">-->
+<!--                                <h3 class="card__title">Прыгать</h3>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </main>
+            <footer class="footer">
+                <div class="container container-footer">
+                    <ul class="footer__list">
+                        <li class="footer__item footer__item_zoomed">
+                            <a class="footer__item-link" href="https://github.com/Bordo951" target="_blank" title="Author">
+                                &copy; Bordo
+                            </a>
+                        </li>
+                        <li class="footer__item footer__item_zoomed">
+                            <a class="footer__item-link" href="https://rs.school/js/" target="_blank" title="Сourse">
+                                <img class="footer__item-img" src="./assets/images/rs-school-js.svg" alt="RS logo" title="RS School logo">
+                                The Rolling Scopes
+                            </a>
+                        </li>
+                        <li class="footer__item">2020</li>
+                    </ul>
+                </div>
+            </footer>
+    </body>
+</html>

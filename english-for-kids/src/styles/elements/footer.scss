@@ -1,0 +1,52 @@
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+
+    &__list {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-self: center;
+        padding: 10px 0;
+    }
+
+    &__item {
+        text-align: center;
+        font-family: "NerkoOne", Arial, sans-serif;
+        font-size: 20px;
+        color: rgba(255, 255, 227, .7);
+
+        &-link {
+            text-decoration: none;
+            font-size: 20px;
+            color: rgba(255, 255, 227, .7);
+        }
+
+        &-img {
+            width: 3rem;
+            margin-right: .5rem;
+        }
+
+        &_zoomed {
+            transition: .5s;
+
+            &:hover {
+                transform: scale(1.1);
+
+                >a {
+                    color: rgba(255, 255, 255, 1);
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 479px) {
+    .footer__list {
+        flex-direction: column;
+        padding: 0;
+    }
+}
