@@ -9,7 +9,7 @@ export default class CardsView {
                     <div class="card__flipped-inner">
                         <div class="card__flipped-front">
                             <div class="card__image-wrapper">
-                                <img class="card__image" src="./assets/images/${card.categoryId}/${originalTitle}.jpg" alt="${originalTitleCapitalized}" title="${originalTitleCapitalized}">
+                                <img class="card__image" src="./assets/images/${card.categoryId}/${originalTitle}.jpg" alt="${originalTitleCapitalized}">
                             </div>
                             <div class="card__content-wrapper">
                                 <button class="card__flipped__button" data-action="play-sound" data-card-id="${card.cardId}">
@@ -23,7 +23,7 @@ export default class CardsView {
                         </div>
                         <div class="card__flipped-back">
                             <div class="card__image-wrapper">
-                                <img class="card__image" src="./assets/images/${card.categoryId}/${originalTitle}.jpg" alt="${originalTitleCapitalized}" title="${originalTitleCapitalized}">
+                                <img class="card__image" src="./assets/images/${card.categoryId}/${originalTitle}.jpg" alt="${originalTitleCapitalized}">
                             </div>
                             <div class="card__content-wrapper">
                                 <h3 class="card__title">${translatedTitleCapitalized}</h3>

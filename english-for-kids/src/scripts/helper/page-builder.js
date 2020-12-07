@@ -4,6 +4,7 @@ import EventManager from "./event-manager";
 import SoundsPlayer from "./sounds-player";
 import PageNavigator from "./page-navigator";
 import MainMenu from "../components/main-menu";
+import PlayMode from "../helper/play-mode";
 
 export default class PageBuilder {
 
@@ -14,10 +15,11 @@ export default class PageBuilder {
         this.soundsPlayer = new SoundsPlayer();
         this.pageNavigator = new PageNavigator();
         this.mainMenu = new MainMenu();
+        this.playMode = new PlayMode();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
-        this.delayAfterSuccessGameOver = 3000;
-        this.delayAfterFailureGameOver = 5000;
+        this.delayAfterSuccessGameOver = 3500;
+        this.delayAfterFailureGameOver = 5500;
     }
 
     buildPageFromHash(hash) {
@@ -71,12 +73,17 @@ export default class PageBuilder {
             case 'success-game-over':
                 html = this.htmlGenerator.getSuccessGameOverHtml();
                 this.soundsPlayer.playSuccessSound();
+                this.playMode.disable();
                 this.pageNavigator.openHomepage(this.delayAfterSuccessGameOver);
             break;
             case 'failure-game-over':
                 html = this.htmlGenerator.getFailureGameOverHtml();
                 this.soundsPlayer.playFailureSound();
+                this.playMode.disable();
                 this.pageNavigator.openHomepage(this.delayAfterFailureGameOver);
+            break;
+            case 'statistics':
+                html = this.htmlGenerator.getStatisticsHtml();
             break;
             default:
                 html = pageKeyUrl;
