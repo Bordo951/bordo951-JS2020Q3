@@ -15,6 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.1/dist/gsap.min.js"></script>
     </head>
     <body class="noscroll">
+        <div class="overlay hidden" id="main-menu-overlay"></div>
             <header class="header">
                 <div class="container container_header">
                     <input id="hamburger" class="hamburger" type="checkbox"/>
@@ -26,8 +27,8 @@
                     </section>
                     <h1 class="rainbow"><a href="#" title="Main page">English for kids</a></h1>
                     <div class="toggleWrapper">
-                        <input type="checkbox" class="dn" id="dn"/>
-                        <label for="dn" class="toggle">
+                        <input type="checkbox" id="play-mode"/>
+                        <label for="play-mode" class="toggle">
                             <span class="toggle__action toggle__play">Play</span>
                             <span class="toggle__action toggle__train">Train</span>
                             <span class="toggle__handler"></span>
@@ -129,17 +130,7 @@
                     </button>
                 </div>
                 <div id="main-content" class="container container_bar">
-<!--                    <div class="game-over">-->
-<!--                        <div class="game-over__image-wrapper">-->
-<!--                            <img class="game-over__image" src="./assets/images/game-over/failure.svg" alt="Failure" title="Failure">-->
-<!--                        </div>-->
-<!--                        <div class="game-over__result-wrapper">-->
-<!--                            <p class="game-over__result">-->
-<!--                                <span class="game-over__result-message">Error rate</span>-->
-<!--                                <span class="game-over__result-error">5</span>-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                    </div>-->
+
                 </div>
             </main>
             <footer class="footer">
