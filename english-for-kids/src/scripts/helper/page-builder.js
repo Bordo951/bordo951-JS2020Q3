@@ -8,6 +8,16 @@ export default class PageBuilder {
         this.contentMainId = 'main-content';
     }
 
+    buildPageFromHash(hash) {
+        let categoryKeyUrl = hash.substring(1);
+
+        if (categoryKeyUrl.length > 0) {
+            this.buildCardsCategoryPage(categoryKeyUrl);
+        } else {
+            this.buildCategoryMainPage();
+        }
+    }
+
     updateContentWithHtml(html) {
         document.getElementById(this.contentMainId).innerHTML = html;
     }
