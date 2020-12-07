@@ -5,6 +5,8 @@ import './events/url-changed';
 import './events/page-loaded';
 import './events/rotate-card';
 import './events/play-card-sound';
+import './events/overlay-click';
+import './events/open-main-menu';
 
 // import CardsRepository from './entity/cards-repository';
 // import CategoriesRepository from './entity/categories-repository';
