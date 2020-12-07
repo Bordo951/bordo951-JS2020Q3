@@ -2,7 +2,7 @@ import CategoriesRepository from './../entity/categories-repository';
 
 export default class UrlChecker {
     constructor() {
-        this.trustedUrls = ['statistics'];
+        this.trustedUrls = ['statistics','game-over'];
         this.categoriesRepository = new CategoriesRepository();
     }
 

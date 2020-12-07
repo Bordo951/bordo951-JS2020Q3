@@ -53,7 +53,15 @@ export default class PageBuilder {
     }
 
     buildStaticPage(pageKeyUrl) {
-        let html = pageKeyUrl;
+        let html = '';
+        switch (pageKeyUrl) {
+            case 'game-over':
+                html = this.htmlGenerator.getGameOverHtml();
+            break;
+            default:
+                html = pageKeyUrl;
+            break;
+        }
 
         this.updateContentWithHtml(html);
     }

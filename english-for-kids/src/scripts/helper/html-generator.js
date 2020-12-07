@@ -3,6 +3,7 @@ import CategoriesRepository from './../entity/categories-repository';
 
 import CategoriesView from './../templates/categories-view';
 import CardsView from "./../templates/cards-view";
+import GameView from "../templates/game-view";
 
 export default class HtmlGenerator {
 
@@ -11,6 +12,7 @@ export default class HtmlGenerator {
         this.categoriesView = new CategoriesView();
         this.cardsRepository = new CardsRepository();
         this.cardsView = new CardsView();
+        this.gameView = new GameView();
     }
 
     getCategoriesMenuHtml() {
@@ -44,6 +46,16 @@ export default class HtmlGenerator {
                 html += this.cardsView.getCardMainItemHtml(card);
             }.bind(this));
         }
+
+        return html;
+    }
+
+    getGameOverHtml() {
+        // let game = this.gameRepository.getGame();
+        let game = {};
+        let html = '';
+        html = this.gameView.getSuccessGameHtml(game);
+        //html = this.gameView.getFailureGameHtml(game);
 
         return html;
     }
