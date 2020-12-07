@@ -8,6 +8,10 @@ button {
     padding: 0;
     background: transparent;
     cursor: pointer;
+
+    &:focus {
+        outline: 0;
+    }
 }
 
 .ear-left-outer, .ear-right-outer {fill:#919191;}

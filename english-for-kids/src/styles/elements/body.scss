@@ -23,6 +23,11 @@ h1 {
     -webkit-text-fill-color: transparent;
     font-size: 6.25rem;
     font-family: "NerkoOne", Arial, sans-serif;
+    transition: .5s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 
 
