@@ -50,13 +50,14 @@
 }
 
 .toggle__play {
-    left: 10px;
-    display: none;
+    right: 10px;
+
 }
 
 .toggle__train {
-    right: 10px;
+    left: 5px;
     letter-spacing: -1px;
+    display: none;
 }
 
 input:checked {
@@ -67,11 +68,11 @@ input:checked {
         }
 
         .toggle__train {
-            display: none;
+            display: block;
         }
 
         .toggle__play {
-            display: block;
+            display: none;
         }
 
         .toggle__handler {

@@ -30,6 +30,12 @@ h1 {
     }
 }
 
+button {
+    &:focus {
+        outline: 0;
+    }
+}
+
 
 @media all and (min-width: 768px) and (max-width: 1279px) {
     h1 {

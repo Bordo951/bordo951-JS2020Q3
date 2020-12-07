@@ -1,17 +1,12 @@
-button {
+.button-statistics {
     position: relative;
     z-index: 5;
     display: block;
-    margin: 0 auto;
     width: 150px;
     border: 0;
     padding: 0;
     background: transparent;
     cursor: pointer;
-
-    &:focus {
-        outline: 0;
-    }
 }
 
 .ear-left-outer, .ear-right-outer {fill:#919191;}
@@ -35,5 +30,17 @@ button {
     color: #ffffe3;
     text-decoration: none;
     transition: background 0.2s;
+}
+
+@media all and (min-width: 480px) and (max-width: 767px) {
+    .button-statistics {
+        transform: scale(.8);
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 479px) {
+    .button-statistics {
+        transform: scale(.7);
+    }
 }
 
