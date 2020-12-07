@@ -1,6 +1,7 @@
 import HtmlGenerator from './../helper/html-generator';
 import UrlChecker from "../checkers/url-checker";
 import EventManager from "./event-manager";
+import SoundsPlayer from "./sounds-player";
 
 export default class PageBuilder {
 
@@ -8,6 +9,7 @@ export default class PageBuilder {
         this.htmlGenerator = new HtmlGenerator();
         this.urlChecker = new UrlChecker();
         this.eventManager = new EventManager();
+        this.soundsPlayer = new SoundsPlayer();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
     }
@@ -58,9 +60,14 @@ export default class PageBuilder {
     buildStaticPage(pageKeyUrl) {
         let html = '';
         switch (pageKeyUrl) {
-            case 'game-over':
-                html = this.htmlGenerator.getGameOverHtml();
+            case 'success-game-over':
+                html = this.htmlGenerator.getSuccessGameOverHtml();
+                this.soundsPlayer.playSuccessSound();
             break;
+            case 'failure-game-over':
+                html = this.htmlGenerator.getFailureGameOverHtml();
+                this.soundsPlayer.playFailureSound();
+                break;
             default:
                 html = pageKeyUrl;
             break;

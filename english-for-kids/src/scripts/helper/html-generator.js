@@ -50,12 +50,16 @@ export default class HtmlGenerator {
         return html;
     }
 
-    getGameOverHtml() {
-        // let game = this.gameRepository.getGame();
-        let game = {};
+    getSuccessGameOverHtml(game) {
         let html = '';
         html = this.gameView.getSuccessGameHtml(game);
-        //html = this.gameView.getFailureGameHtml(game);
+
+        return html;
+    }
+
+    getFailureGameOverHtml(game) {
+        let html = '';
+        html = this.gameView.getFailureGameHtml(game);
 
         return html;
     }
