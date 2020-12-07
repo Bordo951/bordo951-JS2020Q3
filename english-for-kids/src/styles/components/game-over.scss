@@ -1,0 +1,64 @@
+.game-over {
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__image {
+
+        &-wrapper {
+            width: 55%;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__result {
+        font-family: 'NerkoOne', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 4.4rem;
+        color: #c10002;
+        margin: 10px;
+        text-align: center;
+
+        &-message {
+            font-size: 4rem;
+            background: linear-gradient(to right, red, orange, yellow, green, cyan, blue, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &-wrapper {
+            width: 95%;
+
+            background-color: rgba(0, 0, 0, .6);
+            border-radius: 1rem;
+        }
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1279px) {
+    .game-over {
+        width: 490px;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 767px) {
+    .game-over {
+        width: 420px;
+    }
+}
+
+@media all and (min-width: 320px) and (max-width: 479px) {
+    .game-over {
+        &__result {
+            font-size: 3.5rem;
+
+            &-message {
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+
