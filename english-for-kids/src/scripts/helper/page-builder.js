@@ -2,6 +2,7 @@ import HtmlGenerator from './../helper/html-generator';
 import UrlChecker from "../checkers/url-checker";
 import EventManager from "./event-manager";
 import SoundsPlayer from "./sounds-player";
+import PageNavigator from "./page-navigator";
 
 export default class PageBuilder {
 
@@ -10,8 +11,11 @@ export default class PageBuilder {
         this.urlChecker = new UrlChecker();
         this.eventManager = new EventManager();
         this.soundsPlayer = new SoundsPlayer();
+        this.pageNavigator = new PageNavigator();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
+        this.delayAfterSuccessGameOver = 3000;
+        this.delayAfterFailureGameOver = 5000;
     }
 
     buildPageFromHash(hash) {
@@ -63,11 +67,13 @@ export default class PageBuilder {
             case 'success-game-over':
                 html = this.htmlGenerator.getSuccessGameOverHtml();
                 this.soundsPlayer.playSuccessSound();
+                this.pageNavigator.openHomepage(this.delayAfterSuccessGameOver);
             break;
             case 'failure-game-over':
                 html = this.htmlGenerator.getFailureGameOverHtml();
                 this.soundsPlayer.playFailureSound();
-                break;
+                this.pageNavigator.openHomepage(this.delayAfterFailureGameOver);
+            break;
             default:
                 html = pageKeyUrl;
             break;
