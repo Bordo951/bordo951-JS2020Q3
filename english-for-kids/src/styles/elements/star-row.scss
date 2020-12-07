@@ -1,18 +1,17 @@
 .star {
-    display: block;
+    visibility: hidden;
     width: 40px;
     margin: 0 5px;
 
     &-row {
         display: none;
         width: 37.5%;
-        //display: flex;
         flex-direction: row;
         justify-content: space-around;
     }
 
     &_visible {
-        visibility: hidden; // поменяй на видимый, т.к. они по умолчанию невидимы (visibility: visible;)
+        visibility: visible;
     }
 }
 
@@ -44,7 +43,10 @@
         margin: 2px;
 
         &-row {
-            flex-wrap: wrap;
+            height: 65px;
+            flex-wrap: wrap-reverse;
+            width: 100px;
+            position: absolute;
         }
     }
 }
