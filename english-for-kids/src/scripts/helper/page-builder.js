@@ -5,13 +5,11 @@ export default class PageBuilder {
     constructor() {
         this.htmlGeneratorObject = new HtmlGenerator();
         this.categoriesMenuId = 'main-menu-list';
-        this.categoriesMainId = 'categories';
-        this.cardsMainId = 'cards';
+        this.contentMainId = 'main-content';
     }
 
     cleanMainPage() {
-        document.getElementById(this.cardsMainId).innerHTML = '';
-        document.getElementById(this.categoriesMainId).innerHTML = '';
+        document.getElementById(this.contentMainId).innerHTML = '';
     }
 
     buildCategoryMenu() {
@@ -21,17 +19,13 @@ export default class PageBuilder {
 
     buildCategoryMainPage() {
         this.cleanMainPage();
-        document.getElementById(this.categoriesMainId).style.zIndex = '9';
-
         let html = this.htmlGeneratorObject.getCategoriesMainHtml();
-        document.getElementById(this.categoriesMainId).innerHTML = html;
+        document.getElementById(this.contentMainId).innerHTML = html;
     }
 
     buildCardsCategoryPage(categoryUrlKey) {
         this.cleanMainPage();
-        document.getElementById(this.categoriesMainId).style.zIndex = '0';
-
         let html = this.htmlGeneratorObject.getCardsMainHtml(categoryUrlKey);
-        document.getElementById(this.cardsMainId).innerHTML = html;
+        document.getElementById(this.contentMainId).innerHTML = html;
     }
 }

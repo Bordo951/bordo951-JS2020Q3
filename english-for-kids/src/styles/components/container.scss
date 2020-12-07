@@ -13,13 +13,15 @@
 
     &_bar {
         position: fixed;
-        overflow-y: scroll;
+        overflow-y: auto;
         top: 185px;
         right: 0;
         left: 0;
         bottom: 0;
         padding: 0 8px;
-        height: 475px;
+        height: calc(100vh - 260px);
+        background-color: rgba(255,255,255,0.3);
+        border-radius: 15px;
 
         &::-webkit-scrollbar-track
         {
