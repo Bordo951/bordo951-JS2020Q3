@@ -8,24 +8,29 @@ export default class PageBuilder {
         this.contentMainId = 'main-content';
     }
 
-    cleanMainPage() {
-        document.getElementById(this.contentMainId).innerHTML = '';
+    updateContentWithHtml(html) {
+        document.getElementById(this.contentMainId).innerHTML = html;
+    }
+
+    updateMenuWithHtml(html) {
+        document.getElementById(this.categoriesMenuId).innerHTML = html;
     }
 
     buildCategoryMenu() {
         let html = this.htmlGeneratorObject.getCategoriesMenuHtml();
-        document.getElementById(this.categoriesMenuId).innerHTML = html;
+
+        this.updateMenuWithHtml(html);
     }
 
     buildCategoryMainPage() {
-        this.cleanMainPage();
         let html = this.htmlGeneratorObject.getCategoriesMainHtml();
-        document.getElementById(this.contentMainId).innerHTML = html;
+
+        this.updateContentWithHtml(html);
     }
 
     buildCardsCategoryPage(categoryUrlKey) {
-        this.cleanMainPage();
         let html = this.htmlGeneratorObject.getCardsMainHtml(categoryUrlKey);
-        document.getElementById(this.contentMainId).innerHTML = html;
+
+        this.updateContentWithHtml(html);
     }
 }

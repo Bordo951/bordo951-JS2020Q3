@@ -1,5 +1,4 @@
 import cards from "../data/cards";
-import categories from "../data/categories";
 
 export default class CardsRepository {
     getAllCards() {
