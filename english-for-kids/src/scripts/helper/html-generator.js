@@ -35,11 +35,15 @@ export default class HtmlGenerator {
 
     getCardsMainHtml(categoryUrlKey) {
         let category = this.categoriesRepository.getCategoryByUrlKey(categoryUrlKey);
-        let cards = this.cardsRepository.getCardsByCategoryId(category.categoryId);
-        let html = '';
-        cards.forEach(function (card) {
-            html += this.cardsView.getCardMainItemHtml(card);
-        }.bind(this));
+        let html = null;
+
+        if (category) {
+            let cards = this.cardsRepository.getCardsByCategoryId(category.categoryId);
+            html = '';
+            cards.forEach(function (card) {
+                html += this.cardsView.getCardMainItemHtml(card);
+            }.bind(this));
+        }
 
         return html;
     }

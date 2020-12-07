@@ -1,21 +1,29 @@
 import HtmlGenerator from './../helper/html-generator';
+import UrlChecker from "../checkers/url-checker";
 
 export default class PageBuilder {
 
     constructor() {
-        this.htmlGeneratorObject = new HtmlGenerator();
+        this.htmlGenerator = new HtmlGenerator();
+        this.urlChecker = new UrlChecker();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
     }
 
     buildPageFromHash(hash) {
-        let categoryKeyUrl = hash.substring(1);
+        let pageKeyUrl = hash.substring(1);
 
-        if (categoryKeyUrl.length > 0) {
-            this.buildCardsCategoryPage(categoryKeyUrl);
-        } else {
-            this.buildCategoryMainPage();
+        if (this.urlChecker.isStaticPageUrl(pageKeyUrl)) {
+            this.buildStaticPage(pageKeyUrl);
+            return;
         }
+
+        if (this.urlChecker.isCategoryUrl(pageKeyUrl)) {
+            this.buildCardsCategoryPage(pageKeyUrl);
+            return;
+        }
+
+        this.buildCategoryMainPage();
     }
 
     updateContentWithHtml(html) {
@@ -27,19 +35,25 @@ export default class PageBuilder {
     }
 
     buildCategoryMenu() {
-        let html = this.htmlGeneratorObject.getCategoriesMenuHtml();
+        let html = this.htmlGenerator.getCategoriesMenuHtml();
 
         this.updateMenuWithHtml(html);
     }
 
     buildCategoryMainPage() {
-        let html = this.htmlGeneratorObject.getCategoriesMainHtml();
+        let html = this.htmlGenerator.getCategoriesMainHtml();
 
         this.updateContentWithHtml(html);
     }
 
     buildCardsCategoryPage(categoryUrlKey) {
-        let html = this.htmlGeneratorObject.getCardsMainHtml(categoryUrlKey);
+        let html = this.htmlGenerator.getCardsMainHtml(categoryUrlKey);
+
+        this.updateContentWithHtml(html);
+    }
+
+    buildStaticPage(pageKeyUrl) {
+        let html = pageKeyUrl;
 
         this.updateContentWithHtml(html);
     }
