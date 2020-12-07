@@ -1,11 +1,13 @@
 import HtmlGenerator from './../helper/html-generator';
 import UrlChecker from "../checkers/url-checker";
+import EventManager from "./event-manager";
 
 export default class PageBuilder {
 
     constructor() {
         this.htmlGenerator = new HtmlGenerator();
         this.urlChecker = new UrlChecker();
+        this.eventManager = new EventManager();
         this.categoriesMenuId = 'main-menu-list';
         this.contentMainId = 'main-content';
     }
@@ -50,6 +52,7 @@ export default class PageBuilder {
         let html = this.htmlGenerator.getCardsMainHtml(categoryUrlKey);
 
         this.updateContentWithHtml(html);
+        this.eventManager.initCardsEvents();
     }
 
     buildStaticPage(pageKeyUrl) {

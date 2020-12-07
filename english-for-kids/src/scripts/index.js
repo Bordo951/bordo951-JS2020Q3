@@ -3,6 +3,7 @@ import './components/button-results';
 
 import './events/url-changed';
 import './events/page-loaded';
+import './events/rotate-card';
 
 // import CardsRepository from './entity/cards-repository';
 // import CategoriesRepository from './entity/categories-repository';
