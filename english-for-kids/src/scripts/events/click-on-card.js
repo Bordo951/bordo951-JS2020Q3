@@ -55,6 +55,7 @@ function clickOnStartGameButton() {
     */
 
     localStorage.removeItem('failedAnswers');
+    document.getElementById('star-row').innerHTML = '';
     document.body.classList.add('game-started');
     selectNextCard();
 }
