@@ -2,7 +2,7 @@ export default class CategoriesView {
     getCategoryMenuItemHtml(category) {
         let title = category.language['en'],
             image = category.image.menu;
-        return `<li><a href="#${category.urlKey}"><img class="menu-img" src="./assets/images/categories/menu/${image}.svg" alt="${title}" title="${title}">${title}</a></li>`;
+        return `<li data-category-urlkey="#${category.urlKey}"><a href="#${category.urlKey}"><img class="menu-img" src="./assets/images/categories/menu/${image}.svg" alt="${title}" title="${title}">${title}</a></li>`;
     }
 
     getCategoryMainItemHtml(category) {

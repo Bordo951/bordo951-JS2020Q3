@@ -81,6 +81,10 @@ $contrast: darken($main, 10%);
                 @include alpha-attribute('background-color', rgba($main, 0.5), white);
             }
         }
+
+        &.active {
+            @include alpha-attribute('background-color', rgba($main, 0.9), white);
+        }
     }
 }
 

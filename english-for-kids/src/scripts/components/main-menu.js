@@ -8,4 +8,14 @@ export default class MainMenu {
         document.getElementById('hamburger').checked = false;
         document.getElementById('main-menu-overlay').classList.add('hidden');
     }
+
+    activeCurrentItem(pageKeyUrl) {
+        let menuItems = document.querySelectorAll('#main-menu-list li');
+        menuItems.forEach(function (menuItem){
+            menuItem.classList.remove('active');
+        });
+
+        let currentItem = document.querySelector(`li[data-category-urlkey="#${pageKeyUrl}"]`);
+        currentItem.classList.add('active');
+    }
 }
