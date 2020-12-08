@@ -26,6 +26,7 @@ export default class PageBuilder {
         let pageKeyUrl = hash.substring(1);
 
         this.mainMenu.closeMainMenu();
+        this.mainMenu.activeCurrentItem(pageKeyUrl);
 
         if (this.urlChecker.isMainPageUrl(pageKeyUrl)) {
             document.body.classList.add('main-page');
