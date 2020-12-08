@@ -80,7 +80,7 @@ export default class HtmlGenerator {
         }.bind(this));
 
         html += this.statisticsView.getFooterTable();
-
+        
         return html;
     }
 }

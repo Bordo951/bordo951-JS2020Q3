@@ -1,10 +1,12 @@
 import SoundsPlayer from "../helper/sounds-player";
 import CardsRepository from "../entity/cards-repository";
+import CategoriesRepository from "../entity/categories-repository";
 
 import PageNavigator from "../helper/page-navigator";
 
 let soundPlayer = new SoundsPlayer();
 let cardsRepository = new CardsRepository();
+let categoriesRepository = new CategoriesRepository();
 let pageNavigator = new PageNavigator();
 
 let failedAnswers = 0;
@@ -25,23 +27,53 @@ function clickOnCard() {
     }
 }
 
+function clickOnStartGameButton() {
+    if(window.location.hash === "") {
+        let randomCategoryId = getRandomInt(12),
+            randomCategory = categoriesRepository.getCategoryByID(randomCategoryId);
+        window.location.hash = randomCategory.urlKey;
+        setTimeout(function (){
+            selectNextCard();
+        }, 800);
+    }
+
+    localStorage.removeItem('failedAnswers');
+    document.body.classList.add('game-started');
+    selectNextCard();
+}
+
+function clickOnRepeatCardButton() {
+    let activeCard = document.querySelector('.play-mode #main-content .target_card'),
+        cardId = Number.parseInt(activeCard.dataset.cardId),
+        currentCard = cardsRepository.getCardById(cardId);
+
+    setTimeout(function (){
+        soundPlayer.playCardSound(currentCard)
+    }, 400);
+}
+
 export function initClickOnCardPlayModeEvent() {
     let activeCards = document.querySelectorAll('.play-mode #main-content .card');
     activeCards.forEach(function (activeCard) {
         activeCard.addEventListener('click', clickOnCard);
     });
-    selectNextCard();
+
+    let startGameButton = document.getElementById('start-game');
+    startGameButton.addEventListener('click', clickOnStartGameButton);
+    
+    let repeatCardButton = document.getElementById('repeat-card');
+    repeatCardButton.addEventListener('click', clickOnRepeatCardButton);
 }
+
+let getRandomInt = function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+};
 
 function selectNextCard() {
     let activeCards = document.querySelectorAll('.play-mode #main-content .card');
     let isRandomSelecting = true,
         isPlayingGame = true,
         randomCardIndex;
-
-    let getRandomInt = function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    };
 
     activeCards.forEach(function (activeCard) {
         if(!activeCard.classList.contains('disabled')){
