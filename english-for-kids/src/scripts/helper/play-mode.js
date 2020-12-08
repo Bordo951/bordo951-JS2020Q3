@@ -9,6 +9,7 @@ export default class PlayMode {
         let activeCards = document.querySelectorAll('#main-content .card');
         activeCards.forEach(function (activeCard) {
             activeCard.classList.remove('target_card');
+            activeCard.classList.remove('disabled');
         });
         localStorage.removeItem('failedAnswers');
         document.getElementById('star-row').innerHTML = '';
