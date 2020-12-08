@@ -27,9 +27,18 @@ export default class PageBuilder {
 
         this.mainMenu.closeMainMenu();
 
+        if (this.urlChecker.isMainPageUrl(pageKeyUrl)) {
+            document.body.classList.add('main-page');
+        } else {
+            document.body.classList.remove('main-page');
+        }
+
         if (this.urlChecker.isStaticPageUrl(pageKeyUrl)) {
+            document.body.classList.add('static-page');
             this.buildStaticPage(pageKeyUrl);
             return;
+        } else {
+            document.body.classList.remove('static-page');
         }
 
         if (this.urlChecker.isCategoryUrl(pageKeyUrl)) {

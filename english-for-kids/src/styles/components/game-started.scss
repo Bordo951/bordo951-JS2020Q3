@@ -8,3 +8,10 @@
         display: block;
     }
 }
+
+.main-page,
+.static-page {
+    .start-game {
+        display: none;
+    }
+}

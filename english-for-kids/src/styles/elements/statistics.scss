@@ -1,0 +1,94 @@
+.statistics {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 0;
+
+    &__buttons {
+        font-family: 'NerkoOne', Arial, sans-serif;
+        font-size: 20px;
+        color: #ffffe3;
+        background-color: #a973a3;
+        border-radius: 4px;
+        cursor: pointer;
+        padding: 8px 16px;
+
+        &:hover{
+            background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+            animation:slidebg 5s linear infinite;
+        }
+
+        @keyframes slidebg {
+            to {
+                background-position:20vw;
+            }
+        }
+
+        &-wrapper {
+            width: 320px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 5px;
+        }
+    }
+
+    .table {
+        width: 100%;
+        font-family: 'NerkoOne', Arial, sans-serif;
+        letter-spacing: 2px;
+        word-break: break-word;
+        color: #ffffe3;
+        box-shadow: 3px 3px 15px 2px rgba(255, 255, 227, .35), -3px -3px 15px 2px rgba(255, 255, 227, .3);
+        border-collapse: collapse;
+
+        &__wrapper {
+            width: 100%;
+        }
+
+        &__title {
+            padding: 17px;
+            background: #ffa024;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            color: #ffffe3;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 3px solid rgba(104, 100, 100, .5);
+            box-shadow: 3px 3px 15px 2px rgba(255, 255, 227, .35), -3px -3px 15px 2px rgba(255, 255, 227, .3);
+        }
+
+        &__cell-name {
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+            color: #686464;
+            text-align: center;
+            background: rgba(255, 231, 159, .9);
+            border-bottom: 3px solid rgba(255, 160, 36, .5);
+            padding: 5px;
+        }
+
+        &__string td {
+            height: 36px;
+            padding: 6px;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+            font-weight: bolder;
+            color: #686464;
+            line-height: 1.2em;
+            text-align: center;
+            vertical-align: middle;
+            background: rgba(255, 231, 159, .5);
+
+        }
+
+        &__string:nth-child(even) {
+            background: rgba(255, 160, 36, .5);
+        }
+    }
+}
+

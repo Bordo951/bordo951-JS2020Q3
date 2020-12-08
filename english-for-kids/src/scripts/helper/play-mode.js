@@ -11,5 +11,6 @@ export default class PlayMode {
             activeCard.classList.remove('target_card');
         });
         localStorage.removeItem('failedAnswers');
+        document.getElementById('star-row').innerHTML = '';
     }
 }

@@ -1,5 +1,4 @@
 .star {
-    visibility: hidden;
     width: 40px;
     margin: 0 5px;
 
@@ -7,7 +6,6 @@
         display: none;
         width: 37.5%;
         flex-direction: row;
-        justify-content: space-around;
     }
 
     &_visible {
