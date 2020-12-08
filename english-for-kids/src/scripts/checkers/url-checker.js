@@ -6,6 +6,10 @@ export default class UrlChecker {
         this.categoriesRepository = new CategoriesRepository();
     }
 
+    isMainPageUrl(url) {
+        return url === '';
+    }
+
     isStaticPageUrl(url) {
         return url.length > 0 && this.trustedUrls.indexOf(url) !== -1;
     }

@@ -11,23 +11,39 @@ let pageNavigator = new PageNavigator();
 
 let failedAnswers = 0;
 
+function addSucessStar() {
+    let starRow = document.getElementById('star-row');
+    let span = document.createElement('span');
+    span.innerHTML = '<img class="star" src="./assets/images/star.svg" alt="Star">';
+
+    starRow.appendChild(span);
+}
+
+function addErrorStar() {
+
+}
+
 function clickOnCard() {
     let isCardInTrain = !this.classList.contains('disabled');
+    let isGameStarted = document.body.classList.contains('game-started');
 
-    if (isCardInTrain) {
+    if (isCardInTrain && isGameStarted) {
         if (this.classList.contains('target_card')) {
             soundPlayer.playCorrectSound();
             this.classList.remove('target_card');
             this.classList.add('disabled');
             selectNextCard();
+            addSucessStar();
         } else {
             failedAnswers += 1;
             soundPlayer.playErrorSound();
+            addErrorStar();
         }
     }
 }
 
 function clickOnStartGameButton() {
+    /*
     if(window.location.hash === "") {
         let randomCategoryId = getRandomInt(12),
             randomCategory = categoriesRepository.getCategoryByID(randomCategoryId);
@@ -36,6 +52,7 @@ function clickOnStartGameButton() {
             selectNextCard();
         }, 800);
     }
+    */
 
     localStorage.removeItem('failedAnswers');
     document.body.classList.add('game-started');
@@ -60,7 +77,7 @@ export function initClickOnCardPlayModeEvent() {
 
     let startGameButton = document.getElementById('start-game');
     startGameButton.addEventListener('click', clickOnStartGameButton);
-    
+
     let repeatCardButton = document.getElementById('repeat-card');
     repeatCardButton.addEventListener('click', clickOnRepeatCardButton);
 }
