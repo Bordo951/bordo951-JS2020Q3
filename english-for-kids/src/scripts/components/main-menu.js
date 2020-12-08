@@ -16,6 +16,8 @@ export default class MainMenu {
         });
 
         let currentItem = document.querySelector(`li[data-category-urlkey="#${pageKeyUrl}"]`);
-        currentItem.classList.add('active');
+        if(currentItem) {
+            currentItem.classList.add('active');
+        }
     }
 }
