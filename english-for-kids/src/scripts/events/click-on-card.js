@@ -43,17 +43,7 @@ function clickOnCard() {
 }
 
 function clickOnStartGameButton() {
-    /*
-    if(window.location.hash === "") {
-        let randomCategoryId = getRandomInt(12),
-            randomCategory = categoriesRepository.getCategoryByID(randomCategoryId);
-        window.location.hash = randomCategory.urlKey;
-        setTimeout(function (){
-            selectNextCard();
-        }, 800);
-    }
-    */
-
+    failedAnswers = 0;
     localStorage.removeItem('failedAnswers');
     document.getElementById('star-row').innerHTML = '';
     document.body.classList.add('game-started');
