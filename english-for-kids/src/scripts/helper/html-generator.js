@@ -1,5 +1,6 @@
 import CardsRepository from './../entity/cards-repository';
 import CategoriesRepository from './../entity/categories-repository';
+import StatisticRepository from "../entity/statistic-repository";
 
 import CategoriesView from './../templates/categories-view';
 import CardsView from "./../templates/cards-view";
@@ -10,11 +11,13 @@ export default class HtmlGenerator {
 
     constructor() {
         this.categoriesRepository = new CategoriesRepository();
-        this.categoriesView = new CategoriesView();
         this.cardsRepository = new CardsRepository();
+        this.statisticsRepository = new StatisticRepository();
+        this.categoriesView = new CategoriesView();
         this.cardsView = new CardsView();
         this.gameView = new GameView();
         this.statisticsView = new StatisticsView();
+
     }
 
     getCategoriesMenuHtml() {
@@ -72,9 +75,19 @@ export default class HtmlGenerator {
 
         cards.forEach(function (card) {
             let category = this.categoriesRepository.getCategoryByID(card.categoryId);
+            let turned = this.statisticsRepository.getCardByState(card.cardId,'turned');
+            let success = this.statisticsRepository.getCardByState(card.cardId,'success');
+            let error = this.statisticsRepository.getCardByState(card.cardId,'error');
+            let rate = this.statisticsRepository.getRateByState(card.cardId);
+
             let viewCard = {
                 language: card.language,
-                categoryId: category.language['en']
+                categoryId: category.language['en'],
+                turned: turned,
+                success: success,
+                errors: error,
+                rate: rate
+
             };
             html += this.statisticsView.getStatisticTableRows(viewCard);
         }.bind(this));

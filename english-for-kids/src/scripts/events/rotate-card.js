@@ -1,10 +1,21 @@
+import CardsRepository from "../entity/cards-repository";
+import StatisticRepository from "../entity/statistic-repository";
+import SoundsPlayer from "../helper/sounds-player";
+
+let cardsRepository = new CardsRepository();
+let soundsPlayer = new SoundsPlayer();
+let statisticRepository = new StatisticRepository();
+
 function rotateCard() {
-    let dataCardId = this.dataset.cardId;
+    let dataCardId = parseInt(this.dataset.cardId);
+    let card = cardsRepository.getCardById(dataCardId);
+    soundsPlayer.playCardSound(card);
     document.querySelector(`.card__flipped[data-card-id="${dataCardId}"]`).classList.add('rotated');
+    statisticRepository.increaseTurnedClicksOnCard(dataCardId);
 }
 
 function rotateCardBack() {
-    let dataCardId = this.dataset.cardId;
+    let dataCardId = parseInt(this.dataset.cardId);
     document.querySelector(`.card__flipped[data-card-id="${dataCardId}"]`).classList.remove('rotated');
 }
 

@@ -1,13 +1,15 @@
-import SoundsPlayer from "../helper/sounds-player";
 import CardsRepository from "../entity/cards-repository";
 import CategoriesRepository from "../entity/categories-repository";
 
+import SoundsPlayer from "../helper/sounds-player";
 import PageNavigator from "../helper/page-navigator";
+import StatisticRepository from "../entity/statistic-repository";
 
 let soundPlayer = new SoundsPlayer();
 let cardsRepository = new CardsRepository();
 let categoriesRepository = new CategoriesRepository();
 let pageNavigator = new PageNavigator();
+let statisticRepository = new StatisticRepository();
 
 let failedAnswers = 0;
 
@@ -24,6 +26,7 @@ function addErrorStar() {
 }
 
 function clickOnCard() {
+    let currentCardId = this.dataset.cardId;
     let isCardInTrain = !this.classList.contains('disabled');
     let isGameStarted = document.body.classList.contains('game-started');
 
@@ -34,10 +37,16 @@ function clickOnCard() {
             this.classList.add('disabled');
             selectNextCard();
             addSucessStar();
+            statisticRepository.increaseSuccessClickOnCard(currentCardId);
         } else {
             failedAnswers += 1;
             soundPlayer.playErrorSound();
             addErrorStar();
+            //
+            let activeCard = document.querySelector('.play-mode #main-content .target_card');
+            let activeCardId = Number.parseInt(activeCard.dataset.cardId);
+
+            statisticRepository.increaseErrorClickOnCard(activeCardId);
         }
     }
 }

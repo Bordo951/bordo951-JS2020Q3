@@ -9,3 +9,4 @@ import './events/overlay-click';
 import './events/open-main-menu';
 import './events/change-play-mode';
 import './events/click-on-card';
+import './events/click-on-reset';

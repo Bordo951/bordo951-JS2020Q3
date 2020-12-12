@@ -52,6 +52,7 @@ export default class PageBuilder {
 
     updateContentWithHtml(html) {
         document.getElementById(this.contentMainId).innerHTML = html;
+        this.eventManager.initStaticPagesEvents();
     }
 
     updateMenuWithHtml(html) {
