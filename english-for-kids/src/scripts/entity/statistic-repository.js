@@ -2,17 +2,14 @@ export default class StatisticRepository {
 
     increaseTurnedClicksOnCard(cardId) {
         this.updateCardByState(cardId, 'turned');
-        console.log('increaseTotalClickOnCard');
     }
 
     increaseSuccessClickOnCard(cardId) {
         this.updateCardByState(cardId, 'success');
-        console.log('increaseSuccessClickOnCard');
     }
 
     increaseErrorClickOnCard(cardId) {
         this.updateCardByState(cardId, 'error');
-        console.log('increaseErrorClickOnCard');
     }
 
     updateCardByState(cardId, state) {
@@ -47,7 +44,6 @@ export default class StatisticRepository {
     resetStatistics() {
         localStorage.clear();
         document.location.reload();
-        console.log('resetStatistics');
     }
 
 }
