@@ -45,6 +45,8 @@ export default class StatisticRepository {
     }
 
     resetStatistics() {
+        localStorage.clear();
+        document.location.reload();
         console.log('resetStatistics');
     }
 
