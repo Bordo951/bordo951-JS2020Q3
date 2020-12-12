@@ -3,7 +3,7 @@ export default class StatisticsView {
         return `<div class="statistics">
                        <div class="statistics__buttons-wrapper">
                            <button class="statistics__buttons">Repeat difficult words</button>
-                           <button class="statistics__buttons">Reset</button>
+                           <button id="reset" class="statistics__buttons">Reset</button>
                        </div>
                        <div class="table__wrapper">
                            <table class="table">
@@ -13,10 +13,10 @@ export default class StatisticsView {
                                        <td class="table__cell-name"><span>↓</span>Word</td>
                                        <td class="table__cell-name">Translation</td>
                                        <td class="table__cell-name">Category</td>
-                                       <td class="table__cell-name">Clicks</td>
-                                       <td class="table__cell-name">Right</td>
-                                       <td class="table__cell-name">Mistakes</td>
-                                       <td class="table__cell-name">%errors</td>
+                                       <td class="table__cell-name">Trained</td>
+                                       <td class="table__cell-name">Correct</td>
+                                       <td class="table__cell-name">Incorrect</td>
+                                       <td class="table__cell-name">% guessed</td>
                                    </tr>
                                </thead>
                                <tbody>`;
@@ -27,10 +27,10 @@ export default class StatisticsView {
                                        <td>${card.language['en']}</td>
                                        <td>${card.language['ru']}</td>
                                        <td>${card.categoryId}</td>
-                                       <td>0</td>
-                                       <td>0</td>
-                                       <td>0</td>
-                                       <td>0</td>
+                                       <td>${card.turned}</td>
+                                       <td>${card.success}</td>
+                                       <td>${card.errors}</td>
+                                       <td>${card.rate}</td>
                                    </tr>`;
     }
 
