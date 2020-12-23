@@ -1,0 +1,28 @@
+.zoom {
+  position: relative;
+
+  &__size {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    @include flex(center, center);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 1px solid $color-gray-500;
+    background-color: $color-light-black;
+    z-index: 1001;
+    opacity: 0;
+    cursor: pointer;
+
+    &-img_close {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .zoom__size {
+      opacity: 1;
+    }
+  }
+}

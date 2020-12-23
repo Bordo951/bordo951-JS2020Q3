@@ -1,0 +1,181 @@
+body {
+    padding: 0;
+    margin: 0;
+    background: $color-black;
+    overflow-x: hidden;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    min-height: 500px;
+    width: 100vw;
+    padding: 0 10px 10px 10px;
+    box-sizing: border-box;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    column-gap: 7px;
+    row-gap: 7px;
+    grid-template-areas:
+        "header header header header header header header"
+        "header header header header header header header"
+        "global-cases global-cases map map map death-statistic recovered-statistic"
+        "global-cases global-cases map map map death-statistic recovered-statistic"
+        "global-cases global-cases map map map death-statistic recovered-statistic"
+        "region-cases region-cases map map map death-statistic recovered-statistic"
+        "region-cases region-cases map map map death-statistic recovered-statistic"
+        "region-cases region-cases map map map death-statistic recovered-statistic"
+        "region-cases region-cases map map map death-statistic recovered-statistic"
+        "region-cases region-cases map map map death-statistic recovered-statistic"
+        "region-cases region-cases map map map diagram diagram"
+        "region-cases region-cases map map map diagram diagram"
+        "region-cases region-cases map map map diagram diagram"
+        "region-cases region-cases map map map diagram diagram"
+        "region-cases region-cases map map map diagram diagram"
+        "region-cases region-cases map map map diagram diagram"
+        "region-cases region-cases . . . diagram diagram"
+        "update-time update-time . . . diagram diagram"
+        "update-time update-time . . . diagram diagram"
+        "footer footer footer footer footer  footer  footer";
+
+    .header, .global, .region, .update-time, .map, .death, .recovered, .diagram, .footer {
+        background-color: $color-gray-700;
+        border: 1px solid rgba(214, 214, 214, 0.2);
+        box-sizing: border-box;
+    }
+
+    .global {
+        grid-area: global-cases;
+    }
+
+    .region {
+        grid-area: region-cases;
+    }
+
+    .update-time {
+        grid-area: update-time;
+    }
+
+    .map {
+        position: relative;
+        grid-area: map;
+    }
+
+    .death {
+        grid-area: death-statistic;
+    }
+
+    .recovered {
+        grid-area: recovered-statistic;
+    }
+
+    .diagram {
+        grid-area: diagram;
+    }
+
+    .wr-canvas {
+        display: flex;
+        @include flex(center, center);
+        height: 100%;
+    }
+
+    .footer {
+        grid-area: footer;
+    }
+
+    #map {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .view-full-screen {
+        grid-column: 1 / -1;
+        grid-row: 3 / -1;
+        z-index: 1020;
+
+        .element__size-img_open {
+            display: none;
+        }
+
+        .element__size-img_close {
+            display: block;
+        }
+    }
+}
+
+@media(max-width: $breakpoint-tablet-landscape) {
+    .container {
+        height: fit-content;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(27, 50px);
+        grid-template-areas:
+        "header header"
+        "global-cases global-cases"
+        "global-cases global-cases"
+        "death-statistic recovered-statistic"
+        "death-statistic recovered-statistic"
+        "death-statistic recovered-statistic"
+        "death-statistic recovered-statistic"
+        "death-statistic recovered-statistic"
+        "death-statistic recovered-statistic"
+        "region-cases map"
+        "region-cases map"
+        "region-cases map"
+        "region-cases map"
+        "region-cases map"
+        "region-cases map"
+        "diagram diagram"
+        "diagram diagram"
+        "diagram diagram"
+        "diagram diagram"
+        "diagram diagram"
+        "diagram diagram"
+        "diagram diagram"
+        "diagram diagram"
+        "update-time update-time"
+        "update-time update-time"
+        "footer footer"
+        "footer footer";
+    }
+}
+
+@media(max-width: $breakpoint-mobile-landscape) {
+    .container {
+        height: fit-content;
+        grid-template-columns: 100vw;
+        grid-template-rows: repeat(31, 50px);
+        grid-template-areas:
+        "header"
+        "global-cases"
+        "death-statistic"
+        "death-statistic"
+        "death-statistic"
+           "death-statistic"
+        "death-statistic"
+        "recovered-statistic"
+        "recovered-statistic"
+        "recovered-statistic"
+         "recovered-statistic"
+        "recovered-statistic"
+        "region-cases"
+        "region-cases"
+        "region-cases"
+         "region-cases"
+        "region-cases"
+        "map"
+        "map"
+        "map"
+        "map"
+        "map"
+        "map"
+        "diagram"
+        "diagram"
+        "diagram"
+        "diagram"
+        "diagram"
+        "update-time"
+        "footer"
+        "footer";
+    }
+}

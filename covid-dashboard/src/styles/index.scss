@@ -1,0 +1,26 @@
+// libs
+@import "~select2";
+
+//common
+@import "common/_normalize";
+@import "common/_mixins";
+@import "common/_variables";
+@import "common/_fonts";
+@import "common/_colors";
+@import "common/_body";
+
+//components
+@import "components/_header";
+@import "components/_region";
+@import "components/_death";
+@import "components/_recovered";
+@import "components/_global";
+@import "components/_update-time";
+@import "components/_search";
+
+//elements
+@import "elements/_zoom";
+@import "elements/_preloader";
+@import "elements/_chart";
+@import "elements/_cursor";
+@import "elements/_pointer";

@@ -1,0 +1,118 @@
+.region {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        max-width: 330px;
+        font: $font-block-title-wrapper;
+        color: $color-white;
+        text-align: center;
+        padding: 5px;
+    }
+
+    &__item {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        overflow-x: hidden;
+        pointer-events: auto;
+
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: $color-gray-bg-scroll;
+        }
+
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: $color-gray-bg-scroll;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: $color-gray-500;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border-bottom: 1px solid $color-gray-500;
+
+        &:hover {
+            background: rgba(0, 0, 0, .3);
+            cursor: pointer;
+        }
+
+        &-сonfirmed-сases {
+            font: $font-сonfirmed-сases;
+            letter-spacing: 0.02em;
+            color: $color-red;
+            margin: 5px;
+            width: 50%;
+            text-align: right;
+        }
+
+        &-country {
+            font: $font-region-country;
+            color: $color-gray-100;
+            margin: 5px;
+            width: 50%;
+
+            &-flag {
+                max-width: 30px;
+                padding-right: 10px;
+            }
+        }
+    }
+}
+
+@media(max-width: $breakpoint-tablet-landscape) {
+    .region {
+        &__title {
+            font: $font-block-title-wrapper-tablet;
+        }
+
+        &__list {
+            &-сonfirmed-сases {
+                font: $font-сonfirmed-сases-tablet;
+            }
+
+            &-country {
+                font: $font-region-country-tablet;
+                margin: 3px;
+
+                &-flag {
+                    max-width: 25px;
+                    padding-right: 7px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: $breakpoint-mobile-landscape) {
+    .region {
+        &__title {
+            font: $font-block-title-wrapper-mobile;
+        }
+
+        &__list {
+            &-сonfirmed-сases {
+                font: $font-сonfirmed-сases-mobile;
+            }
+
+            &-country {
+                font: $font-region-country-mobile;
+
+                &-flag {
+                    max-width: 20px;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}

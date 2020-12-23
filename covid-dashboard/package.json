@@ -1,0 +1,53 @@
+{
+  "name": "covid-dashboard",
+  "version": "1.0.0",
+  "description": "Covid dashboard",
+  "main": "index.js",
+  "author": "Dzianis Buhara",
+  "license": "MIT",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js"
+  },
+  "keywords": [
+    "webpack",
+    "webpack 5",
+    "Covid dashboard"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.2.1",
+    "cross-env": "^7.0.2",
+    "css-loader": "^5.0.0",
+    "css-minimizer-webpack-plugin": "^1.1.5",
+    "html-webpack-plugin": "^5.0.0-alpha.7",
+    "jquery": "^3.5.1",
+    "mini-css-extract-plugin": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "postcss-loader": "^4.0.4",
+    "postcss-preset-env": "^6.7.0",
+    "sass-loader": "^10.0.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:feonix/covid-dasboard.git"
+  },
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "compass-mixins": "^0.12.10",
+    "esri-leaflet": "^2.5.1",
+    "leaflet": "^1.7.1",
+    "regenerator-runtime": "^0.13.7",
+    "rythm.js": "^2.2.5",
+    "select2": "^4.0.13"
+  }
+}

@@ -1,0 +1,55 @@
+.update-time {
+    @include flex(center, center);
+    flex-direction: column;
+    padding: 7px;
+
+    &.preloader {
+        @include flex(space-around, center);
+    }
+
+    &__title {
+        max-width: 330px;
+        font: $font-update-time-title;
+        color: $color-white;
+        text-align: center;
+    }
+
+    &__item {
+        margin: 0;
+        padding: 0;
+        color: $color-white;
+        font: $font-update-time;
+        text-align: center;
+
+        &-info {
+            width: 100%;
+            height: auto;
+            margin: 0;
+            padding: 5px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-laptop-landscape) {
+    .update-time {
+        &__title {
+            font: $font-update-time-title-laptop;
+        }
+    }
+}
+
+@media(max-width: $breakpoint-tablet-landscape) {
+    .update-time {
+        &__title {
+            font: $font-update-time-title-tablet;
+        }
+    }
+}
+
+@media(max-width: $breakpoint-mobile-landscape) {
+    .update-time {
+        &__title {
+            font: $font-update-time-title-mobile;
+        }
+    }
+}

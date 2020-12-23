@@ -1,0 +1,124 @@
+.recovered {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font: $font-block-title-wrapper;
+        color: $color-white;
+        text-align: center;
+        padding: 3px;
+    }
+
+    &__recovered-number {
+        padding: 3px;
+        color: $color-green;
+        font: $font-block-title;
+        text-align: center;
+    }
+
+    &__item {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        overflow-x: hidden;
+        pointer-events: auto;
+
+        &::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: $color-gray-bg-scroll;
+        }
+
+        &::-webkit-scrollbar {
+            width: 7px;
+            background-color: $color-gray-bg-scroll;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: $color-gray-500;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: 1px solid rgba(214, 214, 214, 0.2);
+
+        &:hover {
+            background: rgba(0, 0, 0, .3);
+            cursor: pointer;
+        }
+
+        &-recovered {
+            font: $font-amount-country;
+            color: $color-green;
+            margin: 5px 5px 1px;
+        }
+
+        &-text {
+            font: $font-text;
+            color: $color-green;
+        }
+
+        &-country {
+            font: $font-amount-country;
+            color: $color-white;
+            margin: 1px 5px 5px;
+        }
+    }
+}
+
+@media(max-width: $breakpoint-tablet-landscape) {
+    .recovered {
+        &__title {
+            font: $font-block-title-wrapper-tablet;;
+        }
+
+        &__recovered-number {
+            font: $font-block-title-tablet;
+        }
+
+        &__list {
+            &-recovered {
+                font: $font-amount-country-tablet;
+            }
+
+            &-text {
+                font: $font-text-tablet;
+            }
+
+            &-country {
+                font: $font-amount-country-tablet;
+            }
+        }
+    }
+}
+
+@media(max-width: $breakpoint-mobile-landscape) {
+    .recovered {
+        &__title {
+            font: $font-block-title-wrapper-mobile;
+        }
+
+        &__recovered-number {
+            font: $font-block-title-mobile;
+        }
+
+        &__list {
+            &-recovered {
+                font: $font-amount-country-mobile;
+            }
+
+            &-text {
+                font: $font-text-mobile;
+            }
+
+            &-country {
+                font: $font-amount-country-mobile;
+            }
+        }
+    }
+}

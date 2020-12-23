@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>COVID-19 Dashboard</title>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="header__content">
+            <a href="https://rs.school/" target="_blank" class="header__logo rythm-bass">
+                <img src="../assets/logo-rsschool.png" alt="logo">
+            </a>
+            <h1 class="header__title">COVID-19 Dashboard by RS School Team</h1>
+        </div>
+        <select class="header__search" id="search">
+        </select>
+        <div class="pointer">
+            <img src="../assets/right-arrow.svg" class="pointer__arrow" alt="pointer">
+        </div>
+        <div class="header__burger">
+            <span></span>
+        </div>
+    </header>
+    <section class="zoom global">
+          <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div class="global__title rythm-medium">Global Cases</div>
+        <div class="global__cases-number" id="global__cases-number"><!-- 17 876 433 --></div>
+    </section>
+    <section class="zoom region">
+          <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div class="region__title rythm-medium">Cases by Country/Region/Sovereignty</div>
+        <div class="region__item " id="region__item"></div>
+    </section>
+    <section class="zoom update-time">
+        <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div class="update-time__title">Last Updated at (M/D/YYYY)</div>
+        <div class="update-time__item" id="update-time__item"></div>
+    </section>
+    <section class="zoom map">
+          <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div id="map"></div>
+    </section>
+    <section class="zoom death">
+          <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div class="death__title rythm-medium">Global Deaths</div>
+        <div class="death__death-toll " id="death__death-toll"><!-- 1 643 707 --></div>
+        <div class="death__item " id="death__item"></div>
+    </section>
+    <section class="zoom recovered">
+          <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div class="recovered__title rythm-medium">Global Recovered</div>
+        <div class="recovered__recovered-number" id="recovered__recovered-number"><!-- 1 643 707 --></div>
+        <div class="recovered__item" id="recovered__item"></div>
+    </section>
+    <section class="zoom diagram">
+          <span class="zoom__size">
+            <img class="zoom__size-img zoom__size-img_open" src="<%=require('./images/icon-open.svg')%>" alt="Icon open">
+            <img class="zoom__size-img zoom__size-img_close" src="<%=require('./images/icon-close.svg')%>" alt="Icon close">
+          </span>
+        <div class="wr-canvas"><canvas id="chart"></canvas></div>
+    </section>
+    <footer class="footer"></footer>
+</div>
+</body>
+</html>
