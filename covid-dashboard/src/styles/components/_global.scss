@@ -1,0 +1,46 @@
+.global {
+    @include flex(space-around, center);
+    flex-direction: column;
+
+    &.view-full-screen {
+        @include flex(center, center);
+    }
+
+    &.preloader {
+        @include flex(space-between, center);
+    }
+
+    &__title {
+        font: $font-block-title-wrapper;
+        color: $color-white;
+    }
+
+    &__cases-number {
+        color: $color-red;
+        font: $font-block-title;
+    }
+}
+
+@media(max-width: $breakpoint-tablet-landscape) {
+    .global {
+        &__title {
+            font: $font-block-title-wrapper-tablet;
+        }
+
+        &__cases-number {
+            font: $font-block-title-tablet;
+        }
+    }
+}
+
+@media(max-width: $breakpoint-mobile-landscape) {
+    .global {
+        &__title {
+            font: $font-block-title-wrapper-mobile;
+        }
+
+        &__cases-number {
+            font: $font-block-title-mobile;
+        }
+    }
+}

@@ -1,0 +1,72 @@
+.header {
+  @include flex(space-between, center);
+  padding: 12px 20px;
+  grid-area: header;
+
+  &__title {
+    color: $color-gray-300;
+    font: $font-header-title;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__logo {
+    cursor: pointer;
+
+    img {
+      max-height: 30px;
+      max-width: 100px;
+      width: 100%;
+      margin-right: 7px;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    width: 22px;
+    height: 14px;
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: all .5s ease 0s;
+
+    &:hover {
+      transform: scale(2);
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      height: 2px;
+      width: 100%;
+      background-color: $color-white;
+    }
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-white;
+    }
+
+    &:before {
+      top: 0;
+    }
+
+    &:after {
+      bottom: 0;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-landscape) {
+  .header {
+    &__title {
+      display: none;
+    }
+  }
+}
